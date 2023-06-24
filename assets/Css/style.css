@@ -1,0 +1,174 @@
+/* Inspiration - credits: obnoxious.club, rwaw.eu */
+/* Sources used list:
+    - spinbot.pw (video tag, #center),
+    - http://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
+    - https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf (font),
+    - https://emerald.gg/images/dot.png (2x2 dot, inspiration and pattern CSS)
+*/
+
+* {
+  font-family: consolas, sans-serif;
+}
+
+html {
+  cursor: url('../others/cursor.png'), default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background-color: #131314;
+}
+
+@font-face {
+  font-family: courier_regular;
+  src: url('../others/Consolas.ttf');
+}
+
+a {
+  color: #8c5dd3;
+  text-decoration: none;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  max-width: 99%;
+  max-height: 99%;
+}
+
+.normal {
+  background-color: #2a475e;
+  color: #d1dce6;
+  border: 2px solid #2a475e;
+}
+
+.normal:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #2a475e;
+}
+
+.instagram {
+  background-color: #833AB4;
+  color: #d1dce6;
+  border: 2px solid #833AB4;
+}
+
+.instagram:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #833AB4;
+}
+
+.discord {
+  background-color: #7289da;
+  color: #d1dce6;
+  border: 2px solid #7289da;
+}
+
+.discord:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #7289da;
+}
+
+.twitch {
+  background-color: #6441a5;
+  color: #d1dce6;
+  border: 2px solid #6441a5;
+}
+
+.twitch:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #6441a5;
+}
+
+.youtube {
+  background-color: #ff4d4d;
+  color: #d1dce6;
+  border: 2px solid #ff4d4d;
+}
+
+.youtube:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #ff4d4d;
+}
+
+.steam {
+  background-color: #2a475e;
+  color: #d1dce6;
+  border: 2px solid #2a475e;
+}
+
+.steam:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #2a475e;
+}
+
+.spotify {
+  background-color: #1DB954;
+  color: #d1dce6;
+  border: 2px solid #1DB954;
+}
+
+.spotify:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #1DB954;
+}
+
+.setup {
+  background-color: #B87333;
+  color: #d1dce6;
+  border: 2px solid #B87333;
+}
+
+.setup:hover {
+  background-color: #131314; /* Same as page background color */
+  color: #d1dce6;
+  border: 2px solid #B87333;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: #d1dce6;
+   text-align: center;
+   background-color: #131314; /* Same as page background color */
+   opacity: 0.9;
+}
+
+.floatRight {
+  float:right;margin-right:95px
+}
+
+::-webkit-scrollbar { width: 12px;}
+::-webkit-scrollbar-track { background: #131314; }
+::-webkit-scrollbar-thumb { background: #434343; border-radius: 10px; }
+
+@media only screen and (max-width : 640px) {
+.neofetch { display: none; }
+.content {
+  line-height: normal;
+}
+}
