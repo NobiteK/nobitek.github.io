@@ -9,6 +9,7 @@
 }
 
 html {
+  cursor: url('assets/Images/cursor.png'), default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -22,17 +23,13 @@ body {
 }
 
 @font-face {
-  font-family: courier_regular;
-  src: url('../others/Consolas.ttf');
+  font-family: Poppins, sans-serif;
+  src: url('assets/Others/Poppins.ttf');
 }
 
 a {
   color: #8c5dd3;
   text-decoration: none;
-}
-
-.custom {
-    cursor: url('assets/Images/cursor.png'), default;
 }
 
 .button {
