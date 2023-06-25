@@ -1,10 +1,11 @@
 /* Sources used:
     - https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
+    - https://github.com/google/fonts/blob/main/ofl/poppins (font)
     - https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf (font),
 */
 
 * {
-  font-family: consolas, sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 html {
