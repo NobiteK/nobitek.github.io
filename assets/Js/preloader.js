@@ -1,7 +1,5 @@
 <script>
-
-$(window).load(function() {
-    $("#preloader").fadeOut();
-});
-
+    setTimeout(function(){
+        $("#preloader").fadeToggle();
+    }, 2000);
 </script>
