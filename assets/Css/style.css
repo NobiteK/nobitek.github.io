@@ -1,5 +1,5 @@
-/* Sources used list:
-    - (soon) https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
+/* Sources used:
+    - https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
     - https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf (font),
 */
 
@@ -8,7 +8,6 @@
 }
 
 html {
-  cursor: url('assets/Images/cursor.png'), default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -18,7 +17,7 @@ html {
 }
 
 body {
-  background-color: #131314;
+    background-color: #131314;
 }
 
 @font-face {
@@ -31,6 +30,10 @@ a {
   text-decoration: none;
 }
 
+.custom {
+    cursor: url('assets/Images/cursor.png'), default;
+}
+
 .button {
   border: none;
   color: white;
@@ -40,12 +43,12 @@ a {
   display: inline-block;
   font-size: 25px;
   margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 8px;
   max-width: 99%;
   max-height: 99%;
+  -webkit-transition-duration: 0.4s; /* Safari */
 }
 
 .normal {
@@ -167,5 +170,5 @@ a {
 .neofetch { display: none; }
 .content {
   line-height: normal;
-}
+    }
 }
