@@ -9,7 +9,6 @@
 
 html {
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png'), default;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -20,6 +19,8 @@ html {
 
 body {
     background-color: #131314;
+    font-family: 'Poppins';
+    font-weight: bold;
 }
 
 @font-face {
@@ -42,7 +43,7 @@ a {
   font-size: 25px;
   margin: 4px 2px;
   transition-duration: 0.4s;
-  cursor: pointer;
+  cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
   border-radius: 8px;
   max-width: 99%;
   max-height: 99%;
@@ -156,8 +157,135 @@ a {
    opacity: 0.9;
 }
 
-.floatRight {
-  float:right;margin-right:95px
+body {
+    background-color: #2A2734;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+header {
+    top: 0;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.nav {
+    position: fixed;
+    right: 0;
+    width: 16vw;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #0f0f0f;
+    z-index: 100;
+    align-items: stretch;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: all 0.2s;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    opacity: 0.9;
+    padding-left: 3%;
+}
+
+.nav-open {
+    transform: translateX(0%);
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav li {
+    list-style: none;
+    font-size: 1.39vw;
+    padding: 0;
+    color: white;
+}
+
+.nav li:nth-child(1) {
+    margin-top: 20vh;
+}
+
+#burger {
+    width: 3vw;
+    height: 3vw;
+    position: absolute;
+    margin-right: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    right: 7vw;
+    z-index: 1000;
+    top: 9.5vh;
+}
+
+#burger span {
+    display: block;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+#burger span:nth-child(1) {
+    top: 0px;
+}
+
+#burger span:nth-child(2),
+#burger span:nth-child(3) {
+    top: 10px;
+}
+
+#burger span:nth-child(4) {
+    top: 20px;
+}
+
+#burger.open span:nth-child(1) {
+    top: 0px;
+    width: 0%;
+    left: 0;
+}
+
+#burger.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#burger.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#burger.open span:nth-child(4) {
+    top: 0;
+    width: 0%;
+    left: 0;
 }
 
 ::-webkit-scrollbar { width: 12px;}
