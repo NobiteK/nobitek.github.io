@@ -157,11 +157,7 @@ a {
    opacity: 0.9;
 }
 
-body {
-    background-color: #2A2734;
-    font-family: 'Poppins';
-    font-weight: bold;
-}
+/* Burger Navbar */
 
 header {
     top: 0;
@@ -198,6 +194,7 @@ header {
     text-decoration: none;
     display: flex;
     align-items: center;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
 .nav li {
@@ -205,6 +202,7 @@ header {
     font-size: 1.39vw;
     padding: 0;
     color: white;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
 .nav li:nth-child(1) {
