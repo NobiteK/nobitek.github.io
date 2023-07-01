@@ -1,6 +1,7 @@
 /* Sources used:
     - https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
     - https://github.com/google/fonts/blob/main/ofl/poppins (font)
+    - https://codepen.io/nobitek/pens/public (Some of my original or forked codes that i use there)
 */
 
 * {
@@ -29,135 +30,160 @@ body {
 }
 
 a {
-  color: #8c5dd3;
-  text-decoration: none;
+    text-decoration: underline dotted #ad65ff;
+
+    /* unvisited link */
+    a:link {
+      color: #8e2cff;
+    }
+
+    /* visited link */
+    a:visited {
+      color: #9b58ff;
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: #9147ff;
+    }
+
+    /* selected link */
+    a:active {
+      color: #8330ff;
+    }
 }
 
+/* ======================
+          Buttons 
+   ====================== */
+
 .button {
-  border: none;
-  color: white;
-  padding: 16px 32px; 
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
-  border-radius: 8px;
-  max-width: 99%;
-  max-height: 99%;
-  -webkit-transition-duration: 0.4s; /* Safari */
+    border: none;
+    color: white;
+    padding: 16px 32px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    max-width: 99%;
+    max-height: 99%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
 .normal {
-  background-color: #2a475e;
-  color: #d1dce6;
-  border: 2px solid #2a475e;
+    background-color: #2a475e;
+    color: #d1dce6;
+    border: 2px solid #2a475e;
 }
 
 .normal:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #2a475e;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #2a475e;
 }
 
 .instagram {
-  background-color: #833AB4;
-  color: #d1dce6;
-  border: 2px solid #833AB4;
+    background-color: #833AB4;
+    color: #d1dce6;
+    border: 2px solid #833AB4;
 }
 
 .instagram:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #833AB4;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #833AB4;
 }
 
 .discord {
-  background-color: #7289da;
-  color: #d1dce6;
-  border: 2px solid #7289da;
+    background-color: #7289da;
+    color: #d1dce6;
+    border: 2px solid #7289da;
 }
 
 .discord:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #7289da;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #7289da;
 }
 
 .twitch {
-  background-color: #6441a5;
-  color: #d1dce6;
-  border: 2px solid #6441a5;
+    background-color: #6441a5;
+    color: #d1dce6;
+    border: 2px solid #6441a5;
 }
 
 .twitch:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #6441a5;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #6441a5;
 }
 
 .youtube {
-  background-color: #ff4d4d;
-  color: #d1dce6;
-  border: 2px solid #ff4d4d;
+    background-color: #ff4d4d;
+    color: #d1dce6;
+    border: 2px solid #ff4d4d;
 }
 
 .youtube:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #ff4d4d;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #ff4d4d;
 }
 
 .steam {
-  background-color: #2a475e;
-  color: #d1dce6;
-  border: 2px solid #2a475e;
+    background-color: #2a475e;
+    color: #d1dce6;
+    border: 2px solid #2a475e;
 }
 
 .steam:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #2a475e;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #2a475e;
 }
 
 .spotify {
-  background-color: #1DB954;
-  color: #d1dce6;
-  border: 2px solid #1DB954;
+    background-color: #1DB954;
+    color: #d1dce6;
+    border: 2px solid #1DB954;
 }
 
 .spotify:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #1DB954;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #1DB954;
 }
 
 .setup {
-  background-color: #B87333;
-  color: #d1dce6;
-  border: 2px solid #B87333;
+    background-color: #B87333;
+    color: #d1dce6;
+    border: 2px solid #B87333;
 }
 
 .setup:hover {
-  background-color: #131314; /* Same as page background color */
-  color: #d1dce6;
-  border: 2px solid #B87333;
+    background-color: #131314; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #B87333;
 }
 
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: #d1dce6;
-   text-align: center;
-   background-color: #131314; /* Same as page background color */
-   opacity: 0.9;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #d1dce6;
+    text-align: center;
+    background-color: #131314; /* Same as page background color */
+    opacity: 0.9;
 }
 
-/* Burger Navbar */
+/* ======================
+        Burger Navbar
+   ====================== */
 
 header {
     top: 0;
@@ -222,10 +248,10 @@ header {
     -moz-transition: .5s ease-in-out;
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     right: 7vw;
     z-index: 1000;
     top: 9.5vh;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
 #burger span {
@@ -286,13 +312,150 @@ header {
     left: 0;
 }
 
+/* ======================
+         Preloader
+   ====================== */
+
+#preloader {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+        
+.loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(77.28deg, rgba(82, 225, 226, 1)2.24%, rgba(157, 77, 196, 1) 104.45%);
+    animation: animate 0.5s linear infinite;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+        
+.loader span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(77.28deg, rgba(82, 225, 226, 1)2.24%, rgba(157, 77, 196, 1) 104.45%);
+    animation: animate 0.5s linear infinite;
+}
+        
+.loader span:nth-child(1) {
+      filter: blur(5px);
+}
+        
+.loader span:nth-child(2) {
+      filter: blur(10px);
+}
+        
+.loader span:nth-child(3) {
+     filter: blur(25px);
+}
+        
+.loader span:nth-child(4) {
+     filter: blur(50px);
+}
+        
+.loader::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background-color: #161616;
+    border-radius: 50%;
+}
+        
+@keyframes animate {
+    0% {
+         transform: rotate(0deg);
+     }
+    100% {
+          transform: rotate(360deg);
+    }
+}
+
+/* ======================
+          Preloader
+   ====================== */
+
+        #preloader {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        
+        .loader {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(77.28deg, rgba(82, 225, 226, 1)2.24%, rgba(157, 77, 196, 1) 104.45%);
+            animation: animate 0.5s linear infinite;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+        
+        .loader span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(77.28deg, rgba(82, 225, 226, 1)2.24%, rgba(157, 77, 196, 1) 104.45%);
+            animation: animate 0.5s linear infinite;
+        }
+        
+        .loader span:nth-child(1) {
+            filter: blur(5px);
+        }
+        
+        .loader span:nth-child(2) {
+            filter: blur(10px);
+        }
+        
+        .loader span:nth-child(3) {
+            filter: blur(25px);
+        }
+        
+        .loader span:nth-child(4) {
+            filter: blur(50px);
+        }
+        
+        .loader::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            background-color: #161616;
+            border-radius: 50%;
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+/* ======================
+          Scrollbar
+   ====================== */
+
 ::-webkit-scrollbar { width: 12px;}
 ::-webkit-scrollbar-track { background: #131314; }
 ::-webkit-scrollbar-thumb { background: #434343; border-radius: 10px; }
-
-@media only screen and (max-width : 640px) {
-.neofetch { display: none; }
-.content {
-  line-height: normal;
-    }
-}
