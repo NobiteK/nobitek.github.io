@@ -453,9 +453,27 @@ header {
         }
 
 /* ======================
+     Rounded Box (soon)
+   ====================== */
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 320px;
+    height: 70px;
+    margin: 3px;
+    padding: 5px;
+    background: #694614;
+    border-radius: 15px;
+    border: 3px solid #eb9b32;
+}
+
+/* ======================
           Scrollbar
    ====================== */
 
-::-webkit-scrollbar { width: 12px;}
+::-webkit-scrollbar { width: 10px;}
 ::-webkit-scrollbar-track { background: #131314; }
-::-webkit-scrollbar-thumb { background: #434343; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #333333; border-radius: 10px; }
