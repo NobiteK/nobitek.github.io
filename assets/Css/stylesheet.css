@@ -30,27 +30,8 @@ body {
 }
 
 a {
-    text-decoration: underline dotted #ad65ff;
-
-    /* unvisited link */
-    a:link {
-      color: #8e2cff;
-    }
-
-    /* visited link */
-    a:visited {
-      color: #9b58ff;
-    }
-
-    /* mouse over link */
-    a:hover {
-      color: #9147ff;
-    }
-
-    /* selected link */
-    a:active {
-      color: #8330ff;
-    }
+    text-decoration: none;
+    color: #8e2cff;
 }
 
 /* ======================
