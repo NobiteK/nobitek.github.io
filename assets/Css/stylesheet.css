@@ -8,7 +8,7 @@
   font-family: Poppins, sans-serif;
 }
 
-html {
+html, body {
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png'), default;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -16,12 +16,11 @@ html {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-body {
-    background-color: #131314;
+    background-color: #111118;
     font-family: 'Poppins';
     font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face {
@@ -62,7 +61,7 @@ a {
 }
 
 .normal:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #2a475e;
 }
@@ -74,7 +73,7 @@ a {
 }
 
 .instagram:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #833AB4;
 }
@@ -86,7 +85,7 @@ a {
 }
 
 .discord:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #7289da;
 }
@@ -98,7 +97,7 @@ a {
 }
 
 .twitch:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #6441a5;
 }
@@ -110,7 +109,7 @@ a {
 }
 
 .youtube:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #ff4d4d;
 }
@@ -122,7 +121,7 @@ a {
 }
 
 .steam:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #2a475e;
 }
@@ -134,7 +133,7 @@ a {
 }
 
 .spotify:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #1DB954;
 }
@@ -146,7 +145,7 @@ a {
 }
 
 .setup:hover {
-    background-color: #131314; /* Same as page background color */
+    background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #B87333;
 }
@@ -170,14 +169,14 @@ header {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #0f0f0f;
+    background-color: #0c0c11;
     z-index: 100;
     align-items: stretch;
     gap: 2rem;
     transform: translateX(100%);
     transition: all 0.2s;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    opacity: 0.9;
+    opacity: 0.8;
     padding-left: 3%;
 }
 
@@ -371,24 +370,23 @@ header {
 }
 
 /* ======================
-        Footer (soon)
+           Footer
    ====================== */
 
 .footer {
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
-    color: #d1dce6;
+    background-color: #0c0c11;
+    color: white;
     text-align: center;
-    background-color: #131314; /* Same as page background color */
-    opacity: 0.9;
-} 
+    padding: 4px 0;
+}
 
 /* ======================
           Scrollbar
    ====================== */
 
 ::-webkit-scrollbar { width: 10px;}
-::-webkit-scrollbar-track { background: #131314; }
-::-webkit-scrollbar-thumb { background: #333333; border-radius: 10px; }
+::-webkit-scrollbar-track { background: #111118; }
+::-webkit-scrollbar-thumb { background: #1d1d29; border-radius: 10px; }
