@@ -49,29 +49,12 @@
 <center>
 <b><p style="color:#8c5dd3; font-size:80px; margin-top:250px;">
 
+<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 <script>
-fetch('https://extreme-ip-lookup.com/json/')
-.then( res => res.json())
-.then(response => {
-  document.write(response.query);
-})
-</script>
-
-</center>
-  
-<!-- 
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-<script type="application/javascript">
 function getIP(json) {
   document.write(json.ip);
 }
 </script>
-
-<div class="findiptitle">IP</div>
-<div id="findipwidget"></div>
-<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
-<script defer src="https://api.find-ip.net/widget.js?width=220&bg=272727&border=%23787878&textcol=FFFFFF&"></script> 
--->
 
 <div class="footer">
     <p>NobiteK © 2019 - 2023</p>
