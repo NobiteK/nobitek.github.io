@@ -35,6 +35,13 @@ a {
     color: #8e2cff;
 }
 
+@media only screen 
+and (max-device-width: 480px)
+{ iframe {
+        width: 100%;
+    } 
+}
+
 /* ======================
           Buttons 
    ====================== */
@@ -358,10 +365,12 @@ header {
    ====================== */
 
 .box {
+    position: fixed;
+    bottom: 1cm;
+    right: 1cm;
     display: flex;
     align-items: center;
     justify-content: center;
-    float: left;
     width: 320px;
     height: 70px;
     margin: 3px;
