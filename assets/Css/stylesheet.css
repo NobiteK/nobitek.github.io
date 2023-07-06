@@ -123,15 +123,15 @@ and (max-device-width: 480px)
 }
 
 .spotify {
-    background-color: #13C952;
+    background-color: #0DD452;
     color: #d1dce6;
-    border: 2px solid #13C952;
+    border: 2px solid #0DD452;
 }
 
 .spotify:hover {
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
-    border: 2px solid #13C952;
+    border: 2px solid #0DD452;
 }
 
 /* ======================
