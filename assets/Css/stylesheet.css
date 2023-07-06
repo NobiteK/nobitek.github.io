@@ -2,15 +2,14 @@
     Sources used:
     - https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
     - https://github.com/google/fonts/blob/main/ofl/poppins (font)
-    - https://codepen.io/nobitek/pens/public (Some of my original and forked codes that i use there)
+    - https://codepen.io/nobitek/pens/public (My original and forked codes)
 
     Font Weights:
-    - Regular 400
     - SemiBold 600
     - Black 900
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap');
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -63,16 +62,16 @@ and (max-device-width: 480px)
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
-.normal {
-    background-color: #2a475e;
+.discord {
+    background-color: #5865F2;
     color: #d1dce6;
-    border: 2px solid #2a475e;
+    border: 2px solid #5865F2;
 }
 
-.normal:hover {
+.discord:hover {
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
-    border: 2px solid #2a475e;
+    border: 2px solid #5865F2;
 }
 
 .instagram {
@@ -87,52 +86,40 @@ and (max-device-width: 480px)
     border: 2px solid #833AB4;
 }
 
-.discord {
-    background-color: #7289da;
-    color: #d1dce6;
-    border: 2px solid #7289da;
-}
-
-.discord:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #7289da;
-}
-
-.twitch {
-    background-color: #6441a5;
-    color: #d1dce6;
-    border: 2px solid #6441a5;
-}
-
-.twitch:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #6441a5;
-}
-
 .youtube {
-    background-color: #ff4d4d;
+    background-color: #FF4444;
     color: #d1dce6;
-    border: 2px solid #ff4d4d;
+    border: 2px solid #FF4444;
 }
 
 .youtube:hover {
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
-    border: 2px solid #ff4d4d;
+    border: 2px solid #FF4444;
+}
+
+.twitch {
+    background-color: #6441A5;
+    color: #d1dce6;
+    border: 2px solid #6441A5;
+}
+
+.twitch:hover {
+    background-color: #111118; /* Same as page background color */
+    color: #d1dce6;
+    border: 2px solid #6441A5;
 }
 
 .steam {
-    background-color: #2a475e;
+    background-color: #1B2838;
     color: #d1dce6;
-    border: 2px solid #2a475e;
+    border: 2px solid #1B2838;
 }
 
 .steam:hover {
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
-    border: 2px solid #2a475e;
+    border: 2px solid #1B2838;
 }
 
 .spotify {
@@ -145,18 +132,6 @@ and (max-device-width: 480px)
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #1DB954;
-}
-
-.setup {
-    background-color: #B87333;
-    color: #d1dce6;
-    border: 2px solid #B87333;
-}
-
-.setup:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #B87333;
 }
 
 /* ======================
@@ -388,10 +363,15 @@ header {
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 60px;
     background-color: #0c0c11;
     color: white;
     text-align: center;
-    padding: 4px 0;
+    padding: 5px 0;
+}
+
+.content {
+    margin-bottom: 70px;
 }
 
 /* ======================
