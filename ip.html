@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>NobiteeK.pl - IP</title>
     <meta charset="UTF-8" />
@@ -53,21 +53,23 @@
 </header>
 
 <body>
-<center>
-<b><p style="color:#8c5dd3; font-size:80px; margin-top:250px;">
+<div class="content">
 
-<script type="application/javascript">
+<center>
+<p style="color:#8c5dd3; font-size:80px; margin-top:240px;">
+<script>
 function getIP(json) {
   document.write(json.ip);
 }
 </script>
 
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-<div class="findiptitle">IP</div>
-<div id="findipwidget"></div>
-<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
-<script defer src="https://api.find-ip.net/widget.js?width=220&bg=272727&border=%23787878&textcol=FFFFFF&"></script>
-</center>
+<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+  <div class="findiptitle">IP</div>
+    <div id="findipwidget"></div>
+    <div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
+    <script defer src="https://api.find-ip.net/widget.js?width=220&bg=272727&border=%23787878&textcol=FFFFFF&"></script>
+  </center>
+</div>
 
 <div class="footer">
     <p>NobiteK © 2019 - 2023</p>
