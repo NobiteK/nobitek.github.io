@@ -160,7 +160,7 @@ header {
   transform: translateX(100%);
   transition: all 0.2s;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  opacity: 0.5;
+  opacity: 0.9;
   padding-left: 3%;
 }
 
@@ -379,5 +379,5 @@ header {
    ====================== */
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #111118; }
+::-webkit-scrollbar-track { background: #111118; } /* Same as page background color */
 ::-webkit-scrollbar-thumb { background: #1d1d29; border-radius: 10px; }
