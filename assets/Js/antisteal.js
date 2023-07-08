@@ -1,41 +1,55 @@
-  window.onload = function () {
+window.onload = function () {
     document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      }, false);
-      document.addEventListener("keydown", function (e) {
-      //document.onkeydown = function(e) {
-      // "I" key
+      e.preventDefault();
+      showNotification("Nuh Uh");
+    }, false);
+
+    document.addEventListener("keydown", function (e) {
+      //  Ctrl + Shift + I
       if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-          disabledEvent(e);
+        disabledEvent(e);
       }
-      // "J" key
+      // Ctrl + Shift + J
       if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-          disabledEvent(e);
+        disabledEvent(e);
       }
-      // "C" key
+      // Ctrl + Shift + C
       if (e.ctrlKey && e.shiftKey && e.keyCode == 67) {
-          disabledEvent(e);
+        disabledEvent(e);
       }
       // "S" key + macOS
       if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-          disabledEvent(e);
+        disabledEvent(e);
       }
-      // "U" key
+      // Ctrl + U (Source)
       if (e.ctrlKey && e.keyCode == 85) {
-          disabledEvent(e);
+        disabledEvent(e);
       }
-      // "F12" key
-      if (event.keyCode == 123) {
-          disabledEvent(e);
+      // F12
+      if (e.keyCode == 123) {
+        disabledEvent(e);
       }
     }, false);
-  function disabledEvent(e) {
-  if (e.stopPropagation) {
-      e.stopPropagation();
-  } else if (window.event) {
-      window.event.cancelBubble = true;
-  }
+
+    function disabledEvent(e) {
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      } else if (window.event) {
+        window.event.cancelBubble = true;
+      }
       e.preventDefault();
-    return false;
+      showNotification("Nuh Uh");
+      return false;
+    }
+
+    function showNotification(message) {
+      var notification = document.getElementById("notification");
+      notification.textContent = message;
+      notification.style.transform = "translateY(0%)";
+      notification.style.opacity = "1";
+      setTimeout(function () {
+        notification.style.transform = "translateY(100%)";
+        notification.style.opacity = "0";
+      }, 2000);
+    }
   }
-}
