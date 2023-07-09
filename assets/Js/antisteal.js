@@ -4,13 +4,13 @@ window.onload = function () {
         showNotification("Nuh Uh");
     }, false);
 
-var iframes = document.getElementsByTagName("iframe");
-for (var i = 0; i < iframes.length; i++) {
-    iframes[i].addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        showNotification("Nuh Uh");
-    });
-}
+      var iframes = document.getElementsByTagName("iframe");
+      for (var i = 0; i < iframes.length; i++) {
+          iframes[i].addEventListener("contextmenu", function (e) {
+              e.preventDefault();
+              showNotification("Nuh Uh");
+          });
+      }
 
     document.addEventListener("keydown", function (e) {
       //  Ctrl + Shift + I
