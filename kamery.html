@@ -61,21 +61,31 @@
 <br />
   <iframe src="https://rtsp.me/embed/nynG2ert/" width="565px" height="424px" frameborder="0" controls allowfullscreen>Twoja przeglądarka nie obsługuje osadzonych ramek (iframe)</iframe>
   <iframe src="https://rtsp.me/embed/tthyKabs/" width="565px" height="424px" frameborder="0" controls allowfullscreen>Twoja przeglądarka nie obsługuje osadzonych ramek (iframe)</iframe>
+<br />
+  <img id="image1" src="https://aero.webcam/cam/epsu-1.jpg" width="565px" height="424px" title="Odświeżanie co 1 minutę" alt="">
+  <img id="image2" src="https://aero.webcam/cam/epsu-2.jpg" width="565px" height="424px" title="Odświeżanie co 1 minutę" alt="">
+  <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" width="565px" height="424px" title="Odświeżanie co 1 minutę" alt="">
 </center>
 
-<div style="margin-left:20px; font-size:30px; line-height: 15px;">
-    <p>Linki do innych stron:</p>
-    <a style="cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;" href="https://aero.webcam/epsu/">• Lotnisko</a>
-  </div>
-</div>
-
 <div id="notification"></div>
-  
+ 
 <div class="footer">
     <p>NobiteK © 2019 - 2023</p>
 </div>
   
 </body>
+  <script>
+    function refreshImages() {
+      var image1 = document.getElementById('image1');
+      var image2 = document.getElementById('image2');
+      var image3 = document.getElementById('image3');
+      var timestamp = new Date().getTime();
+      image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
+      image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
+      image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
+    }
+    setInterval(refreshImages, 60000);
+  </script>
   <script type="text/javascript" src="assets/Js/antisteal.js"></script>
   <script type="text/javascript" src="assets/Js/consoleclear.js"></script>
   <script type="text/javascript" src="assets/Js/clicksound.js"></script>
