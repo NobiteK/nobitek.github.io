@@ -36,8 +36,12 @@ a {
 
 @media only screen and (max-device-width: 480px) { 
     iframe {
-        width: 100%;
-    } 
+        width: 90%;
+    }
+    #image1, #image2, #image3 {
+        width: 90%;
+        height: 90%
+    }
 }
 
 /* ======================
