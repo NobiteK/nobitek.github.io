@@ -6,27 +6,31 @@ window.onload = function () {
 
     document.addEventListener("keydown", function (e) {
       //  Ctrl + Shift + I
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+      if (e.ctrlKey && e.shiftKey && e.key == 73) {
         disabledEvent(e);
       }
       // Ctrl + Shift + J
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+      if (e.ctrlKey && e.shiftKey && e.key == 74) {
         disabledEvent(e);
       }
       // Ctrl + Shift + C
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 67) {
+      if (e.ctrlKey && e.shiftKey && e.key == 67) {
         disabledEvent(e);
       }
       // "S" key + macOS
-      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+      if (e.key == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
         disabledEvent(e);
       }
       // Ctrl + U (Source)
-      if (e.ctrlKey && e.keyCode == 85) {
+      if (e.ctrlKey && e.key == 85) {
+        disabledEvent(e);
+      }
+      // Ctrl + I (Mozilla Site Info)
+      if (e.ctrlKey && e.key == 73) {
         disabledEvent(e);
       }
       // F12
-      if (e.keyCode == 123) {
+      if (e.key == 123) {
         disabledEvent(e);
       }
     }, false);
