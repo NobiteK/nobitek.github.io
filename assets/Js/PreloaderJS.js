@@ -1,27 +1,30 @@
-// Check if the page has been visited during the session
-var hasVisited = sessionStorage.getItem('hasVisited');
+// Check if the referrer is from the same domain
+var isInternalNavigation = document.referrer.indexOf(window.location.hostname) !== -1;
 
-// Hide preloader after 2 seconds
-// If the page has not been visited, show the preloader and set the flag
-if (!hasVisited) {
-  sessionStorage.setItem('hasVisited', 'true');
+// If it's not an internal navigation, show the preloader
+if (!isInternalNavigation) {
+  // Show preloader
+  $("#preloader").fadeIn("fast");
+
+  // Hide preloader after 2 seconds
   setTimeout(function() {
     $("#preloader").fadeOut("slow");
   }, 2000);
-  
+
   // Disable scrolling and hide scrollbar for 2.6 seconds
   window.addEventListener("load", function() {
     window.addEventListener("scroll", disableScroll);
     hideScrollbar();
-  
+
     setTimeout(function() {
       window.removeEventListener("scroll", disableScroll);
       showScrollbar();
     }, 2600);
   });
 } else {
-  // If the page has been visited, immediately hide the preloader
+  // If it's an internal navigation, hide the preloader immediately
   $("#preloader").hide();
+  showScrollbar();
 }
 
 function disableScroll() {
