@@ -51,6 +51,20 @@ a {
 }
 
 /* ======================
+      Page Transition
+   ====================== */
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* ======================
           Buttons 
    ====================== */
 
