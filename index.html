@@ -36,7 +36,7 @@
         <span></span>
   </div>
 </div>
-  
+
 <header>
 <div id="burger" onclick="enable()">
     <span></span>
@@ -53,25 +53,53 @@
 </header>
 
 <body>
-<div class="content" style="margin-top: 65px;">
-<center>
-  <p style="letter-spacing: 5px; font-size:65px; font-weight: 900;">NOBITEK</p>
-  <a class="button discord" href=https://discord.gg/ffsg7YY>Discord</a> <br />
-  <a class="button instagram" href=https://www.instagram.com/nobiteek> Instagram</a> <br />
-  <a class="button youtube" href=https://www.youtube.com/nobitek?view_as=subscriber>Youtube</a> <br />
-  <a class="button steam" href=https://steamcommunity.com/id/NobiteK>Steam</a> <br />
-  <a class="button spotify" href=https://open.spotify.com/user/ba76194ykignbenpxrnoceylm>Spotify</a> <br />
+<div id="mobileContent" class="content" style="margin-top: 50px; margin-left: 20px;">
+  <p style="text-align: center; text-indent: -70px; font-size:65px; font-weight: 900;">NOBITEK</p>
+  <a class="button discord" href=https://discord.gg/ffsg7YY>Discord</a>
+  <a class="button instagram" href=https://www.instagram.com/nobiteek>Instagram</a><br>
+  <a class="button youtube" href=https://www.youtube.com/nobitek?view_as=subscriber>YouTube</a>
+  <a class="button steam" href=https://steamcommunity.com/id/NobiteK>Steam</a><br>
+  <a class="button spotify" href=https://open.spotify.com/user/ba76194ykignbenpxrnoceylm>Spotify</a>
   <a class="button twitch" href=https://www.twitch.tv/nobiteek>Twitch</a>
-</center>
+  <br><br>
+  <img src="https://lanyard-profile-readme.vercel.app/api/430436408386125824">
+</div>
+
+<div id="desktopContent" class="content" style="text-align: center; margin-top: 50px; margin-left: 20px;">
+  <p style="font-size:65px; font-weight: 900;">NOBITEK</p>
+  <a class="button discord" href=https://discord.gg/ffsg7YY>Discord</a>
+  <a class="button instagram" href=https://www.instagram.com/nobiteek>Instagram</a><br>
+  <a class="button youtube" href=https://www.youtube.com/nobitek?view_as=subscriber>YouTube</a>
+  <a class="button steam" href=https://steamcommunity.com/id/NobiteK>Steam</a><br>
+  <a class="button spotify" href=https://open.spotify.com/user/ba76194ykignbenpxrnoceylm>Spotify</a>
+  <a class="button twitch" href=https://www.twitch.tv/nobiteek>Twitch</a>
+  <br><br>
+  <img src="https://lanyard-profile-readme.vercel.app/api/430436408386125824">
 </div>
 
 <div id="notification"></div>
-  
+
 <div class="footer">
     <p>NobiteK © 2019 - 2024</p>
 </div>
 
 </body>
+  <script>
+  function toggleContent() {
+      var mobileContent = document.getElementById('mobileContent');
+      var desktopContent = document.getElementById('desktopContent');
+      var screenWidth = window.innerWidth;
+      if (screenWidth <= 768) { // Assuming 768px is the breakpoint for mobile devices
+          mobileContent.style.display = 'block';
+          desktopContent.style.display = 'none';
+      } else {
+          mobileContent.style.display = 'none';
+          desktopContent.style.display = 'block';
+      }
+  }
+  toggleContent();
+  window.addEventListener('resize', toggleContent);
+  </script>
   <script type="text/javascript" src="assets/Js/antisteal.js"></script>
   <script type="text/javascript" src="assets/Js/consoleclear.js"></script>
   <script type="text/javascript" src="assets/Js/clicksound.js"></script>
