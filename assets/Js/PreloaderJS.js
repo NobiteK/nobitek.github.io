@@ -1,31 +1,24 @@
-// Check if the referrer is from the same domain
-var isInternalNavigation = document.referrer.indexOf(window.location.hostname) !== -1;
-
-// If it's not an internal navigation, show the preloader
-if (!isInternalNavigation) {
-  // Show preloader
-  $("#preloader").fadeIn("fast");
-
-  // Hide preloader after 2 seconds
+// Check if the user is coming from another page on the same website
+if (document.referrer && document.referrer.indexOf(window.location.hostname) !== -1) {
+  // If so, hide the preloader immediately
+  $("#preloader").hide();
+} else {
+  // If not, show the preloader for 2 seconds before fading out
   setTimeout(function() {
     $("#preloader").fadeOut("slow");
   }, 2000);
-
-  // Disable scrolling and hide scrollbar for 2.6 seconds
-  window.addEventListener("load", function() {
-    window.addEventListener("scroll", disableScroll);
-    hideScrollbar();
-
-    setTimeout(function() {
-      window.removeEventListener("scroll", disableScroll);
-      showScrollbar();
-    }, 2600);
-  });
-} else {
-  // If it's an internal navigation, hide the preloader immediately
-  $("#preloader").hide();
-  showScrollbar();
 }
+
+// Disable scrolling and hide scrollbar for 2.6 seconds
+var loader = document.getElementById("preloader");
+window.addEventListener("load", function() {
+  window.addEventListener("scroll", disableScroll);
+  hideScrollbar();
+  setTimeout(function() {
+    window.removeEventListener("scroll", disableScroll);
+    showScrollbar();
+  }, 2600);
+});
 
 function disableScroll() {
   window.scrollTo(0, 0);
