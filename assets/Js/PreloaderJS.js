@@ -28,13 +28,3 @@
    function showScrollbar() {
      document.documentElement.style.overflow = 'auto';
    }
-
-  // Fade in content only when clicking on an anchor tag
-  $("a").click(function(event) {
-    event.preventDefault();
-    var linkLocation = this.href;
-    $("body").fadeOut(1000, function() {
-      window.location = linkLocation;
-    });
-  });
-});
