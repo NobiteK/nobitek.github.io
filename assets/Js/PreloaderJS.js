@@ -14,6 +14,7 @@ $(document).ready(function() {
   }
 
   // Disable scrolling and hide scrollbar for 2.6 seconds
+  var loader = document.getElementById("preloader");
   window.addEventListener("load", function() {
     window.addEventListener("scroll", disableScroll);
     hideScrollbar();
@@ -37,19 +38,28 @@ $(document).ready(function() {
 
   // Fade in content when switching from another site or directly entering the URL
   if (!document.referrer || new URL(document.referrer).hostname !== window.location.hostname) {
-    $("body").css({
-      "display": "none",
-      "z-index": "9999", // Ensure the body is on top of everything when fading in
-      "position": "relative" // Required for z-index to take effect
-    });
-    $("body").fadeIn(2000); // Increase fade-in duration to 2 seconds
+    $("body").css("display", "none");
+    $("body").fadeIn(1000);
   }
+
+  // Create fade-out overlay
+  var fadeOutOverlay = $('<div id="fade-out-overlay"></div>').css({
+    'position': 'fixed',
+    'top': '0',
+    'left': '0',
+    'right': '0',
+    'bottom': '0',
+    'background': '#fff',
+    'z-index': '9999', // Ensure this is higher than the preloader's z-index
+    'display': 'none'
+  }).appendTo('body');
 
   // Fade out and redirect when clicking on a link
   $("a").click(function(event) {
     event.preventDefault();
     var linkLocation = this.href;
-    $("body").fadeOut(2000, function() { // Increase fade-out duration to 2 seconds
+    // Show the fade-out overlay and then fade it out
+    fadeOutOverlay.show().fadeOut(2000, function() { // Adjust the duration as needed
       window.location = linkLocation;
     });
   });
