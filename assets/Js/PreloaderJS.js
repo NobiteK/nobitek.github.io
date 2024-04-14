@@ -14,7 +14,6 @@ $(document).ready(function() {
   }
 
   // Disable scrolling and hide scrollbar for 2.6 seconds
-  var loader = document.getElementById("preloader");
   window.addEventListener("load", function() {
     window.addEventListener("scroll", disableScroll);
     hideScrollbar();
@@ -38,15 +37,19 @@ $(document).ready(function() {
 
   // Fade in content when switching from another site or directly entering the URL
   if (!document.referrer || new URL(document.referrer).hostname !== window.location.hostname) {
-    $("body").css("display", "none");
-    $("body").fadeIn(1000);
+    $("body").css({
+      "display": "none",
+      "z-index": "9999", // Ensure the body is on top of everything when fading in
+      "position": "relative" // Required for z-index to take effect
+    });
+    $("body").fadeIn(2000); // Increase fade-in duration to 2 seconds
   }
 
   // Fade out and redirect when clicking on a link
   $("a").click(function(event) {
     event.preventDefault();
     var linkLocation = this.href;
-    $("body").fadeOut(1000, function() {
+    $("body").fadeOut(2000, function() { // Increase fade-out duration to 2 seconds
       window.location = linkLocation;
     });
   });
