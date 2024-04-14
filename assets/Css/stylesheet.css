@@ -44,6 +44,12 @@ a {
     }
 }
 
+.responsive-img {
+    max-width: calc(100% - 15px);
+    height: auto;
+    margin-right: 15px;
+}
+
 /* ======================
           Buttons 
    ====================== */
