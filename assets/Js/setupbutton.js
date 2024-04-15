@@ -1,11 +1,19 @@
+// Get the collapsible button and content box elements
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
-var closeButton = document.querySelector('.close-button');
 
+// Add an event listener to the collapsible button
 collapsibleButton.addEventListener('click', function() {
-  contentBox.style.display = 'block';
+  // Toggle the display style between 'block' and 'none'
+  if (contentBox.style.display === 'block') {
+    contentBox.style.display = 'none';
+  } else {
+    contentBox.style.display = 'block';
+  }
 });
 
+// If you also want the close button inside the content box to close it
+var closeButton = document.querySelector('.close-button');
 closeButton.addEventListener('click', function() {
   contentBox.style.display = 'none';
 });
