@@ -1,4 +1,4 @@
-/* 
+/*
     Sources used:
     - https://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
     - https://github.com/google/fonts/blob/main/ofl/poppins (font)
@@ -34,7 +34,7 @@ a {
     color: #a469ff;
 }
 
-@media only screen and (max-device-width: 480px) { 
+@media only screen and (max-device-width: 480px) {
     iframe {
         width: 90%;
     }
@@ -51,13 +51,13 @@ a {
 }
 
 /* ======================
-          Buttons 
+            Buttons
    ====================== */
 
 .button {
     border: none;
     color: white;
-    padding: 16px 32px; 
+    padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -276,7 +276,7 @@ header {
 }
 
 /* ======================
-         Preloader
+            Preloader
    ====================== */
 
 #preloader {
@@ -288,7 +288,7 @@ header {
     height: 100vh;
     display: flex;
 }
-        
+
 .loader {
     position: relative;
     width: 100px;
@@ -299,7 +299,7 @@ header {
     margin-top: 100px;
     margin-bottom: 100px;
 }
-        
+
 .loader span {
     position: absolute;
     width: 100%;
@@ -308,23 +308,23 @@ header {
     background: linear-gradient(77.28deg, rgba(82, 225, 226, 1)2.24%, rgba(157, 77, 196, 1) 104.45%);
     animation: animate 0.5s linear infinite;
 }
-        
+
 .loader span:nth-child(1) {
     filter: blur(5px);
 }
-        
+
 .loader span:nth-child(2) {
     filter: blur(10px);
 }
-        
+
 .loader span:nth-child(3) {
     filter: blur(25px);
 }
-        
+
 .loader span:nth-child(4) {
     filter: blur(50px);
 }
-        
+
 .loader::after {
     content: '';
     position: absolute;
@@ -335,18 +335,18 @@ header {
     background-color: #161616;
     border-radius: 50%;
 }
-        
+
 @keyframes animate {
     0% {
-         transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-          transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
 /* ======================
-           Footer
+            Footer
    ====================== */
 
 .footer {
@@ -365,7 +365,7 @@ header {
 }
 
 /* =====================
-       Notification
+        Notification
    ===================== */
 
 #notification {
@@ -388,7 +388,90 @@ header {
 }
 
 /* ======================
-          Scrollbar
+        Setup Button
+   ====================== */
+
+.collapsible-container {
+    position: relative;
+}
+
+.collapsible-button {
+    border: none;
+    background-color: #000; /* Black background */
+    border-radius: 8px; /* Slightly rounded edges */
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px; /* 10px from the top edge */
+    left: 10px; /* 10px from the left edge */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccc4d; /* Light grey border */
+}
+
+.pc-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20 3H4c-1.1 0-1.99.9-1.99 2L2 17h20V5c0-1.1-.9-2-2-2zm0 12H4V5h16v10zm-6 3v1h-4v-1h-2v2h8v-2h-2z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff; /* White color for the close button */
+}
+
+.content-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    border-radius: 15px;
+    padding: 20px; /* Default padding for larger screens */
+    width: calc(98% - 40px); /* Full width minus default padding */
+    max-width: 800px; /* Maximum width of the content box */
+    max-height: 70vh; /* Maximum height before scrollbar appears */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 0.90em;
+    overflow-y: auto; /* Enable vertical scrollbar */
+    transition: width 0.3s ease, padding 0.3s ease; /* Smooth transition for width and padding */
+    border: 1px solid #cccccc4d; /* Light grey border */
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .content-box {
+    padding: 10px; /* Reduced padding for mobile devices */
+    width: calc(100% - 20px); /* Adjust width to account for reduced padding */
+    }
+}
+
+.content-scrollable ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.content-scrollable ul ul {
+    padding-left: 20px; /* Indent nested lists */
+}
+
+/* ======================
+        Scrollbar
    ====================== */
 
 ::-webkit-scrollbar { width: 10px; }
