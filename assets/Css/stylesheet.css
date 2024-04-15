@@ -397,18 +397,18 @@ header {
 
 .collapsible-button {
     border: none;
-    background-color: #000; /* Black background */
-    border-radius: 8px; /* Slightly rounded edges */
-    width: 50px;
-    height: 50px;
+    background-color: #000;
+    border-radius: 8px;
+    width: 52px;
+    height: 52px;
     position: absolute;
-    top: 10px; /* 10px from the top edge */
-    left: 10px; /* 10px from the left edge */
+    top: 12px;
+    left: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #cccccc4d; /* Light grey border */
+    border: 1px solid #cccccc80;
 }
 
 .pc-icon {
@@ -428,7 +428,7 @@ header {
     right: 20px;
     cursor: pointer;
     font-size: 30px;
-    color: #fff; /* White color for the close button */
+    color: #fff;
 }
 
 .content-box {
@@ -437,37 +437,29 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color */
+    background-color: #000;
+    color: #fff;
     border-radius: 15px;
-    padding: 20px; /* Default padding for larger screens */
-    width: calc(98% - 40px); /* Full width minus default padding */
-    max-width: 800px; /* Maximum width of the content box */
-    max-height: 70vh; /* Maximum height before scrollbar appears */
+    padding: 20px;
+    width: calc(95% - 40px);
+    max-width: 700px;
+    max-height: 70vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 0.90em;
-    overflow-y: auto; /* Enable vertical scrollbar */
-    transition: width 0.3s ease, padding 0.3s ease; /* Smooth transition for width and padding */
-    border: 1px solid #cccccc4d; /* Light grey border */
-}
-
-/* Mobile devices */
-@media (max-width: 480px) {
-    .content-box {
-    padding: 10px; /* Reduced padding for mobile devices */
-    width: calc(100% - 20px); /* Adjust width to account for reduced padding */
-    }
+    overflow-y: auto;
+    transition: width 0.3s ease, padding 0.3s ease;
+    border: 1px solid #cccccc80;
 }
 
 .content-scrollable ul {
-    list-style: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .content-scrollable ul ul {
-    padding-left: 20px; /* Indent nested lists */
+    padding-left: 20px;
 }
 
 /* ======================
