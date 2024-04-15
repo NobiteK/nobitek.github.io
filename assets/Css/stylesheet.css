@@ -425,7 +425,7 @@ header {
 .close-button {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 20px;
     cursor: pointer;
     font-size: 30px;
     color: #fff; /* White color for the close button */
