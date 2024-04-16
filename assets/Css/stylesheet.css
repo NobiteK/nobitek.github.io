@@ -395,6 +395,11 @@ header {
     position: relative;
 }
 
+.collapsible-container .collapsible-button {
+    top: 12px;
+    left: 12px;
+}
+
 .collapsible-button {
     border: none;
     background-color: #000;
@@ -402,20 +407,11 @@ header {
     width: 52px;
     height: 52px;
     position: absolute;
-    top: calc(12px + env(safe-area-inset-top));
-    left: calc(12px + env(safe-area-inset-left));
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #cccccc80;
-}
-
-@media only screen and (max-width: 375px) {
-    .collapsible-button {
-        top: 12px;
-        left: 12px;
-    }
 }
 
 .pc-icon {
