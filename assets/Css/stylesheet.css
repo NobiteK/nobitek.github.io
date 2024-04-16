@@ -195,13 +195,13 @@ header {
 }
 
 .nav li:nth-child(1) {
-    margin-top: 20vh;
+    margin-top: 10vh;
 }
 
 #burger {
     width: 2.5rem;
     height: 2.5rem;
-    position: absolute;
+    position: fixed;
     margin-right: 0;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -211,9 +211,9 @@ header {
     -moz-transition: .5s ease-in-out;
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
-    right: 7vw;
+    right: 25px;
     z-index: 1000;
-    top: 9.5vh;
+    top: 25px;
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
@@ -402,13 +402,20 @@ header {
     width: 52px;
     height: 52px;
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: calc(12px + env(safe-area-inset-top));
+    left: calc(12px + env(safe-area-inset-left));
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #cccccc80;
+}
+
+@media only screen and (max-width: 375px) {
+    .collapsible-button {
+        top: 12px;
+        left: 12px;
+    }
 }
 
 .pc-icon {
@@ -429,6 +436,12 @@ header {
     cursor: pointer;
     font-size: 30px;
     color: #fff;
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 4px;
+    border-radius: 5px;
+    display: inline-block;
+    line-height: 1;
+    z-index: 1001;
 }
 
 .content-box {
