@@ -395,23 +395,21 @@ header {
     position: relative;
 }
 
-.collapsible-container .collapsible-button {
-    top: 12px;
-    left: 12px;
-}
-
 .collapsible-button {
     border: none;
     background-color: #000;
     border-radius: 8px;
     width: 52px;
     height: 52px;
-    position: absolute;
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
+    left: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #cccccc80;
+    z-index: 1001;
 }
 
 .pc-icon {
