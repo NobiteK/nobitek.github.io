@@ -199,80 +199,62 @@ header {
 }
 
 #burger {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 50px;
+    height: 50px;
     position: fixed;
-    margin-right: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    right: 25px;
+    top: calc(12px + env(safe-area-inset-top)); /* Adjusted to match setup button */
+    right: 12px; /* Adjusted to match setup button */
     z-index: 1000;
-    top: 25px;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: pointer;
+    background-color: #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccc80;
+    box-sizing: border-box;
 }
 
 #burger span {
     display: block;
     position: absolute;
-    height: 10%;
-    width: 100%;
+    height: 3px;
+    width: 60%;
     background: #ffffff;
     border-radius: 9px;
     opacity: 1;
-    left: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease; /* Simplified transitions */
+    box-sizing: border-box;
 }
 
 #burger span:nth-child(1) {
-    top: 0px;
+    top: 16px;
 }
 
-#burger span:nth-child(2),
+#burger span:nth-child(2) {
+    top: 24px;
+}
+
 #burger span:nth-child(3) {
-    top: 10px;
+    top: 32px;
 }
 
 #burger span:nth-child(4) {
-    top: 20px;
+    display: none; /* Removed the fourth span as it's not needed */
 }
 
 #burger.open span:nth-child(1) {
-    top: 0px;
-    width: 0%;
-    left: 0;
+    top: 24px; /* Align with the middle span */
+    opacity: 0; /* Hide the top span */
 }
 
 #burger.open span:nth-child(2) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+    transform: rotate(45deg); /* Simpler rotation */
 }
 
 #burger.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-
-#burger.open span:nth-child(4) {
-    top: 0;
-    width: 0%;
-    left: 0;
+    transform: rotate(-45deg); /* Simpler rotation */
+    top: 24px; /* Align with the middle span */
 }
 
 /* ======================
@@ -399,8 +381,8 @@ header {
     border: none;
     background-color: #000;
     border-radius: 8px;
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     position: fixed;
     top: calc(12px + env(safe-area-inset-top));
     left: 12px;
