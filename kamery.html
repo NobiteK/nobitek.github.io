@@ -69,22 +69,24 @@
 </div>
 
 </body>
-  <script>
-    function refreshImages() {
-      var image1 = document.getElementById('image1');
-      var image2 = document.getElementById('image2');
-      var image3 = document.getElementById('image3');
-      var timestamp = new Date().getTime();
-      image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
-      image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
-      image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
-    }
-    setInterval(refreshImages, 60000);
-  </script>
   <script type="text/javascript" src="assets/Js/antisteal.js"></script>
   <script type="text/javascript" src="assets/Js/consoleclear.js"></script>
   <script type="text/javascript" src="assets/Js/clicksound.js"></script>
   <script type="text/javascript" src="assets/Js/NavbarJS.js"></script>
   <script type="text/javascript" src="assets/Js/PreloaderJS.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<script>
+  function refreshImages() {
+    var image1 = document.getElementById('image1');
+    var image2 = document.getElementById('image2');
+    var image3 = document.getElementById('image3');
+    var timestamp = new Date().getTime();
+    image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
+    image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
+    image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
+  }
+  setInterval(refreshImages, 60000);
+</script>
+
 </html>
