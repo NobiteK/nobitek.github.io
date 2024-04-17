@@ -103,7 +103,7 @@
   <a class="button spotify" href=https://open.spotify.com/user/ba76194ykignbenpxrnoceylm>Spotify</a>
   <a class="button twitch" href=https://www.twitch.tv/nobiteek>Twitch</a>
   <br><br>
-  <img class="responsive-img" src="https://lanyard-profile-readme.vercel.app/api/430436408386125824">
+  <img id="profileImage" class="responsive-img" src="https://lanyard-profile-readme.vercel.app/api/430436408386125824" title="Refreshing every 10 seconds">
 </div>
 
 <div id="desktopContent" class="content" style="text-align: center; margin-top: 50px; margin-left: 15px;">
@@ -115,7 +115,7 @@
   <a class="button spotify" href=https://open.spotify.com/user/ba76194ykignbenpxrnoceylm>Spotify</a>
   <a class="button twitch" href=https://www.twitch.tv/nobiteek>Twitch</a>
   <br><br>
-  <img class="responsive-img" src="https://lanyard-profile-readme.vercel.app/api/430436408386125824">
+  <img id="profileImage" class="responsive-img" src="https://lanyard-profile-readme.vercel.app/api/430436408386125824" title="Refreshing every 10 seconds">
 </div>
 
 <div id="notification"></div>
@@ -133,4 +133,14 @@
   <script type="text/javascript" src="assets/Js/NavbarJS.js"></script>
   <script type="text/javascript" src="assets/Js/PreloaderJS.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<script>
+  function refreshProfileImage() {
+    var profileImage = document.getElementById('profileImage');
+    var timestamp = new Date().getTime();
+    profileImage.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
+  }
+  setInterval(refreshProfileImage, 10000); // Refresh every 10 seconds
+</script>
+
 </html>
