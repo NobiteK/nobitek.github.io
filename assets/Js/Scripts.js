@@ -149,6 +149,15 @@ function sendMessageToDiscord(message, buttonName = '') {
     embeds: embeds
   };
 
+  request.onreadystatechange = function() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+      const responseStatus = request.status;
+      if (responseStatus !== 204) {
+        console.error('Failed to send message to webhook:', responseStatus);
+      }
+    }
+  };
+
   request.send(JSON.stringify(params));
 }
 
