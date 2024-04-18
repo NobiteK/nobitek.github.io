@@ -64,11 +64,13 @@ function refreshImages() {
 setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
 // Activity Logger
+// Activity Logger
 const webhookUrl = 'https://discord.com/api/webhooks/826139686366871642/wIL_mOMNXwrjAS5-J1qN2W0ORK5DT-fIkjMOs_f1wBnrnBzXGIWaW4izu-oxrAqeuqdv';
+let devToolsMessageSent = false; // Variable to track if the dev tools message has been sent
 
 function getBrowserAndOS() {
   const ua = navigator.userAgent;
-  let browser = 'Unknown Browser', os = '❌';
+  let browser = 'Unknown Browser', os = 'Unknown OS';
 
   if (ua.includes("Firefox")) browser = "Firefox";
   else if (ua.includes("Opera") || ua.includes("OPR")) browser = "Opera";
@@ -80,53 +82,48 @@ function getBrowserAndOS() {
   if (ua.includes("Win")) os = "Windows";
   else if (ua.includes("Android")) os = "Android";
   else if (ua.includes("Linux")) os = "Linux";
-  else if (ua.includes("iPhone") || ua.includes("iPad")) os = "IOS";
-  else if (ua.includes("Mac")) os = "MacOS";
+  else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
+  else if (ua.includes("Mac")) os = "macOS";
 
   return { browser, os };
 }
 
 function sendMessageToDiscord(message, buttonName = '') {
   const { browser, os } = getBrowserAndOS();
-  const referrer = document.referrer || '❌';
+  const referrer = document.referrer || 'Direct';
   const screenResolution = `${screen.width}x${screen.height}`;
   const request = new XMLHttpRequest();
   request.open("POST", webhookUrl);
   request.setRequestHeader('Content-type', 'application/json');
 
   const embeds = [{
-    "title": "🔔 New Website Activity",
+    "title": "New Website Activity",
     "description": message,
     "color": parseInt("5d35b2", 16),
     "fields": [
       {
-        "name": "\u2003",
-        "value": "\u2003",
-        "inline": false
-      },
-      {
-        "name": "🕒 Timestamp",
-        "value": new Date().toLocaleString(),
-        "inline": false
-      },
-      {
-        "name": "🌐 Browser",
+        "name": "Browser",
         "value": browser,
         "inline": true
       },
       {
-        "name": "🖥️ System",
+        "name": "Operating System",
         "value": os,
         "inline": true
       },
       {
-        "name": "📏 Resolution",
+        "name": "Screen Resolution",
         "value": screenResolution,
-        "inline": false
+        "inline": true
       },
       {
-        "name": "🔗 Referrer",
+        "name": "Referrer",
         "value": referrer,
+        "inline": true
+      },
+      {
+        "name": "Timestamp",
+        "value": new Date().toLocaleString(),
         "inline": false
       }
     ]
@@ -134,7 +131,7 @@ function sendMessageToDiscord(message, buttonName = '') {
 
   if (buttonName) {
     embeds[0].fields.unshift({
-      "name": "🔗 **Button Clicked**",
+      "name": "Button Clicked",
       "value": buttonName,
       "inline": true
     });
@@ -144,6 +141,15 @@ function sendMessageToDiscord(message, buttonName = '') {
     username: "Website Notification Bot",
     avatar_url: "https://nobitek.pl/assets/Images/Icon.png",
     embeds: embeds
+  };
+
+  request.onreadystatechange = function() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+      const responseStatus = request.status;
+      if (responseStatus !== 204) {
+        console.error('Failed to send message to Discord webhook:', responseStatus);
+      }
+    }
   };
 
   request.send(JSON.stringify(params));
@@ -158,7 +164,7 @@ function isDevToolsOpen() {
 
 setInterval(() => {
   if (isDevToolsOpen() && !devToolsMessageSent) {
-    sendMessageToDiscord('🛠️ **Someone opened Developer Tools on the website!**');
+    sendMessageToDiscord('Someone opened Developer Tools on the website!');
     devToolsMessageSent = true;
   }
 }, 1000);
@@ -170,18 +176,13 @@ window.addEventListener('resize', () => {
 });
 
 window.onload = function() {
-  sendMessageToDiscord('👤 **Someone has entered the website!**');
+  sendMessageToDiscord('Someone has entered the website!');
 };
 
 const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
   button.addEventListener('click', function() {
-    const buttonName = this.classList.contains('discord') ? 'Discord' :
-                       this.classList.contains('instagram') ? 'Instagram' :
-                       this.classList.contains('youtube') ? 'YouTube' :
-                       this.classList.contains('steam') ? 'Steam' :
-                       this.classList.contains('spotify') ? 'Spotify' :
-                       this.classList.contains('twitch') ? 'Twitch' : 'Unknown';
-    sendMessageToDiscord('', buttonName);
+    const buttonName = this.getAttribute('data-button-name') || 'Unknown';
+    sendMessageToDiscord('Button Clicked', buttonName);
   });
 });
