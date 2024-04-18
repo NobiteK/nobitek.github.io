@@ -44,12 +44,6 @@ a {
     }
 }
 
-.responsive-img {
-    max-width: calc(100% - 15px);
-    height: auto;
-    margin-right: 15px;
-}
-
 /* ======================
             Buttons
    ====================== */
@@ -449,6 +443,28 @@ header {
 
 .content-scrollable ul ul {
     padding-left: 20px;
+}
+
+/* ======================
+        Some Divs
+   ====================== */
+
+.responsive-img {
+    max-width: calc(100% - 15px);
+    height: auto;
+    margin-right: 15px;
+}
+
+#js-warning {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* ======================
