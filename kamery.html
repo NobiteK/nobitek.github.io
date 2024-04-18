@@ -51,8 +51,11 @@
 </header>
 
 <body>
-<div class="content" style="margin-top: 30px;">
+<noscript>
+  <div id="js-warning" style="text-align: center; font-weight: bold; margin-top: 20px;">Please enable Javascript.</div>
+</noscript>
 
+<div class="content" style="margin-top: 30px;">
 <center>
   <iframe src="https://rtsp.me/embed/nynG2ert/" width="565px" height="424px" frameborder="0" controls allowfullscreen style="border-radius: 10px;">Twoja przeglądarka nie obsługuje osadzonych ramek (iframe)</iframe>
   <iframe src="https://rtsp.me/embed/tthyKabs/" width="565px" height="424px" frameborder="0" controls allowfullscreen style="border-radius: 10px;">Twoja przeglądarka nie obsługuje osadzonych ramek (iframe)</iframe>
@@ -61,32 +64,18 @@
   <img id="image2" src="https://aero.webcam/cam/epsu-2.jpg" width="565px" height="424px" title="Odświeżanie co 1 minutę" alt="" style="border-radius: 10px;">
   <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" width="565px" height="424px" title="Odświeżanie co 1 minutę" alt="" style="border-radius: 10px;">
 </center>
+</div>
 
 <div id="notification"></div>
 
 <div class="footer">
-    <p>NobiteK © 2019 - 2024</p>
+  <p>NobiteK © 2019 - 2024</p>
 </div>
 
 </body>
+  <script type="text/javascript" src="assets/Js/Scripts.js"></script>
   <script type="text/javascript" src="assets/Js/antisteal.js"></script>
-  <script type="text/javascript" src="assets/Js/consoleclear.js"></script>
-  <script type="text/javascript" src="assets/Js/clicksound.js"></script>
   <script type="text/javascript" src="assets/Js/NavbarJS.js"></script>
   <script type="text/javascript" src="assets/Js/PreloaderJS.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-<script>
-  function refreshImages() {
-    var image1 = document.getElementById('image1');
-    var image2 = document.getElementById('image2');
-    var image3 = document.getElementById('image3');
-    var timestamp = new Date().getTime();
-    image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
-    image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
-    image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
-  }
-  setInterval(refreshImages, 60000);
-</script>
-
 </html>
