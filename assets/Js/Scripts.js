@@ -40,3 +40,25 @@ function toggleContent() {
 }
 toggleContent();
 window.addEventListener('resize', toggleContent);
+
+// Refresh Lanyard Images
+function refreshLanyardImages() {
+  var lanyardImage1 = document.getElementById('lanyardImage1');
+  var lanyardImage2 = document.getElementById('lanyardImage2');
+  var timestamp = new Date().getTime();
+  lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
+  lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
+}
+setInterval(refreshLanyardImages, 3000); // Refresh every 3 seconds
+
+// Refresh Cameras Images
+function refreshImages() {
+  var image1 = document.getElementById('image1');
+  var image2 = document.getElementById('image2');
+  var image3 = document.getElementById('image3');
+  var timestamp = new Date().getTime();
+  image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
+  image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
+  image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
+}
+setInterval(refreshImages, 60000); // Refresh every 60 seconds
