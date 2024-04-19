@@ -364,6 +364,84 @@ header {
 }
 
 /* ======================
+        Camera Button
+   ====================== */
+
+.camera-container {
+    position: relative;
+}
+
+.camera-button {
+    border: none;
+    background-color: #000;
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
+    left: 72px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccc80;
+    z-index: 1001;
+}
+
+.camera-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmUlEQVR4nO2TUQqDMAxA8+Fp3DEE8VbubCu7wfwThe53d3hD5iBIFToTmOD7ammTR5tE5ORvARrgST5xik0l7IAWKOf9dPFXYkqgeXwXkv/ydJxK/tIm+ZzdgWAlKIB6IQjAzU3g/kXWAuaOMhd0wBW4uLTpyqBFs0HLAehVwn5XshRApQSVeMBaMY8kGLcqbVWHwU1wIla8AagyR3vXSnr+AAAAAElFTkSuQmCC');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.camera-content-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    width: calc(95% - 40px);
+    max-width: 700px;
+    max-height: 70vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 0.90em;
+    overflow-y: auto;
+    transition: width 0.3s ease, padding 0.3s ease;
+    border: 1px solid #cccccc80;
+}
+
+.camera-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.camera-content iframe,
+.camera-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.camera-content iframe {
+    width: calc(50% - 10px);
+    height: 300px;
+}
+
+/* ======================
         Setup Button
    ====================== */
 
