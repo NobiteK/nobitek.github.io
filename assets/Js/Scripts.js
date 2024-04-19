@@ -10,6 +10,12 @@ document.onclick = function() {
   audio.play();
 };
 
+// Navbar
+const enable = (e) => {
+document.getElementById('burger').classList.toggle("open");
+document.getElementById("nav").classList.toggle("nav-open");
+};
+
 // Setup Button
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
@@ -23,6 +29,38 @@ collapsibleButton.addEventListener('click', function() {
 var closeButton = document.querySelector('.close-button');
 closeButton.addEventListener('click', function() {
   contentBox.style.display = 'none';
+});
+
+// Camera Button
+let isCameraContentBoxVisible = false;
+document.querySelector('.camera-button').addEventListener('click', function() {
+  let contentBox = document.querySelector('.camera-content-box');
+  if (!contentBox) {
+    contentBox = document.createElement('div');
+    contentBox.classList.add('camera-content-box');
+    document.body.appendChild(contentBox);
+    contentBox.innerHTML = `
+    <span class="close-button">&times;</span>
+    <div class="camera-content">
+      <iframe src="https://rtsp.me/embed/nynG2ert/" frameborder="0" controls allowfullscreen></iframe>
+      <iframe src="https://rtsp.me/embed/tthyKabs/" frameborder="0" controls allowfullscreen></iframe>
+      <img id="image1" src="https://aero.webcam/cam/epsu-1.jpg" title="Odświeżane co 1 minutę" alt="">
+      <img id="image2" src="https://aero.webcam/cam/epsu-2.jpg" title="Odświeżane co 1 minutę" alt="">
+      <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" title="Odświeżane co 1 minutę" alt="">
+    </div>
+  `;
+    contentBox.querySelector('.close-button').addEventListener('click', function() {
+      contentBox.style.display = 'none';
+      isCameraContentBoxVisible = false;
+    });
+  }
+  if (isCameraContentBoxVisible) {
+    contentBox.style.display = 'none';
+    isCameraContentBoxVisible = false;
+  } else {
+    contentBox.style.display = 'block';
+    isCameraContentBoxVisible = true;
+  }
 });
 
 // Mobile Resizer
