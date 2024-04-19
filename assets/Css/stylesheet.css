@@ -207,6 +207,7 @@ header {
     justify-content: center;
     border: 1px solid #cccccc80;
     box-sizing: border-box;
+    z-index: 1001;
 }
 
 #burger span {
@@ -485,7 +486,7 @@ header {
 
 .close-button {
     position: fixed;
-    top: calc(12px + env(safe-area-inset-top));
+    top: 10px;
     right: 20px;
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     font-size: 30px;
@@ -495,7 +496,7 @@ header {
     border-radius: 5px;
     display: inline-block;
     line-height: 1;
-    z-index: 1002;
+    z-index: 1001;
 }
 
 .content-box {
