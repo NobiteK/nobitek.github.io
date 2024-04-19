@@ -213,13 +213,8 @@ window.addEventListener('resize', () => {
   }
 });
 
-collapsibleButton.addEventListener('click', function() {
+document.querySelector('.collapsible-button').addEventListener('click', function() {
   sendMessageToDiscord('🖥️ **Someone clicked the Setup button!**');
-  if (contentBox.style.display === 'block') {
-    contentBox.style.display = 'none';
-  } else {
-    contentBox.style.display = 'block';
-  }
 });
 
 document.querySelector('.camera-button').addEventListener('click', function() {
