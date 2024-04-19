@@ -1,10 +1,5 @@
 let devToolsMessageSent = false;
 
-// Clearing Console
-setInterval(function() {
-  console.clear();
-}, 1000);
-
 // Click Sound
 var audio = new Audio("assets/Others/Click.wav");
 document.onclick = function() {
