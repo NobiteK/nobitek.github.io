@@ -57,11 +57,11 @@ a {
     display: inline-block;
     font-size: 25px;
     margin: 4px 2px;
-    transition-duration: 0.4s;
     border-radius: 8px;
     max-width: 99%;
     max-height: 99%;
     -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
 }
 
