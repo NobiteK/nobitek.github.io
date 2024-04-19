@@ -49,7 +49,7 @@ function refreshLanyardImages() {
   lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
   lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
 }
-setInterval(refreshLanyardImages, 3000); // Refresh every 3 seconds
+setInterval(refreshLanyardImages, 2000); // Refresh every 2 seconds
 
 // Refresh Cameras Images
 function refreshImages() {
@@ -178,9 +178,9 @@ window.addEventListener('resize', () => {
   }
 });
 
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
   sendMessageToDiscord('👤 **Someone has entered the website!**');
-};
+});
 
 const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
