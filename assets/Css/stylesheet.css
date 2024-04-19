@@ -368,7 +368,16 @@ header {
    ====================== */
 
 .camera-container {
-    position: relative;
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.camera-container:hover {
+    opacity: 1;
 }
 
 .camera-button {
@@ -377,15 +386,12 @@ header {
     border-radius: 8px;
     width: 50px;
     height: 50px;
-    position: fixed;
-    top: calc(12px + env(safe-area-inset-top));
-    left: 72px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #cccccc80;
-    z-index: 1001;
+    box-sizing: border-box;
 }
 
 .camera-icon {
