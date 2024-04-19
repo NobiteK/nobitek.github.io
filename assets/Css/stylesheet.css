@@ -196,10 +196,10 @@ header {
     width: 50px;
     height: 50px;
     position: fixed;
-    top: calc(12px + env(safe-area-inset-top)); /* Adjusted to match setup button */
-    right: 12px; /* Adjusted to match setup button */
+    top: calc(12px + env(safe-area-inset-top));
+    right: 12px;
     z-index: 1000;
-    cursor: pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     background-color: #000;
     border-radius: 8px;
     display: flex;
@@ -217,7 +217,7 @@ header {
     background: #ffffff;
     border-radius: 9px;
     opacity: 1;
-    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease; /* Simplified transitions */
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
     box-sizing: border-box;
 }
 
@@ -238,17 +238,17 @@ header {
 }
 
 #burger.open span:nth-child(1) {
-    top: 24px; /* Align with the middle span */
-    opacity: 0; /* Hide the top span */
+    top: 24px;
+    opacity: 0;
 }
 
 #burger.open span:nth-child(2) {
-    transform: rotate(45deg); /* Simpler rotation */
+    transform: rotate(45deg);
 }
 
 #burger.open span:nth-child(3) {
-    transform: rotate(-45deg); /* Simpler rotation */
-    top: 24px; /* Align with the middle span */
+    transform: rotate(-45deg);
+    top: 24px;
 }
 
 /* ======================
@@ -386,7 +386,7 @@ header {
     border-radius: 8px;
     width: 50px;
     height: 50px;
-    cursor: pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -464,7 +464,7 @@ header {
     position: fixed;
     top: calc(12px + env(safe-area-inset-top));
     left: 12px;
-    cursor: pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -487,7 +487,7 @@ header {
     position: absolute;
     top: 10px;
     right: 20px;
-    cursor: pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     font-size: 30px;
     color: #fff;
     background-color: rgba(30, 30, 30, 0.8);
