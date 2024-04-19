@@ -484,8 +484,8 @@ header {
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
     right: 20px;
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     font-size: 30px;
@@ -495,7 +495,7 @@ header {
     border-radius: 5px;
     display: inline-block;
     line-height: 1;
-    z-index: 1001;
+    z-index: 1002;
 }
 
 .content-box {
