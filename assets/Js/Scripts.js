@@ -10,7 +10,7 @@ document.onclick = function() {
   audio.play();
 };
 
-// Navbar
+// Navbar JS
 const enable = (e) => {
 document.getElementById('burger').classList.toggle("open");
 document.getElementById("nav").classList.toggle("nav-open");
@@ -138,8 +138,8 @@ function sendMessageToDiscord(message, buttonName = '') {
     "color": parseInt("5d35b2", 16),
     "fields": [
       {
-        "name": "\u2003",
-        "value": "\u2003",
+        "name": "\u200b",
+        "value": "\u200b",
         "inline": false
       },
       {
@@ -214,6 +214,19 @@ window.addEventListener('resize', () => {
   if (!isDevToolsOpen()) {
     devToolsMessageSent = false;
   }
+});
+
+collapsibleButton.addEventListener('click', function() {
+  sendMessageToDiscord('🖥️ **Someone clicked the Setup button!**');
+  if (contentBox.style.display === 'block') {
+    contentBox.style.display = 'none';
+  } else {
+    contentBox.style.display = 'block';
+  }
+});
+
+document.querySelector('.camera-button').addEventListener('click', function() {
+  sendMessageToDiscord('📷 **Someone clicked the Camera button!**');
 });
 
 document.addEventListener('DOMContentLoaded', function() {
