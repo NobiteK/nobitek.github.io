@@ -130,13 +130,12 @@ function sendMessageToDiscord(message, buttonName = '') {
   request.setRequestHeader('Content-type', 'application/json');
 
   const embeds = [{
-    "title": "🔔 New Website Activity",
-    "description": message,
+    "title": message,
     "color": parseInt("5d35b2", 16),
     "fields": [
       {
-        "name": "\u200b",
-        "value": "\u200b",
+        "name": "\u2003",
+        "value": "\u2003",
         "inline": false
       },
       {
@@ -185,7 +184,7 @@ function sendMessageToDiscord(message, buttonName = '') {
     if (request.readyState === XMLHttpRequest.DONE) {
       const responseStatus = request.status;
       if (responseStatus !== 204) {
-        console.error('Failed to send message to webhook:', responseStatus);
+        console.error('Failed to send message:', responseStatus);
       }
     }
   };
@@ -202,7 +201,7 @@ function isDevToolsOpen() {
 
 setInterval(() => {
   if (isDevToolsOpen() && !devToolsMessageSent) {
-    sendMessageToDiscord('🛠️ **Someone opened Developer Tools on the website!**');
+    sendMessageToDiscord('🛠️ **Developer Tools**');
     devToolsMessageSent = true;
   }
 }, 1000);
@@ -214,15 +213,15 @@ window.addEventListener('resize', () => {
 });
 
 document.querySelector('.collapsible-button').addEventListener('click', function() {
-  sendMessageToDiscord('🖥️ **Someone clicked the Setup button!**');
+  sendMessageToDiscord('🖥️ **Setup Button**');
 });
 
 document.querySelector('.camera-button').addEventListener('click', function() {
-  sendMessageToDiscord('📷 **Someone clicked the Camera button!**');
+  sendMessageToDiscord('📷 **Camera Button**');
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  sendMessageToDiscord('👤 **Someone has entered the website!**');
+  sendMessageToDiscord('👤 **Entered**');
 });
 
 const buttons = document.querySelectorAll('a.button');
