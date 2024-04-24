@@ -81,8 +81,8 @@ function refreshLanyardImages() {
   var lanyardImage1 = document.getElementById('lanyardImage1');
   var lanyardImage2 = document.getElementById('lanyardImage2');
   var timestamp = new Date().getTime();
-  lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
-  lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?timestamp=" + timestamp;
+  lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
+  lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
 }
 setInterval(refreshLanyardImages, 2000); // Refresh every 2 seconds
 
