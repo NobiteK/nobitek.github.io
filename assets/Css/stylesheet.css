@@ -365,7 +365,7 @@ header {
 }
 
 /* ======================
-        Camera Button
+            Camera
    ====================== */
 
 .camera-container {
@@ -446,6 +446,46 @@ header {
 .camera-content iframe {
     width: calc(50% - 10px);
     height: 300px;
+}
+
+.password-box {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px);
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #0c0c11;
+    border: 1px solid #242433;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 198px;
+    display: flex;
+    align-items: center;
+}
+
+.password-box.fade-in {
+    display: flex;
+    opacity: 1;
+}
+
+.password-box input[type="password"] {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #1a1a1f;
+    color: white;
+}
+
+.password-box .close-button {
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
 }
 
 /* ======================
