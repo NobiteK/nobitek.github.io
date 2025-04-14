@@ -271,7 +271,7 @@
                     <div class="setting-row">
                         <div class="checkbox-container">
                             <input type="checkbox" id="infiniteRepeat">
-                            <label for="infiniteRepeat">Infinite Repeat</label>
+                            <label for="infiniteRepeat">Repeat</label>
                         </div>
                     </div>
                 </div>
@@ -303,40 +303,69 @@
             let currentRepeat = 0;
             let isInfiniteRepeat = false;
 
-            const allowedVoices = [
+            const targetVoices = [
                 { name: "Google polski", lang: "pl-PL" },
                 { name: "Google US English", lang: "en-US" },
                 { name: "Google русский", lang: "ru-RU" }
             ];
 
-            function loadVoices() {
-                voices = synth.getVoices().filter(voice => {
-                    return allowedVoices.some(allowed => 
-                        voice.name.includes(allowed.name) && 
-                        voice.lang.includes(allowed.lang) &&
-                        !voice.name.includes("UK")
-                    );
-                });
+            function populateVoiceList() {
+                let availableVoices = synth.getVoices();
                 
                 voiceSelect.innerHTML = '';
                 
-                if (voices.length === 0) {
-                    voices = synth.getVoices();
+                let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                let foundVoices = [];
+                
+                if (isIOS) {
+                    foundVoices = [
+                        {name: "Google polski (iOS)", lang: "pl-PL"},
+                        {name: "Google US English (iOS)", lang: "en-US"},
+                        {name: "Google русский (iOS)", lang: "ru-RU"}
+                    ];
+                } else {
+                    foundVoices = availableVoices.filter(voice => {
+                        return targetVoices.some(target => 
+                            voice.name.includes(target.name) && 
+                            voice.lang.includes(target.lang) &&
+                            !voice.name.includes("UK")
+                        );
+                    });
+                    
+                    if (foundVoices.length === 0) {
+                        foundVoices = availableVoices.filter(voice => 
+                            targetVoices.some(target => voice.lang.includes(target.lang))
+                        );
+                    }
+                    
+                    if (foundVoices.length === 0) {
+                        foundVoices = availableVoices.slice(0, 3);
+                    }
                 }
                 
-                voices.forEach((voice, index) => {
+                voices = foundVoices;
+                
+                foundVoices.forEach((voice, index) => {
                     const option = document.createElement('option');
                     option.value = index;
-                    option.textContent = `${voice.name}`;
+                    option.textContent = voice.name;
                     voiceSelect.appendChild(option);
                 });
+                
+                if (voiceSelect.options.length === 0) {
+                    const option = document.createElement('option');
+                    option.value = "default";
+                    option.textContent = "Default Voice";
+                    voiceSelect.appendChild(option);
+                }
             }
 
             if (synth.onvoiceschanged !== undefined) {
-                synth.onvoiceschanged = loadVoices;
-            } else {
-                loadVoices();
+                synth.onvoiceschanged = populateVoiceList;
             }
+            
+            setTimeout(populateVoiceList, 100);
+            setTimeout(populateVoiceList, 1000);
 
             function updateStatus(message) {
                 status.textContent = message;
@@ -414,10 +443,15 @@
                 }
 
                 utterance = new SpeechSynthesisUtterance(text);
-
-                const selectedVoice = voices[voiceSelect.value];
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
+                
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                const selectedVoiceIdx = voiceSelect.value;
+                
+                if (isIOS) {
+                    const lang = ["pl-PL", "en-US", "ru-RU"][selectedVoiceIdx] || "en-US";
+                    utterance.lang = lang;
+                } else if (voices[selectedVoiceIdx]) {
+                    utterance.voice = voices[selectedVoiceIdx];
                 }
 
                 utterance.rate = parseFloat(rateInput.value);
