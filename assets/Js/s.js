@@ -277,12 +277,6 @@ function sendM(message, buttonName = '') {
           const city = location.city || '❌';
           const isp = location.org || '❌';
 
-          const privacy = location.security || {};
-          const isVPN = privacy.vpn ? "✅ VPN" : '';
-          const isProxy = privacy.proxy ? "✅ Proxy" : '';
-          const isTor = privacy.tor ? "✅ Tor" : '';
-          const privacyInfo = isVPN || isProxy || isTor ? `${isVPN} ${isProxy} ${isTor}`.trim() : '❌';
-
           const embed = {
             title: message,
             color: parseInt("5d35b2", 16),
@@ -293,9 +287,8 @@ function sendM(message, buttonName = '') {
               { name: "🖥️", value: os, inline: true },
               { name: "📏", value: screenResolution, inline: true },
               { name: "🌐", value: ip, inline: true },
-              { name: "🏙️", value: city, inline: false },
+              { name: "🏙️", value: city, inline: true },
               { name: "📡", value: isp, inline: false },
-              { name: "🛡️", value: privacyInfo, inline: false },
               { name: "🔗", value: referrer, inline: false }
             ]
           };
