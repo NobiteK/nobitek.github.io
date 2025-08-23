@@ -208,6 +208,11 @@ header {
     border: 1px solid #cccccc80;
     box-sizing: border-box;
     z-index: 1001;
+    transition: background-color 0.2s ease;
+}
+
+#burger:hover {
+    background-color: #1a1a1a;
 }
 
 #burger span {
@@ -235,7 +240,7 @@ header {
 }
 
 #burger span:nth-child(4) {
-    display: none; /* Removed the fourth span as it's not needed */
+    display: none;
 }
 
 #burger.open span:nth-child(1) {
@@ -253,7 +258,7 @@ header {
 }
 
 /* ======================
-            Preloader
+          Preloader
    ====================== */
 
 #preloader {
@@ -323,7 +328,7 @@ header {
 }
 
 /* ======================
-            Footer
+           Footer
    ====================== */
 
 .footer {
@@ -418,7 +423,7 @@ header {
     padding: 20px;
     width: calc(95% - 40px);
     max-width: 700px;
-    max-height: 70vh;
+    max-height: 75vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 0.90em;
@@ -511,11 +516,16 @@ header {
     justify-content: center;
     border: 1px solid #cccccc80;
     z-index: 1001;
+    transition: background-color 0.2s ease;
+}
+
+.collapsible-button:hover {
+    background-color: #1a1a1a;
 }
 
 .pc-icon {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20 3H4c-1.1 0-1.99.9-1.99 2L2 17h20V5c0-1.1-.9-2-2-2zm0 12H4V5h16v10zm-6 3v1h-4v-1h-2v2h8v-2h-2z"/></svg>');
     background-size: contain;
     background-repeat: no-repeat;
@@ -527,16 +537,25 @@ header {
 .close-button {
     position: fixed;
     top: 10px;
-    right: 20px;
+    right: 10px;
     cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
     font-size: 30px;
     color: #fff;
     background-color: rgba(30, 30, 30, 0.8);
-    padding: 4px;
+    width: 35px;
+    height: 35px;
     border-radius: 5px;
-    display: inline-block;
+    border: 1px solid #cccccc80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     line-height: 1;
     z-index: 1001;
+    transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(50, 50, 50, 0.9);
 }
 
 .content-box {
@@ -571,7 +590,7 @@ header {
 }
 
 /* ======================
-        Some Divs
+         Some Divs
    ====================== */
 
 .responsive-img {
@@ -593,9 +612,13 @@ header {
 }
 
 /* ======================
-        Scrollbar
+          Scrollbar
    ====================== */
 
+::-webkit-scrollbar { display: none; }
+
+/* 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #111118; } /* Same as page background color */
-::-webkit-scrollbar-thumb { background: #1d1d29; border-radius: 10px; }
+::-webkit-scrollbar-track { background: #111118; }
+::-webkit-scrollbar-thumb { background: #1d1d29; border-radius: 10px; } 
+*/
