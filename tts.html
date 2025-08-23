@@ -114,6 +114,12 @@
                             <label for="infiniteRepeat">Infinite Repeat</label>
                         </div>
                     </div>
+                    <div class="setting-row">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="wakeLockToggle">
+                            <label for="wakeLockToggle">Keep Screen On</label>
+                        </div>
+                    </div>
                 </div>
 
                 <textarea id="textInput" placeholder="Enter the text you want to convert to speech here..."></textarea>
@@ -132,6 +138,7 @@
             const rateInput = document.getElementById('rate');
             const volumeInput = document.getElementById('volume');
             const infiniteRepeatCheckbox = document.getElementById('infiniteRepeat');
+            const wakeLockToggle = document.getElementById('wakeLockToggle');
             const rateValue = document.getElementById('rateValue');
             const volumeValue = document.getElementById('volumeValue');
             const status = document.getElementById('status');
@@ -143,6 +150,8 @@
             let currentRepeat = 0;
             let isInfiniteRepeat = false;
             let currentText = '';
+            let wakeLock = null;
+            let isWakeLockEnabled = false;
 
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -151,6 +160,98 @@
                 { name: "Google US English", lang: "en-US" },
                 { name: "Google русский", lang: "ru-RU" }
             ];
+
+            // Wake Lock API functions
+            async function requestWakeLock() {
+                if ('wakeLock' in navigator && !wakeLock) {
+                    try {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                        isWakeLockEnabled = true;
+                        console.log('Wake lock activated');
+                        
+                        wakeLock.addEventListener('release', () => {
+                            console.log('Wake lock released');
+                            wakeLock = null;
+                            isWakeLockEnabled = false;
+                            wakeLockToggle.checked = false;
+                        });
+                        
+                    } catch (err) {
+                        console.error('Wake lock failed:', err);
+                        wakeLockToggle.checked = false;
+                        updateStatus('Wake lock not supported or failed');
+                    }
+                }
+            }
+
+            async function releaseWakeLock() {
+                if (wakeLock) {
+                    try {
+                        await wakeLock.release();
+                        wakeLock = null;
+                        isWakeLockEnabled = false;
+                        console.log('Wake lock released manually');
+                    } catch (err) {
+                        console.error('Failed to release wake lock:', err);
+                    }
+                }
+            }
+
+            // Handle wake lock toggle
+            wakeLockToggle.addEventListener('change', async function() {
+                if (this.checked) {
+                    await requestWakeLock();
+                } else {
+                    await releaseWakeLock();
+                }
+            });
+
+            // Re-acquire wake lock when page becomes visible again
+            document.addEventListener('visibilitychange', async () => {
+                if (!document.hidden && wakeLockToggle.checked && !wakeLock) {
+                    await requestWakeLock();
+                }
+            });
+
+            // iOS-specific background audio techniques
+            function setupiOSBackgroundAudio() {
+                if (isIOS) {
+                    // Create a silent audio context to keep audio thread alive
+                    try {
+                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        // Set volume to 0 (silent)
+                        gainNode.gain.value = 0;
+                        oscillator.frequency.value = 440;
+                        
+                        // Keep a very quiet tone playing to maintain audio context
+                        oscillator.start();
+                        
+                        // Store references
+                        window.audioContext = audioContext;
+                        window.silentOscillator = oscillator;
+                        window.silentGainNode = gainNode;
+                        
+                        console.log('iOS background audio context setup');
+                    } catch (err) {
+                        console.error('Failed to setup iOS background audio:', err);
+                    }
+                }
+            }
+
+            function enableiOSBackgroundMode() {
+                if (isIOS) {
+                    // Attempt to enable background mode by making a brief audio play
+                    const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAAAQAwAAEAAAAABAAgAZGF0YQQAAAAAAA==');
+                    audio.volume = 0.01;
+                    audio.play().catch(err => console.log('Silent audio play failed:', err));
+                }
+            }
 
             // Initialize Media Session API
             function initializeMediaSession() {
@@ -286,6 +387,7 @@
             waitForVoices().then(() => {
                 loadVoices();
                 initializeMediaSession();
+                setupiOSBackgroundAudio();
             });
 
             function updateStatus(message) {
@@ -299,6 +401,10 @@
                 updateStatus('Ready to speak');
                 if ('mediaSession' in navigator) {
                     navigator.mediaSession.playbackState = 'none';
+                }
+                // Release wake lock when stopping
+                if (wakeLock && !wakeLockToggle.checked) {
+                    releaseWakeLock();
                 }
             }
 
@@ -314,6 +420,11 @@
                 }
                 if ('mediaSession' in navigator) {
                     navigator.mediaSession.playbackState = 'playing';
+                }
+                
+                // Request wake lock when speaking starts (if enabled)
+                if (wakeLockToggle.checked && !wakeLock) {
+                    requestWakeLock();
                 }
             }
 
@@ -372,6 +483,11 @@
                     return;
                 }
 
+                // Enable iOS background audio mode
+                if (isIOS) {
+                    enableiOSBackgroundMode();
+                }
+
                 currentText = text;
                 updateMediaSessionMetadata(text);
 
@@ -392,7 +508,13 @@
                 utterance.onend = function() {
                     if (isInfiniteRepeat) {
                         currentRepeat++;
-                        setTimeout(() => speak(true), 500);
+                        // Add a small delay to prevent iOS from stopping audio thread
+                        setTimeout(() => {
+                            if (isIOS) {
+                                enableiOSBackgroundMode();
+                            }
+                            speak(true);
+                        }, 500);
                     } else {
                         resetUI();
                     }
@@ -402,6 +524,16 @@
                     updateStatus('Error occurred: ' + event.error);
                     resetUI();
                 };
+
+                // iOS-specific: Try to maintain audio focus
+                if (isIOS) {
+                    utterance.onboundary = function(event) {
+                        // Keep audio context alive during speech
+                        if (window.audioContext && window.audioContext.state === 'suspended') {
+                            window.audioContext.resume();
+                        }
+                    };
+                }
 
                 synth.speak(utterance);
             }
