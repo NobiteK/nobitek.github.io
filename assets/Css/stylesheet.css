@@ -35,8 +35,7 @@ a {
 }
 
 a:hover {
-    color: #a66dfe;
-    text-decoration: underline;
+    color: #ac76ff;
 }
 
 @media only screen and (max-device-width: 480px) {
