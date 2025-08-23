@@ -353,27 +353,37 @@ window.addEventListener('resize', () => {
   }
 });
 
-document.querySelector('.collapsible-button').addEventListener('click', function() {
-  sendM('🖥️ **Setup Button**');
-});
-
-document.querySelector('.camera-button').addEventListener('click', function() {
-  sendM('📷 **Camera Button**');
-});
-
 document.addEventListener('DOMContentLoaded', function() {
   sendM('👤');
-});
 
-const buttons = document.querySelectorAll('a.button');
-buttons.forEach(button => {
-  button.addEventListener('click', function() {
-    const buttonName = this.classList.contains('discord') ? 'Discord' :
-                       this.classList.contains('instagram') ? 'Instagram' :
-                       this.classList.contains('youtube') ? 'YouTube' :
-                       this.classList.contains('steam') ? 'Steam' :
-                       this.classList.contains('spotify') ? 'Spotify' :
-                       this.classList.contains('twitch') ? 'Twitch' : 'Unknown';
-    sendM('', buttonName);
+  const collapsibleButton = document.querySelector('.collapsible-button');
+  if (collapsibleButton) {
+    collapsibleButton.addEventListener('click', function() {
+      sendM('🖥️ **Setup Button**');
+    });
+  }
+
+  const cameraButton = document.querySelector('.camera-button');
+  if (cameraButton) {
+    cameraButton.addEventListener('click', function() {
+      sendM('📷 **Camera Button**');
+    });
+  }
+
+  const buttons = document.querySelectorAll('a.button');
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      const buttonName = this.classList.contains('discord') ? 'Discord' :
+                         this.classList.contains('instagram') ? 'Instagram' :
+                         this.classList.contains('youtube') ? 'YouTube' :
+                         this.classList.contains('steam') ? 'Steam' :
+                         this.classList.contains('spotify') ? 'Spotify' :
+                         this.classList.contains('twitch') ? 'Twitch' : 'Unknown';
+      sendM('', buttonName);
+    });
   });
 });
+
+// Debug Logs
+console.log('Script loaded, wurl:', wurl);
+console.log('Current page:', window.location.href);
