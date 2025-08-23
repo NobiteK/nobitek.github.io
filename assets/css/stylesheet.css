@@ -16,7 +16,7 @@
 }
 
 html, body {
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png'), default;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png') 5 3, default;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -66,7 +66,7 @@ a:hover {
     max-height: 99%;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
 }
 
 .discord {
@@ -181,7 +181,7 @@ header {
     text-decoration: none;
     display: flex;
     align-items: center;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
 }
 
 .nav li {
@@ -189,7 +189,7 @@ header {
     font-size: 1.39rem;
     padding: 0;
     color: white;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
 }
 
 .nav li:nth-child(1) {
@@ -203,7 +203,7 @@ header {
     top: calc(12px + env(safe-area-inset-top));
     right: 12px;
     z-index: 1000;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     background-color: #000;
     border-radius: 8px;
     display: flex;
@@ -396,7 +396,7 @@ header {
     border-radius: 8px;
     width: 50px;
     height: 50px;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -514,7 +514,7 @@ header {
     position: fixed;
     top: calc(12px + env(safe-area-inset-top));
     left: 12px;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -542,7 +542,7 @@ header {
     position: fixed;
     top: 10px;
     right: 10px;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png'), pointer;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     font-size: 30px;
     color: #fff;
     background-color: rgba(30, 30, 30, 0.8);
