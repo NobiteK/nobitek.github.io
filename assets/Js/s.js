@@ -1,9 +1,17 @@
-// Click Sound
+// Click Sound (PC Only)
 var audio = new Audio("assets/Others/Click.wav");
-document.onclick = function() {
-  audio.volume = 0.2;
-  audio.play();
-};
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
+}
+
+if (!isMobileDevice()) {
+  document.onclick = function() {
+    audio.volume = 0.2;
+    audio.play();
+  };
+}
 
 // Preloader JS
 setTimeout(function() {
