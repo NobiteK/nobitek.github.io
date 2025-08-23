@@ -2,238 +2,67 @@
 <html lang="en">
   <head>
     <title>NobiteK - TTS Reader</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content="💀" />
-    <meta name="keywords" content="nobitek, nobiteek, norbitek" />
-    <meta name="author" content="NobiteK" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta charset="UTF-8">
+    <meta name="description" content="💀">
+    <meta name="keywords" content="nobitek, nobiteek, norbitek">
+    <meta name="author" content="NobiteK">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="darkreader-lock">
-    <meta property="og:type" content="site" />
-    <meta property="og:title" content="NobiteK - TTS Reader" />
-    <meta property="og:description" content="💀" />
-    <meta itemprop="name" content="NobiteK - TTS Reader" />
-    <meta itemprop="description" content="💀" />
-    <meta itemprop="image" content="assets/Images/Icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#5d35b2" />
-    <link rel="shortcut icon" href="assets/Images/Icon.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="assets/Css/stylesheet.css" />
+    <meta property="og:type" content="site">
+    <meta property="og:title" content="NobiteK - TTS Reader">
+    <meta property="og:description" content="💀">
+    <meta itemprop="name" content="NobiteK - TTS Reader">
+    <meta itemprop="description" content="💀">
+    <meta itemprop="image" content="/assets/Images/Icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5d35b2">
+    <link rel="shortcut icon" href="/assets/Images/Icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/stylesheet.css">
     <style>
-        :root {
-            --primary-color: #4dabf7;
-            --secondary-color: #339af0;
-            --background-color: #121212;
-            --card-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --border-color: #333;
-            --border-radius: 8px;
-            --input-bg: #2d2d2d;
-        }
+    :root {
+        --primary-color:#4dabf7; --secondary-color:#339af0;
+        --background-color:#121212; --card-color:#1e1e1e;
+        --text-color:#e0e0e0; --border-color:#333;
+        --border-radius:8px; --input-bg:#2d2d2d;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+    body {background-color:var(--background-color); color:var(--text-color); padding:12px; min-height:100vh; display:flex; flex-direction:column;}
+    .container {max-width:600px; margin:0 auto; width:100%;}
+    header {text-align:center; margin-bottom:20px; padding:15px 5px;}
+    h1 {color:var(--primary-color); margin-bottom:10px; font-size:24px;}
+    .subtitle {color:#888; margin-bottom:10px; font-size:14px;}
+    .card {background-color:var(--card-color); border-radius:var(--border-radius); box-shadow:0 4px 6px rgba(0,0,0,0.3); padding:15px; margin-bottom:20px; border:1px solid var(--border-color);}
+    .controls {display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:15px;}
+    button {background-color:var(--primary-color); color:white; border:none; padding:12px 8px; border-radius:var(--border-radius); cursor:pointer; font-size:16px; transition:all 0.2s ease;}
+    button:hover {background-color:var(--secondary-color);}
+    button:active {transform:scale(0.95); background-color:var(--secondary-color);}
+    button:disabled {background-color:#444; color:#777; cursor:not-allowed;}
+    button.secondary {background-color:#555;}
+    button.secondary:hover {background-color:#666;}
+    button.secondary:active {transform:scale(0.95); background-color:#666;}
+    .settings {margin-bottom:15px;}
+    .setting-row {display:flex; align-items:center; margin-bottom:12px; gap:10px;}
+    label {font-weight:bold; min-width:60px;}
+    select, input[type="range"] {padding:8px; border-radius:var(--border-radius); border:1px solid var(--border-color); background-color:var(--input-bg); color:var(--text-color); flex-grow:1;}
+    input[type="range"] {padding:0; background-color:var(--border-color); height:6px;}
+    input[type="range"]::-webkit-slider-thumb {background:var(--primary-color);}
+    input[type="range"]::-moz-range-thumb {background:var(--primary-color);}
+    .checkbox-container {display:flex; align-items:center; gap:8px; user-select:none;}
+    input[type="checkbox"] {width:18px; height:18px; cursor:pointer;}
+    textarea {width:100%; height:180px; padding:12px; border-radius:var(--border-radius); border:1px solid var(--border-color); background-color:var(--input-bg); color:var(--text-color); resize:vertical; font-size:16px; line-height:1.5; margin-bottom:15px;}
+    .status {font-style:italic; color:#888; margin-top:8px; font-size:14px;}
+    footer {text-align:center; margin-top:auto; padding:15px; color:#888; font-size:12px;}
 
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            padding: 12px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 15px 5px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-
-        .subtitle {
-            color: #888;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .card {
-            background-color: var(--card-color);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .controls {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 8px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.2s ease;
-        }
-
-        button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        button:active {
-            transform: scale(0.95);
-            background-color: var(--secondary-color);
-        }
-
-        button:disabled {
-            background-color: #444;
-            color: #777;
-            cursor: not-allowed;
-        }
-
-        button.secondary {
-            background-color: #555;
-        }
-
-        button.secondary:hover {
-            background-color: #666;
-        }
-
-        button.secondary:active {
-            transform: scale(0.95);
-            background-color: #666;
-        }
-
-        .settings {
-            margin-bottom: 15px;
-        }
-
-        .setting-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            gap: 10px;
-        }
-
-        label {
-            font-weight: bold;
-            min-width: 60px;
-        }
-
-        select, input[type="range"] {
-            padding: 8px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            flex-grow: 1;
-        }
-
-        input[type="range"] {
-            padding: 0;
-            background-color: var(--border-color);
-            height: 6px;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            background: var(--primary-color);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            background: var(--primary-color);
-        }
-
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            user-select: none;
-        }
-
-        input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        textarea {
-            width: 100%;
-            height: 180px;
-            padding: 12px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            resize: vertical;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .status {
-            font-style: italic;
-            color: #888;
-            margin-top: 8px;
-            font-size: 14px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: auto;
-            padding: 15px;
-            color: #888;
-            font-size: 12px;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 8px;
-            }
-            
-            .card {
-                padding: 12px;
-            }
-            
-            button {
-                padding: 10px 5px;
-                font-size: 14px;
-            }
-            
-            textarea {
-                height: 150px;
-                font-size: 14px;
-            }
-            
-            .settings {
-                margin-bottom: 12px;
-            }
-            
-            .setting-row {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
+@media(max-width:480px){
+    body {padding:8px;}
+    .card {padding:12px;}
+    button {padding:10px 5px; font-size:14px;}
+    textarea {height:150px; font-size:14px;}
+    .settings {margin-bottom:12px;}
+    .setting-row {margin-bottom:10px;}
+}
+</style>
 </head>
 
 <header>
@@ -243,10 +72,10 @@
         <span></span>
         <span></span>
     </div>
-      <nav class="nav" id="nav">
-        <li><a href="/Website">Home</a></li>
-        <li><a href="/Website/tts">TTS Reader</a></li>
-      </nav>
+        <nav class="nav" id="nav">
+            <li><a href="/Website">Home</a></li>
+            <li><a href="/Website/tts">TTS Reader</a></li>
+        </nav>
     </header>
 
 <body>
@@ -496,7 +325,8 @@
             resetUI();
         });
     </script>
+
 </body>
-<script type="text/javascript" src="assets/Js/s.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="/assets/js/s.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </html>
