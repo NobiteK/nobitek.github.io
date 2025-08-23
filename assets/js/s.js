@@ -50,17 +50,22 @@ document.getElementById("nav").classList.toggle("nav-open");
 // Setup Button
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
-collapsibleButton.addEventListener('click', function() {
-  if (contentBox.style.display === 'block') {
-    contentBox.style.display = 'none';
-  } else {
-    contentBox.style.display = 'block';
-  }
-});
+if (collapsibleButton && contentBox) {
+  collapsibleButton.addEventListener('click', function() {
+    if (contentBox.style.display === 'block') {
+      contentBox.style.display = 'none';
+    } else {
+      contentBox.style.display = 'block';
+    }
+  });
+}
+
 var closeButton = document.querySelector('.close-button');
-closeButton.addEventListener('click', function() {
-  contentBox.style.display = 'none';
-});
+if (closeButton && contentBox) {
+  closeButton.addEventListener('click', function() {
+    contentBox.style.display = 'none';
+  });
+}
 
 // Camera Button
 let isCameraContentBoxVisible = false;
@@ -68,57 +73,60 @@ let isPasswordCorrect = false;
 let passwordAttempts = 0;
 const encodedPassword = 'c2ViYXNlYmEx';
 
-document.querySelector('.camera-button').addEventListener('click', function() {
-  let passwordBox = document.querySelector('.password-box');
-  let contentBox = document.querySelector('.camera-content-box');
-  if (passwordBox && passwordBox.style.display === 'flex') {
-    passwordBox.style.display = 'none';
-    document.getElementById('password').value = '';
-    return;
-  }
-  if (contentBox && contentBox.style.display === 'flex') {
-    contentBox.style.display = 'none';
-    isCameraContentBoxVisible = false;
-    return;
-  }
+var cameraButton = document.querySelector('.camera-button');
+if (cameraButton) {
+  cameraButton.addEventListener('click', function() {
+    let passwordBox = document.querySelector('.password-box');
+    let contentBox = document.querySelector('.camera-content-box');
+    if (passwordBox && passwordBox.style.display === 'flex') {
+      passwordBox.style.display = 'none';
+      document.getElementById('password').value = '';
+      return;
+    }
+    if (contentBox && contentBox.style.display === 'flex') {
+      contentBox.style.display = 'none';
+      isCameraContentBoxVisible = false;
+      return;
+    }
 
-  if (!passwordBox) {
-    passwordBox = document.createElement('div');
-    passwordBox.classList.add('password-box');
-    passwordBox.innerHTML = `
-      <input type="password" id="password" placeholder="Password">
-    `;
-    document.querySelector('.camera-button').appendChild(passwordBox);
+    if (!passwordBox) {
+      passwordBox = document.createElement('div');
+      passwordBox.classList.add('password-box');
+      passwordBox.innerHTML = `
+        <input type="password" id="password" placeholder="Password">
+      `;
+      document.querySelector('.camera-button').appendChild(passwordBox);
 
-    document.getElementById('password').addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') {
-        const password = event.target.value;
-        if (btoa(password) === encodedPassword) {
-          passwordAttempts++;
-          document.getElementById('password').value = '';
-          if (passwordAttempts === 1) {
-            isPasswordCorrect = true;
-            alert('✅ Password correct. 🔁 Please enter again to unlock content.');
-            sendM('✅ **Password Correct**');
-          } else if (isPasswordCorrect) {
-            passwordBox.style.display = 'none';
-            showCameraContentBox();
+      document.getElementById('password').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          const password = event.target.value;
+          if (btoa(password) === encodedPassword) {
+            passwordAttempts++;
+            document.getElementById('password').value = '';
+            if (passwordAttempts === 1) {
+              isPasswordCorrect = true;
+              alert('✅ Password correct. 🔁 Please enter again to unlock content.');
+              sendM('✅ **Password Correct**');
+            } else if (isPasswordCorrect) {
+              passwordBox.style.display = 'none';
+              showCameraContentBox();
+            }
+          } else {
+            alert('❌ Incorrect password.');
+            sendM('❌ **Incorrect password**');
+            passwordAttempts = 0;
+            isPasswordCorrect = false;
           }
-        } else {
-          alert('❌ Incorrect password.');
-          sendM('❌ **Incorrect password**');
-          passwordAttempts = 0;
-          isPasswordCorrect = false;
         }
-      }
-    });
-  } else {
-    passwordBox.classList.add('fade-in');
-    passwordBox.style.display = 'flex';
-  }
+      });
+    } else {
+      passwordBox.classList.add('fade-in');
+      passwordBox.style.display = 'flex';
+    }
 
-  document.getElementById('password').focus();
-});
+    document.getElementById('password').focus();
+  });
+}
 
 function showCameraContentBox() {
   let contentBox = document.querySelector('.camera-content-box');
@@ -194,13 +202,15 @@ window.onload = function () {
 
   function showNotification(message) {
     var notification = document.getElementById("notification");
-    notification.textContent = message;
-    notification.style.transform = "translateY(0%)";
-    notification.style.opacity = "1";
-    setTimeout(function () {
-      notification.style.transform = "translateY(100%)";
-      notification.style.opacity = "0";
-    }, 2000);
+    if (notification) {
+      notification.textContent = message;
+      notification.style.transform = "translateY(0%)";
+      notification.style.opacity = "1";
+      setTimeout(function () {
+        notification.style.transform = "translateY(100%)";
+        notification.style.opacity = "0";
+      }, 2000);
+    }
   }
 }
 
@@ -209,12 +219,14 @@ function toggleContent() {
   var mobileContent = document.getElementById('mobileContent');
   var desktopContent = document.getElementById('desktopContent');
   var screenWidth = window.innerWidth;
-  if (screenWidth <= 768) {
-    mobileContent.style.display = 'block';
-    desktopContent.style.display = 'none';
-  } else {
-    mobileContent.style.display = 'none';
-    desktopContent.style.display = 'block';
+  if (mobileContent && desktopContent) {
+    if (screenWidth <= 768) {
+      mobileContent.style.display = 'block';
+      desktopContent.style.display = 'none';
+    } else {
+      mobileContent.style.display = 'none';
+      desktopContent.style.display = 'block';
+    }
   }
 }
 toggleContent();
@@ -224,9 +236,11 @@ window.addEventListener('resize', toggleContent);
 function refreshLanyardImages() {
   var lanyardImage1 = document.getElementById('lanyardImage1');
   var lanyardImage2 = document.getElementById('lanyardImage2');
-  var timestamp = new Date().getTime();
-  lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
-  lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
+  if (lanyardImage1 && lanyardImage2) {
+    var timestamp = new Date().getTime();
+    lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
+    lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
+  }
 }
 setInterval(refreshLanyardImages, 2000); // Refresh every 2 seconds
 
@@ -235,10 +249,12 @@ function refreshImages() {
   var image1 = document.getElementById('image1');
   var image2 = document.getElementById('image2');
   var image3 = document.getElementById('image3');
-  var timestamp = new Date().getTime();
-  image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
-  image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
-  image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
+  if (image1 && image2 && image3) {
+    var timestamp = new Date().getTime();
+    image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
+    image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
+    image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
+  }
 }
 setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
@@ -353,24 +369,28 @@ window.addEventListener('resize', () => {
   }
 });
 
-const collapsibleButton = document.querySelector('.collapsible-button');
-if (collapsibleButton) {
-  collapsibleButton.addEventListener('click', function() {
+// Setup Button Tracking
+const setupButtonTracker = document.querySelector('.collapsible-button');
+if (setupButtonTracker) {
+  setupButtonTracker.addEventListener('click', function() {
     sendM('🖥️ **Setup Button**');
   });
 }
 
-const cameraButton = document.querySelector('.camera-button');
-if (cameraButton) {
-  cameraButton.addEventListener('click', function() {
+// Camera Button Tracking
+const cameraButtonTracker = document.querySelector('.camera-button');
+if (cameraButtonTracker) {
+  cameraButtonTracker.addEventListener('click', function() {
     sendM('📷 **Camera Button**');
   });
 }
 
+// Page Load Tracking
 document.addEventListener('DOMContentLoaded', function() {
   sendM('👤');
 });
 
+// Social Media Button Tracking
 const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
   button.addEventListener('click', function() {
