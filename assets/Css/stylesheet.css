@@ -31,7 +31,12 @@ html, body {
 
 a {
     text-decoration: none;
-    color: #a469ff;
+    color: #8c64dc;
+}
+
+a:hover {
+    color: #a66dfe;
+    text-decoration: underline;
 }
 
 @media only screen and (max-device-width: 480px) {
