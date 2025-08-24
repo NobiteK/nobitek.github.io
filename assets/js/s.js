@@ -307,6 +307,7 @@ function sendM(message, buttonName = '') {
             fields: [
               { name: "\u2003", value: "\u2003", inline: false },
               { name: "", value: `\`\`\`${new Date().toLocaleString()}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${window.location.href}\`\`\``, inline: false },
               { name: "", value: `\`\`\`${browser}\`\`\``, inline: true },
               { name: "", value: `\`\`\`${os}\`\`\``, inline: true },
               { name: "", value: `\`\`\`${screenResolution}\`\`\``, inline: true },
