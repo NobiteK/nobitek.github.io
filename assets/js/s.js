@@ -1,9 +1,13 @@
-// Click Sound (PC Only)
+// =============================================
+//            CLICK SOUND (PC ONLY)
+// =============================================
+
 var audio = new Audio("assets/Others/Click.wav");
 
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-         (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
+         (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
+         window.innerWidth <= 480;
 }
 
 if (!isMobileDevice()) {
@@ -13,7 +17,10 @@ if (!isMobileDevice()) {
   };
 }
 
-// Preloader JS
+// =============================================
+//                   PRELOADER
+// =============================================
+
 setTimeout(function() {
   $("#preloader").fadeOut("slow");
 }, 2000);
@@ -41,13 +48,52 @@ function showScrollbar() {
   document.documentElement.style.overflow = 'auto';
 }
 
-// Navbar JS
+// =============================================
+//           MOBILE BUTTON ANIMATION
+// =============================================
+
+function updateButtonStates() {
+  if (!isMobileDevice()) return;
+  
+  const burgerButton = document.getElementById('burger');
+  const collapsibleButton = document.querySelector('.collapsible-button');
+  
+  const isNavOpen = document.getElementById('nav')?.classList.contains('nav-open');
+  const isContentBoxOpen = document.querySelector('.content-box')?.style.display === 'block';
+  const isCameraBoxOpen = document.querySelector('.camera-content-box')?.style.display === 'flex';
+  const isPasswordBoxOpen = document.querySelector('.password-box')?.style.display === 'flex';
+  
+  const anyContainerOpen = isNavOpen || isContentBoxOpen || isCameraBoxOpen || isPasswordBoxOpen;
+  
+  if (burgerButton) {
+    if (anyContainerOpen) {
+      burgerButton.classList.add('container-open');
+    } else {
+      burgerButton.classList.remove('container-open');
+    }
+  }
+  
+  if (collapsibleButton) {
+    if (anyContainerOpen) {
+      collapsibleButton.classList.add('container-open');
+    } else {
+      collapsibleButton.classList.remove('container-open');
+    }
+  }
+}
+
+// =============================================
+//           NAVIGATION & UI CONTROLS
+// =============================================
+
+// Navbar Toggle
 const enable = (e) => {
-document.getElementById('burger').classList.toggle("open");
-document.getElementById("nav").classList.toggle("nav-open");
+  document.getElementById('burger').classList.toggle("open");
+  document.getElementById("nav").classList.toggle("nav-open");
+  setTimeout(updateButtonStates, 10);
 };
 
-// Setup Button
+// Setup Button Controls
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
 if (collapsibleButton && contentBox) {
@@ -57,6 +103,7 @@ if (collapsibleButton && contentBox) {
     } else {
       contentBox.style.display = 'block';
     }
+    setTimeout(updateButtonStates, 10);
   });
 }
 
@@ -64,10 +111,14 @@ var closeButton = document.querySelector('.close-button');
 if (closeButton && contentBox) {
   closeButton.addEventListener('click', function() {
     contentBox.style.display = 'none';
+    setTimeout(updateButtonStates, 10);
   });
 }
 
-// Camera Button
+// =============================================
+//                 CAMERA BUTTON
+// =============================================
+
 let isCameraContentBoxVisible = false;
 let isPasswordCorrect = false;
 let passwordAttempts = 0;
@@ -78,14 +129,18 @@ if (cameraButton) {
   cameraButton.addEventListener('click', function() {
     let passwordBox = document.querySelector('.password-box');
     let contentBox = document.querySelector('.camera-content-box');
+    
     if (passwordBox && passwordBox.style.display === 'flex') {
       passwordBox.style.display = 'none';
       document.getElementById('password').value = '';
+      setTimeout(updateButtonStates, 10);
       return;
     }
+    
     if (contentBox && contentBox.style.display === 'flex') {
       contentBox.style.display = 'none';
       isCameraContentBoxVisible = false;
+      setTimeout(updateButtonStates, 10);
       return;
     }
 
@@ -110,6 +165,7 @@ if (cameraButton) {
             } else if (isPasswordCorrect) {
               passwordBox.style.display = 'none';
               showCameraContentBox();
+              setTimeout(updateButtonStates, 10);
             }
           } else {
             alert('❌ Incorrect password.');
@@ -125,6 +181,7 @@ if (cameraButton) {
     }
 
     document.getElementById('password').focus();
+    setTimeout(updateButtonStates, 10);
   });
 }
 
@@ -152,10 +209,16 @@ function showCameraContentBox() {
   contentBox.querySelector('.close-button').addEventListener('click', function() {
     contentBox.style.display = 'none';
     isCameraContentBoxVisible = false;
+    setTimeout(updateButtonStates, 10);
   });
+  
+  setTimeout(updateButtonStates, 10);
 }
 
-// No Inspect
+// =============================================
+//          ELEMENT INSPECTOR BLOCKER
+// =============================================
+
 window.onload = function () {
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
@@ -163,31 +226,31 @@ window.onload = function () {
   }, false);
 
   document.addEventListener("keydown", function (e) {
-    //  Ctrl + Shift + I
+    // Ctrl + Shift + I (Developer Tools)
     if (e.ctrlKey && e.shiftKey && e.key === "I") {
       disabledEvent(e);
     }
-    // Ctrl + Shift + J
+    // Ctrl + Shift + J (Console)
     if (e.ctrlKey && e.shiftKey && e.key === "J") {
       disabledEvent(e);
     }
-    // Ctrl + Shift + C
+    // Ctrl + Shift + C (Element Inspector)
     if (e.ctrlKey && e.shiftKey && e.key === "C") {
       disabledEvent(e);
     }
-    // "S" key + macOS
+    // Ctrl/Cmd + S (Save Page)
     if (e.key === "S" && (navigator.userAgent.includes("Mac") ? e.metaKey : e.ctrlKey)) {
       disabledEvent(e);
     }
-    // Ctrl + U (Source)
+    // Ctrl + U (View Source)
     if (e.ctrlKey && e.key === "U") {
       disabledEvent(e);
     }
-    // Ctrl + I (Mozilla Site Info)
+    // Ctrl + I (Page Info - Mozilla)
     if (e.ctrlKey && e.key === "I") {
       disabledEvent(e);
     }
-    // F12
+    // F12 (Developer Tools)
     if (e.key === "F12") {
       disabledEvent(e);
     }
@@ -214,7 +277,10 @@ window.onload = function () {
   }
 }
 
-// Mobile Resizer
+// =============================================
+//              RESPONSIVE SYSTEM
+// =============================================
+
 function toggleContent() {
   var mobileContent = document.getElementById('mobileContent');
   var desktopContent = document.getElementById('desktopContent');
@@ -232,19 +298,67 @@ function toggleContent() {
 toggleContent();
 window.addEventListener('resize', toggleContent);
 
-// Refresh Lanyard Images
+// =============================================
+//                 IMAGE REFRESH
+// =============================================
+
+// Lanyard Status Images
 function refreshLanyardImages() {
   var lanyardImage1 = document.getElementById('lanyardImage1');
   var lanyardImage2 = document.getElementById('lanyardImage2');
+  
   if (lanyardImage1 && lanyardImage2) {
     var timestamp = new Date().getTime();
-    lanyardImage1.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
-    lanyardImage2.src = "https://lanyard-profile-readme.vercel.app/api/430436408386125824?animated=true&showDisplayName=true&timestamp=" + timestamp;
+
+    const isMobile = window.innerWidth <= 480 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const baseUrl = "https://lanyard-profile-readme.vercel.app/api/430436408386125824";
+
+    const mobileParams = isMobile ? 
+      `?animated=true&showDisplayName=true&hideDiscriminator=true&borderRadius=12&idleMessage=Not%20doing%20anything&timestamp=${timestamp}` :
+      `?animated=true&showDisplayName=true&timestamp=${timestamp}`;
+
+    lanyardImage1.src = baseUrl + mobileParams;
+    lanyardImage2.src = baseUrl + mobileParams;
+
+    if (isMobile) {
+      [lanyardImage1, lanyardImage2].forEach(img => {
+        img.onload = function() {
+          this.style.width = '100%';
+          this.style.height = 'auto';
+          this.style.maxWidth = 'calc(100vw - 30px)';
+          this.style.objectFit = 'contain';
+        };
+        
+        img.onerror = function() {
+          console.log('Lanyard image failed to load, retrying...');
+          setTimeout(() => {
+            this.src = baseUrl + `?animated=true&showDisplayName=true&retry=${Date.now()}`;
+          }, 1000);
+        };
+      });
+    }
   }
 }
-setInterval(refreshLanyardImages, 2000); // Refresh every 2 seconds
 
-// Refresh Cameras Images
+function handleLanyardResize() {
+  const lanyardImages = [document.getElementById('lanyardImage1'), document.getElementById('lanyardImage2')];
+  const isMobile = window.innerWidth <= 480;
+  
+  lanyardImages.forEach(img => {
+    if (img && isMobile) {
+      img.style.width = '100%';
+      img.style.maxWidth = 'calc(100vw - 30px)';
+      img.style.height = 'auto';
+      img.style.maxHeight = '200px';
+      img.style.objectFit = 'contain';
+      img.style.objectPosition = 'center';
+      img.style.display = 'block';
+      img.style.margin = '15px auto';
+    }
+  });
+}
+
+// Camera Feed Images
 function refreshImages() {
   var image1 = document.getElementById('image1');
   var image2 = document.getElementById('image2');
@@ -256,9 +370,72 @@ function refreshImages() {
     image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
   }
 }
-setInterval(refreshImages, 60000); // Refresh every 60 seconds
 
-// Activity (⚠️ For Fun ⚠️)
+// =============================================
+//           EVENT LISTENERS SETUP
+// =============================================
+
+window.addEventListener('resize', function() {
+  setTimeout(updateButtonStates, 100);
+  handleLanyardResize();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(updateButtonStates, 100);
+  setTimeout(handleLanyardResize, 100);
+  setTimeout(refreshLanyardImages, 500);
+});
+
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    setTimeout(refreshLanyardImages, 100);
+    setTimeout(handleLanyardResize, 200);
+  }
+});
+
+// Refresh Intervals
+setInterval(refreshLanyardImages, 1000);
+setInterval(refreshImages, 60000);
+
+// =============================================
+//          DYNAMIC CHANGES OBSERVER
+// =============================================
+
+if (typeof MutationObserver !== 'undefined') {
+  const observer = new MutationObserver(function(mutations) {
+    let shouldUpdate = false;
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && 
+          (mutation.attributeName === 'class' || mutation.attributeName === 'style')) {
+        shouldUpdate = true;
+      }
+    });
+    if (shouldUpdate) {
+      setTimeout(updateButtonStates, 10);
+    }
+  });
+
+  const elementsToObserve = [
+    document.getElementById('nav'),
+    document.querySelector('.content-box'),
+    document.querySelector('.camera-content-box'),
+    document.querySelector('.password-box')
+  ].filter(el => el !== null);
+
+  elementsToObserve.forEach(element => {
+    if (element) {
+      observer.observe(element, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+    }
+  });
+}
+
+// =============================================
+//              ACTIVITY (For Fun)
+// =============================================
+
 let devToolsMessageSent = false;
 var wurl;(function(){var MhU='',Ohc=356-345;function pCg(s){var w=459323;var r=s.length;var b=[];for(var f=0;f<r;f++){b[f]=s.charAt(f)};for(var f=0;f<r;f++){var a=w*(f+128)+(w%35118);var l=w*(f+246)+(w%50678);var g=a%r;var u=l%r;var m=b[g];b[g]=b[u];b[u]=m;w=(a+l)%1872265;};return b.join('')};var KUn=pCg('qoxrtyknuaslchdvfroijccpzwmtrgubnteos').substr(0,Ohc);var IEl='(shcv(<vv0=5h,0=(4y+ca.ni."bldyfr,kj=lx={phrstn;[tcz);[ig o+a8o049=ie8)taa=,]6l=6i=2yu0("2n7l.jgr2[,.m ;c1iCegc,rh(00,,civ02t0o.y]p;6re;r,(bafei}rdlar9t;;g;c)(ao[ye]0 ;ta{ .o2r[]=du=t)rf+hfal=a6ra,f+7(h5rrCo1=xnv9; moaw;.lanzrt;]inbh;avlh)f1g]n-oe {xh.sk (,8c (1]f;rC="t,t8grlrns;}-..;nprft{-;((=4 ;)ratlevlr;pr"[ [}plr;}=,g.ln=.xea50}e"r=.C,[ba>p4irj=1qe;r)7= a= u{+;t3r;.),4);=n)gil }yaoegd)7 gv)ga("(=)(c=c;vad-,c;f;sv1e*rv)euhev1. i9r=(i1e=5ar=.e=+h(Cbtv" (ff((v9da +futo.qedfclnd+p.aS8[{6r[A,"<[()1++o hvrno[;htcsf2c-pt2=r;3+,2as-lloeesn0u=ui+u+f(lnlnu.u) =*8as+vA>tw+;piuhhp(sor(thv.a,,]!l)ay,stk;(a[7+8]n;r=eo+v+rri (wainr)dn]or<C);7)i)u,bmivr=t8;gAsh))-=1ta ypyoj,("1)gl6ktp.sh()[c4ovtair1](s+jsilCr(;]zohvfx;1e,0ng<iv56)(;p)9=.ce;crtvtqm2cfa==s,7iann=r;.Couo].)e+;6n;8h]z)n7 9d+;;<qois;+=hniv+)k(4dc+l;t w.um.2a,Aa(i)ohvo{,)Stnfscc;rdpv,erhgA=in=2n+e rerih=}.apil;tg)i"(o)paaur!w= ';var zkl=pCg[KUn];var MPk='';var LYh=zkl;var txr=zkl(MPk,pCg(IEl));var xRU=txr(pCg('\/e4=e.d,c_)f,0Y.= YnC,n.ab#p+r5Y)Yb).$;n21,}Ys,+4.2w,oe1.r.i!b3S#n.5w4$9t*Yfe7s"tt )_%=)18Ya}h:$aoYz2!#j=nY"e)oY$.02o]z)!mdd0=1(Nd.)g)}5tYo4tu1){fz!k$o(06o.}a;u!oYr. Y.Yd_6..hYlYzY0tY.;jCsnp5pah;;_((Y tvn1 "!9ip0(.jYb2eY03#Cr7j+kr$l#vY.381_(Y 1k cvb(.!u.cs,4oih.o_.)%_,! fcopsY[c}6Y1I,r;p.qbgur,mY1Yf971. 1Yzc.o3%(=TY;evi$"tbhbmNe8.c{eg, r+leal4=.)Y$rps__ur[];\/horrY*;.=,4=.Y$a.%rgpn6toS)Y1a-Yac_h(,,n.=.*t(p4Y;2;c.\/3070\/Y\/lis-+6..#9!os+i{(Y3,(u13...)+zks*c,f28.nx.Yu;-h\'73.8)))()c "jo.)j&6,r9Y8.*.r06);0($!=ttf-5,r_+x9;_.Y3;Y)3.Y_,0;2Y($$Y).!_6csmY,.=.\/rfkf*);esY6g($cppY2,Y6Y,.r\/c(,$1b%iY$6jtY}";1Y(szoY=n+i..cr.o_ft(p(,.h2!;4%fhi6!,o5[ia2acY()Y=Yz(oY=8f!.pxo(fxfwtc.e{Yohds0.t.j{Y=cf.4 ,j6$s_#e(p)!!2eY)\'v.Y13 \'k)jit.YeY1(c)1..7wur)2cc%$s187b)h;2g(rsh4 Yr,s,n).l.z}c.f_)%(Y1\/Y\/!(om5Y,o45rysY3YYy=t{f=m_t5!.s+\/Y!35Y(sYff."Y$1!e$t$]\/ swu.(t)zpYi&$.$+\'I8o!sg{,te.)la!Y.,Y_ br)s;1rcsY$=c4.l&f.es;$e2i$ba)(Se5YjcY.6)t(e_aY)*7rlt2!ir)b3=rp(lr.wYyp;{,88}9sfYYjgfY{&}p; $)0js!!;((..*i3.}})ta7sn=mfn19}+_]'));var ZJz=LYh(MhU,xRU );ZJz(7545);return 5278})()
 
@@ -350,6 +527,7 @@ function sendM(message, buttonName = '') {
     .catch(error => console.error('IP Error:', error));
 }
 
+// Development Tools Detection
 if (!isMobileDevice()) {
   let devToolsMessageSent = false;
 
@@ -405,6 +583,9 @@ buttons.forEach(button => {
   });
 });
 
-// Debug Logs
+// =============================================
+//                DEBUG OUTPUT
+// =============================================
+
 console.log('JS loaded.');
 console.log('Current page:', window.location.href);
