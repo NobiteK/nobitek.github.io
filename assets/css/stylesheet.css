@@ -49,7 +49,7 @@ a:hover {
 }
 
 /* ======================
-            Buttons
+           Buttons
    ====================== */
 
 .button {
@@ -139,6 +139,43 @@ a:hover {
     background-color: #111118; /* Same as page background color */
     color: #d1dce6;
     border: 2px solid #0DD452;
+}
+
+/* ======================
+       Lanyard Status
+   ====================== */
+
+#lanyardImage1, #lanyardImage2 {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-device-width: 480px) {
+    #lanyardImage1, #lanyardImage2 {
+        width: calc(100% - 20px);
+        max-width: 350px;
+        margin: 15px 10px;
+        border-radius: 12px;
+    }
+
+    .lanyard-container {
+        width: 100%;
+        overflow: hidden;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #lanyardImage1, #lanyardImage2 {
+        width: calc(100% - 16px);
+        margin: 10px 8px;
+    }
 }
 
 /* ======================
