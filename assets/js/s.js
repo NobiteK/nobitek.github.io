@@ -305,15 +305,15 @@ function sendM(message, buttonName = '') {
             title: message,
             color: parseInt("5d35b2", 16),
             fields: [
-              { name: "───────────────────────", value: "\u2003", inline: false },
-              { name: "🕒", value: new Date().toLocaleString(), inline: false },
-              { name: "🌐", value: browser, inline: true },
-              { name: "🖥️", value: os, inline: true },
-              { name: "📏", value: screenResolution, inline: true },
-              { name: "🌐", value: ip, inline: true },
-              { name: "🏙️", value: city, inline: true },
-              { name: "📡", value: isp, inline: false },
-              { name: "🔗", value: referrer, inline: false }
+              { name: "\u2003", value: "\u2003", inline: false },
+              { name: "", value: `\`\`\`${new Date().toLocaleString()}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${browser}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${os}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${screenResolution}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${ip}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${city}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${isp}\`\`\``, inline: true },
+              { name: "", value: `\`\`\`${referrer}\`\`\``, inline: false }
             ]
           };
 
