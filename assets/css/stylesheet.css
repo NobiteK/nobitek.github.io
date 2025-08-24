@@ -142,19 +142,16 @@ a:hover {
 }
 
 /* ======================
-       Lanyard Status
+       Lanyard Status (FIXED)
    ====================== */
 
 #lanyardImage1, #lanyardImage2 {
     max-width: 100%;
     height: auto;
-    width: auto;
     display: block;
     margin: 10px auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    object-fit: contain;
-    background-color: transparent;
 }
 
 .lanyard-container {
@@ -164,69 +161,29 @@ a:hover {
     align-items: center;
     padding: 0 15px;
     box-sizing: border-box;
-    overflow: visible;
 }
 
-@media only screen and (max-device-width: 480px) {
+/* Mobile Lanyard - Clean and Simple */
+@media only screen and (max-width: 480px) {
     #lanyardImage1, #lanyardImage2 {
-        width: 100% !important;
+        width: calc(100vw - 30px) !important;
         max-width: calc(100vw - 30px) !important;
         height: auto !important;
-        min-height: unset !important;
-        max-height: 200px !important;
-        object-fit: contain !important;
-        object-position: center !important;
         margin: 15px auto !important;
-        padding: 0 !important;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .lanyard-container {
         width: 100%;
-        max-width: 100%;
         padding: 0 15px;
         margin: 0;
-        overflow: hidden;
         display: block;
-    }
-
-    .lanyard-container div,
-    #lanyardImage1 + div,
-    #lanyardImage2 + div {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: visible !important;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    #lanyardImage1, #lanyardImage2 {
-        max-width: calc(100vw - 20px) !important;
-        max-height: 180px !important;
-        margin: 12px auto !important;
-    }
-    
-    .lanyard-container {
-        padding: 0 10px;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    #lanyardImage1, #lanyardImage2 {
-        max-width: calc(100vw - 16px) !important;
-        max-height: 160px !important;
-        margin: 10px auto !important;
-        border-radius: 8px;
-    }
-    
-    .lanyard-container {
-        padding: 0 8px;
     }
 }
 
 /* ======================
-        Burger Navbar
+        Burger Navbar (FIXED CENTERING)
    ====================== */
 
 header {
@@ -296,7 +253,7 @@ header {
     border: 1px solid #cccccc80;
     box-sizing: border-box;
     z-index: 1001;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #burger:hover {
@@ -313,6 +270,8 @@ header {
     opacity: 1;
     transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
     box-sizing: border-box;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #burger span:nth-child(1) {
@@ -337,27 +296,18 @@ header {
 }
 
 #burger.open span:nth-child(2) {
-    transform: rotate(45deg);
-}
-
-#burger.open span:nth-child(3) {
-    transform: rotate(-45deg);
+    transform: translateX(-50%) rotate(45deg);
     top: 24px;
 }
 
-#burger, .collapsible-button {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+#burger.open span:nth-child(3) {
+    transform: translateX(-50%) rotate(-45deg);
+    top: 24px;
 }
 
-@media only screen and (max-device-width: 480px) {
+/* Mobile burger scaling with proper centering */
+@media only screen and (max-width: 480px) {
     #burger.container-open {
-        width: 35px;
-        height: 35px;
-        transform: scale(0.8);
-        opacity: 0.7;
-    }
-
-    .collapsible-button.container-open {
         width: 35px;
         height: 35px;
         transform: scale(0.8);
@@ -366,11 +316,16 @@ header {
 
     #burger.container-open span {
         width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .collapsible-button.container-open .pc-icon {
-        width: 20px;
-        height: 20px;
+    #burger.container-open.open span:nth-child(2) {
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    #burger.container-open.open span:nth-child(3) {
+        transform: translateX(-50%) rotate(-45deg);
     }
 
     #burger:not(.container-open) {
@@ -380,29 +335,42 @@ header {
         opacity: 1;
     }
 
-    .collapsible-button:not(.container-open) {
-        width: 50px;
-        height: 50px;
-        transform: scale(1);
-        opacity: 1;
-    }
-
     #burger:not(.container-open) span {
         width: 60%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .collapsible-button:not(.container-open) .pc-icon {
-        width: 28px;
-        height: 28px;
+    #burger:not(.container-open).open span:nth-child(2) {
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    #burger:not(.container-open).open span:nth-child(3) {
+        transform: translateX(-50%) rotate(-45deg);
     }
 }
 
+/* Force proper sizing on desktop */
 @media only screen and (min-width: 481px) {
-    #burger, .collapsible-button {
+    #burger {
         width: 50px !important;
         height: 50px !important;
         transform: scale(1) !important;
         opacity: 1 !important;
+    }
+
+    #burger span {
+        width: 60% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    #burger.open span:nth-child(2) {
+        transform: translateX(-50%) rotate(45deg) !important;
+    }
+
+    #burger.open span:nth-child(3) {
+        transform: translateX(-50%) rotate(-45deg) !important;
     }
 }
 
@@ -643,7 +611,7 @@ header {
 }
 
 /* ======================
-        Setup Button
+        Setup Button (FIXED CENTERING)
    ====================== */
 
 .collapsible-container {
@@ -665,7 +633,7 @@ header {
     justify-content: center;
     border: 1px solid #cccccc80;
     z-index: 1001;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .collapsible-button:hover {
@@ -736,6 +704,48 @@ header {
 
 .content-scrollable ul ul {
     padding-left: 20px;
+}
+
+/* Mobile setup button scaling with proper centering */
+@media only screen and (max-width: 480px) {
+    .collapsible-button.container-open {
+        width: 35px;
+        height: 35px;
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+
+    .collapsible-button.container-open .pc-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .collapsible-button:not(.container-open) {
+        width: 50px;
+        height: 50px;
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .collapsible-button:not(.container-open) .pc-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Force proper sizing on desktop */
+@media only screen and (min-width: 481px) {
+    .collapsible-button {
+        width: 50px !important;
+        height: 50px !important;
+        transform: scale(1) !important;
+        opacity: 1 !important;
+    }
+
+    .collapsible-button .pc-icon {
+        width: 28px !important;
+        height: 28px !important;
+    }
 }
 
 /* ======================
