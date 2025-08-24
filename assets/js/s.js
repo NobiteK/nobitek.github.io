@@ -349,27 +349,30 @@ function sendM(message, buttonName = '') {
     .catch(error => console.error('IP Error:', error));
 }
 
-function isDevToolsOpen() {
-  const threshold = 160;
-  const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-  const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-  return widthThreshold || heightThreshold;
+if (!isMobileDevice()) {
+  let devToolsMessageSent = false;
+
+  function isDevToolsOpen() {
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    return widthThreshold || heightThreshold;
+  }
+
+  setInterval(() => {
+    if (isDevToolsOpen() && !devToolsMessageSent) {
+      sendM('🛠️ **Developer Tools**');
+      devToolsMessageSent = true;
+    }
+  }, 1000);
+
+  window.addEventListener('resize', () => {
+    if (!isDevToolsOpen()) {
+      devToolsMessageSent = false;
+    }
+  });
 }
 
-setInterval(() => {
-  if (isDevToolsOpen() && !devToolsMessageSent) {
-    sendM('🛠️ **Developer Tools**');
-    devToolsMessageSent = true;
-  }
-}, 1000);
-
-window.addEventListener('resize', () => {
-  if (!isDevToolsOpen()) {
-    devToolsMessageSent = false;
-  }
-});
-
-// Setup Button Tracking
 const setupButtonTracker = document.querySelector('.collapsible-button');
 if (setupButtonTracker) {
   setupButtonTracker.addEventListener('click', function() {
@@ -377,7 +380,6 @@ if (setupButtonTracker) {
   });
 }
 
-// Camera Button Tracking
 const cameraButtonTracker = document.querySelector('.camera-button');
 if (cameraButtonTracker) {
   cameraButtonTracker.addEventListener('click', function() {
@@ -385,12 +387,10 @@ if (cameraButtonTracker) {
   });
 }
 
-// Page Load Tracking
 document.addEventListener('DOMContentLoaded', function() {
   sendM('👤');
 });
 
-// Social Media Button Tracking
 const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
   button.addEventListener('click', function() {
@@ -405,5 +405,5 @@ buttons.forEach(button => {
 });
 
 // Debug Logs
-console.log('Script loaded, wurl:', wurl);
+console.log('JS loaded.');
 console.log('Current page:', window.location.href);
