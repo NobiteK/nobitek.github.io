@@ -142,7 +142,7 @@ a:hover {
 }
 
 /* ======================
-       Lanyard Status (FIXED)
+       Lanyard Status
    ====================== */
 
 #lanyardImage1, #lanyardImage2 {
@@ -183,7 +183,7 @@ a:hover {
 }
 
 /* ======================
-        Burger Navbar (FIXED CENTERING)
+        Burger Navbar
    ====================== */
 
 header {
@@ -194,7 +194,7 @@ header {
 }
 
 .nav {
-    position: fixed;
+    position: ;
     right: 0;
     width: 100%;
     max-width: 16rem;
@@ -611,7 +611,7 @@ header {
 }
 
 /* ======================
-        Setup Button (FIXED CENTERING)
+        Setup Button
    ====================== */
 
 .collapsible-container {
