@@ -302,18 +302,14 @@ window.addEventListener('resize', toggleContent);
 //                 IMAGE REFRESH
 // =============================================
 
-// Lanyard Images
-function refreshLanyardImages() {
-  var lanyardImage1 = document.getElementById('lanyardImage1');
-  var lanyardImage2 = document.getElementById('lanyardImage2');
-  
-  if (lanyardImage1 && lanyardImage2) {
+// Lanyard Image
+function refreshLanyardImage() {
+  var lanyardImage = document.getElementById('lanyardImage');
+  if (lanyardImage) {
     var timestamp = new Date().getTime();
     const baseUrl = "https://lanyard-profile-readme.vercel.app/api/430436408386125824";
     const params = `?animated=true&showDisplayName=true&timestamp=${timestamp}`;
-
-    lanyardImage1.src = baseUrl + params;
-    lanyardImage2.src = baseUrl + params;
+    lanyardImage.src = baseUrl + params;
   }
 }
 
@@ -340,17 +336,17 @@ window.addEventListener('resize', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(updateButtonStates, 100);
-  setTimeout(refreshLanyardImages, 500);
+  setTimeout(refreshLanyardImage, 500);
 });
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
-    setTimeout(refreshLanyardImages, 100);
+    setTimeout(refreshLanyardImage, 100);
   }
 });
 
 // Refresh Intervals
-setInterval(refreshLanyardImages, 1000);
+setInterval(refreshLanyardImage, 1000);
 setInterval(refreshImages, 60000);
 
 // =============================================
