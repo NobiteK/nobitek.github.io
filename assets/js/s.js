@@ -89,12 +89,22 @@ function updateButtonStates() {
 function closeNavIfOpen() {
   const nav = document.getElementById('nav');
   const burger = document.getElementById('burger');
+  const cameraBox = document.querySelector('.camera-content-box');
 
   if (nav.classList.contains('nav-open')) {
     nav.classList.remove('nav-open');
     burger.classList.remove('open');
-    setTimeout(updateButtonStates, 10);
   }
+
+  if (cameraBox && cameraBox.style.display === 'flex') {
+    cameraBox.classList.remove('show');
+    setTimeout(() => {
+      cameraBox.style.display = 'none';
+    }, 150);
+    isCameraContentBoxVisible = false;
+  }
+
+  setTimeout(updateButtonStates, 10);
 }
 
 // Navbar Toggle
@@ -105,19 +115,26 @@ const enable = (e) => {
   const cameraBox = document.querySelector('.camera-content-box');
   const passwordBox = document.querySelector('.password-box');
 
-  if (!nav.classList.contains('nav-open')) {
-    if (contentBox && contentBox.style.display === 'block') {
+  if (contentBox && contentBox.style.display === 'block') {
+    contentBox.classList.remove('show');
+    setTimeout(() => {
       contentBox.style.display = 'none';
-    }
-    if (cameraBox && cameraBox.style.display === 'flex') {
-      cameraBox.style.display = 'none';
-    }
-    if (passwordBox && passwordBox.style.display === 'flex') {
-      passwordBox.style.display = 'none';
-    }
+    }, 150);
   }
 
-  // Toggle nav
+  if (cameraBox && cameraBox.style.display === 'flex') {
+    cameraBox.classList.remove('show');
+    setTimeout(() => {
+      cameraBox.style.display = 'none';
+    }, 150);
+    isCameraContentBoxVisible = false;
+  }
+
+  if (passwordBox && passwordBox.style.display === 'flex') {
+    passwordBox.style.display = 'none';
+  }
+
+  // Toggle navbar
   burger.classList.toggle('open');
   nav.classList.toggle('nav-open');
 
@@ -130,7 +147,7 @@ var contentBox = document.querySelector('.content-box');
 if (collapsibleButton && contentBox) {
   collapsibleButton.addEventListener('click', function() {
     closeNavIfOpen();
-    
+
     if (contentBox.classList.contains('show')) {
       contentBox.classList.remove('show');
       setTimeout(() => {
@@ -141,7 +158,7 @@ if (collapsibleButton && contentBox) {
       contentBox.offsetHeight;
       contentBox.classList.add('show');
     }
-    
+
     setTimeout(updateButtonStates, 10);
   });
 }
