@@ -239,39 +239,39 @@ header {
 
 /* Burger Icon */
 #burger {
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  top: calc(12px + env(safe-area-inset-top));
-  right: 12px;
-  z-index: 1000;
-  cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
-  background-color: #000;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #cccccc80;
-  box-sizing: border-box;
-  z-index: 1001;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
+    right: 12px;
+    z-index: 1000;
+    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
+    background-color: #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccc80;
+    box-sizing: border-box;
+    z-index: 1001;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #burger:hover {
-  background-color: #1a1a1a;
+    background-color: #1a1a1a;
 }
 
 #burger span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 60%;
-  background: #ffffff;
-  border-radius: 9px;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  left: 50%;
-  transform: translateX(-50%);
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 60%;
+    background: #ffffff;
+    border-radius: 9px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #burger span:nth-child(1) { top: 16px; }
@@ -280,60 +280,60 @@ header {
 
 #burger.open span:nth-child(1),
 #burger.open span:nth-child(3) {
-  opacity: 0;
+    opacity: 0;
 }
 
 #burger.open span:nth-child(2) {
-  width: 60%;
-  height: 3px;
-  background: transparent;
-  position: relative;
+    width: 60%;
+    height: 3px;
+    background: transparent;
+    position: relative;
 }
 
 #burger.open::before,
 #burger.open::after {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 3px;
-  background: #ffffff;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background: #ffffff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 #burger.open::before {
-  transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 #burger.open::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 #burger.open::before,
 #burger.open::after {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Mobile scaling */
 @media only screen and (max-device-width: 480px) {
-  #burger.container-open {
-    width: 35px;
-    height: 35px;
-    transform: scale(0.8);
-    opacity: 0.7;
-  }
-  #burger:not(.container-open) {
-    width: 50px;
-    height: 50px;
-    transform: scale(1);
-    opacity: 1;
-  }
-  #burger.container-open span:nth-child(1) { top: 10px; }
-  #burger.container-open span:nth-child(2) { top: 16px; }
-  #burger.container-open span:nth-child(3) { top: 22px; }
+    #burger.container-open {
+        width: 35px;
+        height: 35px;
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+    #burger:not(.container-open) {
+        width: 50px;
+        height: 50px;
+        transform: scale(1);
+        opacity: 1;
+    }
+    #burger.container-open span:nth-child(1) { top: 10px; }
+    #burger.container-open span:nth-child(2) { top: 16px; }
+    #burger.container-open span:nth-child(3) { top: 22px; }
 }
 
 /* Force proper sizing on desktop */
@@ -399,9 +399,9 @@ header {
     }
 }
 
-/* ======================
-          Preloader
-   ====================== */
+/*  ============================================= 
+                    PRELOADER
+    ============================================= */
 
 #preloader {
     margin: 0;
@@ -469,9 +469,9 @@ header {
     }
 }
 
-/* ======================
-           Footer
-   ====================== */
+/*  ============================================= 
+                        FOOTER
+    ============================================= */
 
 .footer {
     position: fixed;
@@ -488,9 +488,9 @@ header {
     margin-bottom: 100px;
 }
 
-/* =====================
-        Notification
-   ===================== */
+/*  ============================================= 
+                    NOTIFICATIONS
+    ============================================= */
 
 #notification {
     position: fixed;
@@ -511,14 +511,14 @@ header {
     pointer-events: none;
 }
 
-/* ======================
-            Camera
-   ====================== */
+/*  ============================================= 
+                        CAMERAS
+    ============================================= */
 
 .camera-container {
     position: fixed;
     bottom: 10px;
-    left: 20px;
+    left: 12px;
     z-index: 1001;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -572,6 +572,15 @@ header {
     overflow-y: auto;
     transition: width 0.3s ease, padding 0.3s ease;
     border: 1px solid #cccccc80;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.camera-content-box.show {
+    display: flex !important;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .camera-content {
@@ -635,9 +644,21 @@ header {
     font-size: 16px;
 }
 
-/* ======================
-        Setup Button
-   ====================== */
+@media (max-width: 768px) {
+    .camera-content img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        margin: 0;
+        border-radius: 5px;
+    }
+}
+
+/*  ============================================= 
+                    SETUP BUTTON
+    ============================================= */
 
 .collapsible-container {
     position: relative;
@@ -717,8 +738,16 @@ header {
     z-index: 1000;
     font-size: 0.90em;
     overflow-y: auto;
-    transition: width 0.3s ease, padding 0.3s ease;
     border: 1px solid #cccccc80;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.content-box.show {
+    display: block !important;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .content-scrollable ul {
@@ -731,9 +760,9 @@ header {
     padding-left: 20px;
 }
 
-/* ======================
-         Some Divs
-   ====================== */
+/*  ============================================= 
+                    OTHER DIVS
+    ============================================= */
 
 .responsive-img {
     max-width: calc(100% - 15px);
@@ -753,9 +782,9 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* ======================
-          Scrollbar
-   ====================== */
+/*  ============================================= 
+                    SCROLLBAR
+    ============================================= */
 
 ::-webkit-scrollbar { display: none; }
 
