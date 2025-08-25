@@ -126,14 +126,22 @@ const enable = (e) => {
 
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
+
 if (collapsibleButton && contentBox) {
   collapsibleButton.addEventListener('click', function() {
     closeNavIfOpen();
-    if (contentBox.style.display === 'block') {
-      contentBox.style.display = 'none';
+    
+    if (contentBox.classList.contains('show')) {
+      contentBox.classList.remove('show');
+      setTimeout(() => {
+        contentBox.style.display = 'none';
+      }, 150);
     } else {
       contentBox.style.display = 'block';
+      contentBox.offsetHeight;
+      contentBox.classList.add('show');
     }
+    
     setTimeout(updateButtonStates, 10);
   });
 }
@@ -141,7 +149,10 @@ if (collapsibleButton && contentBox) {
 var closeButton = document.querySelector('.close-button');
 if (closeButton && contentBox) {
   closeButton.addEventListener('click', function() {
-    contentBox.style.display = 'none';
+    contentBox.classList.remove('show');
+    setTimeout(() => {
+      contentBox.style.display = 'none';
+    }, 150);
     setTimeout(updateButtonStates, 10);
   });
 }
@@ -168,8 +179,11 @@ if (cameraButton) {
       return;
     }
 
-    if (contentBox && contentBox.style.display === 'flex') {
-      contentBox.style.display = 'none';
+    if (contentBox && contentBox.classList.contains('show')) {
+      contentBox.classList.remove('show');
+      setTimeout(() => {
+        contentBox.style.display = 'none';
+      }, 150);
       isCameraContentBoxVisible = false;
       setTimeout(updateButtonStates, 10);
       return;
@@ -189,7 +203,6 @@ if (cameraButton) {
           if (btoa(password) === encodedPassword) {
             document.getElementById('password').value = '';
             sendM('✅ **Password Correct**');
-            
             passwordBox.style.display = 'none';
             showCameraContentBox();
             setTimeout(updateButtonStates, 10);
@@ -203,7 +216,7 @@ if (cameraButton) {
 
     passwordBox.style.display = 'flex';
     passwordBox.classList.add('fade-in');
-    
+
     setTimeout(() => {
       document.getElementById('password').focus();
     }, 100);
@@ -229,15 +242,19 @@ function showCameraContentBox() {
       </div>
     `;
 
-    // Add close button event listener
     contentBox.querySelector('.close-button').addEventListener('click', function() {
-      contentBox.style.display = 'none';
+      contentBox.classList.remove('show');
+      setTimeout(() => {
+        contentBox.style.display = 'none';
+      }, 150);
       isCameraContentBoxVisible = false;
       setTimeout(updateButtonStates, 10);
     });
   }
 
   contentBox.style.display = 'flex';
+  contentBox.offsetHeight;
+  contentBox.classList.add('show');
   isCameraContentBoxVisible = true;
   setTimeout(updateButtonStates, 10);
 }
