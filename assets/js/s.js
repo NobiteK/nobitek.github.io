@@ -302,60 +302,19 @@ window.addEventListener('resize', toggleContent);
 //                 IMAGE REFRESH
 // =============================================
 
-// Lanyard Status Images
+// Lanyard Images
 function refreshLanyardImages() {
   var lanyardImage1 = document.getElementById('lanyardImage1');
   var lanyardImage2 = document.getElementById('lanyardImage2');
   
   if (lanyardImage1 && lanyardImage2) {
     var timestamp = new Date().getTime();
-
-    const isMobile = window.innerWidth <= 480 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const baseUrl = "https://lanyard-profile-readme.vercel.app/api/430436408386125824";
+    const params = `?animated=true&showDisplayName=true&timestamp=${timestamp}`;
 
-    const mobileParams = isMobile ? 
-      `?animated=true&showDisplayName=true&hideDiscriminator=true&borderRadius=12&idleMessage=Not%20doing%20anything&timestamp=${timestamp}` :
-      `?animated=true&showDisplayName=true&timestamp=${timestamp}`;
-
-    lanyardImage1.src = baseUrl + mobileParams;
-    lanyardImage2.src = baseUrl + mobileParams;
-
-    if (isMobile) {
-      [lanyardImage1, lanyardImage2].forEach(img => {
-        img.onload = function() {
-          this.style.width = '100%';
-          this.style.height = 'auto';
-          this.style.maxWidth = 'calc(100vw - 30px)';
-          this.style.objectFit = 'contain';
-        };
-        
-        img.onerror = function() {
-          console.log('Lanyard image failed to load, retrying...');
-          setTimeout(() => {
-            this.src = baseUrl + `?animated=true&showDisplayName=true&retry=${Date.now()}`;
-          }, 1000);
-        };
-      });
-    }
+    lanyardImage1.src = baseUrl + params;
+    lanyardImage2.src = baseUrl + params;
   }
-}
-
-function handleLanyardResize() {
-  const lanyardImages = [document.getElementById('lanyardImage1'), document.getElementById('lanyardImage2')];
-  const isMobile = window.innerWidth <= 480;
-  
-  lanyardImages.forEach(img => {
-    if (img && isMobile) {
-      img.style.width = '100%';
-      img.style.maxWidth = 'calc(100vw - 30px)';
-      img.style.height = 'auto';
-      img.style.maxHeight = '200px';
-      img.style.objectFit = 'contain';
-      img.style.objectPosition = 'center';
-      img.style.display = 'block';
-      img.style.margin = '15px auto';
-    }
-  });
 }
 
 // Camera Feed Images
@@ -372,24 +331,21 @@ function refreshImages() {
 }
 
 // =============================================
-//           EVENT LISTENERS SETUP
+//               EVENT LISTENERS
 // =============================================
 
 window.addEventListener('resize', function() {
   setTimeout(updateButtonStates, 100);
-  handleLanyardResize();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(updateButtonStates, 100);
-  setTimeout(handleLanyardResize, 100);
   setTimeout(refreshLanyardImages, 500);
 });
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
     setTimeout(refreshLanyardImages, 100);
-    setTimeout(handleLanyardResize, 200);
   }
 });
 
@@ -433,7 +389,7 @@ if (typeof MutationObserver !== 'undefined') {
 }
 
 // =============================================
-//              ACTIVITY (For Fun)
+//             ACTIVITY (FOR FUN)
 // =============================================
 
 let devToolsMessageSent = false;
