@@ -145,40 +145,41 @@ a:hover {
        Lanyard Status
    ====================== */
 
-#lanyardImage1, #lanyardImage2 {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+#lanyardImage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .lanyard-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 15px;
-    box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 480px) {
-    #lanyardImage1, #lanyardImage2 {
-        width: calc(100vw - 30px) !important;
-        max-width: calc(100vw - 30px) !important;
-        height: auto !important;
-        margin: 15px auto !important;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .lanyard-container {
-        width: 100%;
-        padding: 0 15px;
-        margin: 0;
-        display: block;
-    }
+  #lanyardImage {
+    width: calc(100vw - 30px) !important;
+    max-width: calc(100vw - 30px) !important;
+    height: auto !important;
+    margin: 15px auto !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    object-fit: contain; /* ensures no cropping */
+    object-position: left; /* aligns from left on phone */
+  }
+  .lanyard-container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+    display: block;
+  }
 }
 
 /* ======================
@@ -486,7 +487,7 @@ header {
 
 #notification {
     position: fixed;
-    bottom: 20px;
+    bottom: 16px;
     left: 20px;
     padding: 10px;
     background: #1d1d29;
