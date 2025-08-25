@@ -54,17 +54,17 @@ function showScrollbar() {
 
 function updateButtonStates() {
   if (!isMobileDevice()) return;
-  
+
   const burgerButton = document.getElementById('burger');
   const collapsibleButton = document.querySelector('.collapsible-button');
-  
+
   const isNavOpen = document.getElementById('nav')?.classList.contains('nav-open');
   const isContentBoxOpen = document.querySelector('.content-box')?.style.display === 'block';
   const isCameraBoxOpen = document.querySelector('.camera-content-box')?.style.display === 'flex';
   const isPasswordBoxOpen = document.querySelector('.password-box')?.style.display === 'flex';
-  
+
   const anyContainerOpen = isNavOpen || isContentBoxOpen || isCameraBoxOpen || isPasswordBoxOpen;
-  
+
   if (burgerButton) {
     if (anyContainerOpen) {
       burgerButton.classList.add('container-open');
@@ -72,7 +72,7 @@ function updateButtonStates() {
       burgerButton.classList.remove('container-open');
     }
   }
-  
+
   if (collapsibleButton) {
     if (anyContainerOpen) {
       collapsibleButton.classList.add('container-open');
@@ -86,18 +86,49 @@ function updateButtonStates() {
 //           NAVIGATION & UI CONTROLS
 // =============================================
 
+function closeNavIfOpen() {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+
+  if (nav.classList.contains('nav-open')) {
+    nav.classList.remove('nav-open');
+    burger.classList.remove('open');
+    setTimeout(updateButtonStates, 10);
+  }
+}
+
 // Navbar Toggle
 const enable = (e) => {
-  document.getElementById('burger').classList.toggle("open");
-  document.getElementById("nav").classList.toggle("nav-open");
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const contentBox = document.querySelector('.content-box');
+  const cameraBox = document.querySelector('.camera-content-box');
+  const passwordBox = document.querySelector('.password-box');
+
+  if (!nav.classList.contains('nav-open')) {
+    if (contentBox && contentBox.style.display === 'block') {
+      contentBox.style.display = 'none';
+    }
+    if (cameraBox && cameraBox.style.display === 'flex') {
+      cameraBox.style.display = 'none';
+    }
+    if (passwordBox && passwordBox.style.display === 'flex') {
+      passwordBox.style.display = 'none';
+    }
+  }
+
+  // Toggle nav
+  burger.classList.toggle('open');
+  nav.classList.toggle('nav-open');
+
   setTimeout(updateButtonStates, 10);
 };
 
-// Setup Button Controls
 var collapsibleButton = document.querySelector('.collapsible-button');
 var contentBox = document.querySelector('.content-box');
 if (collapsibleButton && contentBox) {
   collapsibleButton.addEventListener('click', function() {
+    closeNavIfOpen();
     if (contentBox.style.display === 'block') {
       contentBox.style.display = 'none';
     } else {
@@ -127,16 +158,18 @@ const encodedPassword = 'c2ViYXNlYmEx';
 var cameraButton = document.querySelector('.camera-button');
 if (cameraButton) {
   cameraButton.addEventListener('click', function() {
+    closeNavIfOpen(); // NEW: close navbar if open
+
     let passwordBox = document.querySelector('.password-box');
     let contentBox = document.querySelector('.camera-content-box');
-    
+
     if (passwordBox && passwordBox.style.display === 'flex') {
       passwordBox.style.display = 'none';
       document.getElementById('password').value = '';
       setTimeout(updateButtonStates, 10);
       return;
     }
-    
+
     if (contentBox && contentBox.style.display === 'flex') {
       contentBox.style.display = 'none';
       isCameraContentBoxVisible = false;
