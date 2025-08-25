@@ -331,6 +331,9 @@ header {
     transform: scale(1);
     opacity: 1;
   }
+  #burger.container-open span:nth-child(1) { top: 10px; }
+  #burger.container-open span:nth-child(2) { top: 16px; }
+  #burger.container-open span:nth-child(3) { top: 22px; }
 }
 
 /* Force proper sizing on desktop */
