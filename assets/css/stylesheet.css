@@ -236,107 +236,122 @@ header {
     margin-top: 10vh;
 }
 
+/* Burger Icon */
 #burger {
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    top: calc(12px + env(safe-area-inset-top));
-    right: 12px;
-    z-index: 1000;
-    cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
-    background-color: #000;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cccccc80;
-    box-sizing: border-box;
-    z-index: 1001;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  right: 12px;
+  z-index: 1000;
+  cursor: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
+  background-color: #000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cccccc80;
+  box-sizing: border-box;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
 }
 
 #burger:hover {
-    background-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
 #burger span {
-    display: block;
-    position: absolute;
-    height: 3px;
-    width: 60%;
-    background: #ffffff;
-    border-radius: 9px;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    box-sizing: border-box;
-    left: 50%;
-    transform: translateX(-50%);
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 60%;
+  background: #ffffff;
+  border-radius: 9px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#burger .burger-line:nth-child(1) { top: 16px; }
-#burger .burger-line:nth-child(2) { top: 24px; }
-#burger .burger-line:nth-child(3) { top: 32px; }
+#burger span:nth-child(1) { top: 16px; }
+#burger span:nth-child(2) { top: 24px; }
+#burger span:nth-child(3) { top: 32px; }
 
-#burger .x-line {
-    top: 24px;
-    opacity: 0;
-}
-#burger .x-line:nth-child(4) {
-    transform: translateX(-50%) rotate(45deg);
-}
-#burger .x-line:nth-child(5) {
-    transform: translateX(-50%) rotate(-45deg);
+#burger.open span:nth-child(1),
+#burger.open span:nth-child(3) {
+  opacity: 0;
 }
 
-#burger.open .burger-line {
-    opacity: 0;
-}
-#burger.open .x-line {
-    opacity: 1;
+#burger.open span:nth-child(2) {
+  width: 60%;
+  height: 3px;
+  background: transparent;
+  position: relative;
 }
 
-/* Mobile burger scaling with proper centering */
+#burger.open::before,
+#burger.open::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background: #ffffff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#burger.open::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#burger.open::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#burger.open::before,
+#burger.open::after {
+  opacity: 1;
+}
+
+/* Mobile scaling */
 @media only screen and (max-device-width: 480px) {
-    #burger.container-open {
-        width: 35px;
-        height: 35px;
-        transform: scale(0.8);
-        opacity: 0.7;
-    }
-    #burger.container-open span {
-        width: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    #burger:not(.container-open) {
-        width: 50px;
-        height: 50px;
-        transform: scale(1);
-        opacity: 1;
-    }
-    #burger:not(.container-open) span {
-        width: 60%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  #burger.container-open {
+    width: 35px;
+    height: 35px;
+  }
+  #burger.open::before,
+  #burger.open::after {
+    width: 50%;
+  }
 }
 
 /* Force proper sizing on desktop */
 @media only screen and (min-width: 481px) {
     #burger {
-    width: 50px !important;
-    height: 50px !important;
-    transform: scale(1) !important;
-    opacity: 1 !important;
+        width: 50px !important;
+        height: 50px !important;
+        transform: scale(1) !important;
+        opacity: 1 !important;
     }
+
     #burger span {
-    width: 60% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+        width: 60% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    #burger.open span:nth-child(2) {
+        transform: translateX(-50%) rotate(45deg) !important;
+    }
+
+    #burger.open span:nth-child(3) {
+        transform: translateX(-50%) rotate(-45deg) !important;
     }
 }
 
-/* idk */
 .collapsible-button {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
