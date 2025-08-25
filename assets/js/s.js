@@ -151,14 +151,12 @@ if (closeButton && contentBox) {
 // =============================================
 
 let isCameraContentBoxVisible = false;
-let isPasswordCorrect = false;
-let passwordAttempts = 0;
 const encodedPassword = 'c2ViYXNlYmEx';
 
 var cameraButton = document.querySelector('.camera-button');
 if (cameraButton) {
   cameraButton.addEventListener('click', function() {
-    closeNavIfOpen(); // NEW: close navbar if open
+    closeNavIfOpen();
 
     let passwordBox = document.querySelector('.password-box');
     let contentBox = document.querySelector('.camera-content-box');
@@ -189,31 +187,27 @@ if (cameraButton) {
         if (event.key === 'Enter') {
           const password = event.target.value;
           if (btoa(password) === encodedPassword) {
-            passwordAttempts++;
             document.getElementById('password').value = '';
-            if (passwordAttempts === 1) {
-              isPasswordCorrect = true;
-              alert('✅ Password correct. 🔁 Please enter again to unlock content.');
-              sendM('✅ **Password Correct**');
-            } else if (isPasswordCorrect) {
-              passwordBox.style.display = 'none';
-              showCameraContentBox();
-              setTimeout(updateButtonStates, 10);
-            }
+            sendM('✅ **Password Correct**');
+            
+            passwordBox.style.display = 'none';
+            showCameraContentBox();
+            setTimeout(updateButtonStates, 10);
           } else {
             alert('❌ Incorrect password.');
             sendM('❌ **Incorrect password**');
-            passwordAttempts = 0;
-            isPasswordCorrect = false;
           }
         }
       });
-    } else {
-      passwordBox.classList.add('fade-in');
-      passwordBox.style.display = 'flex';
     }
 
-    document.getElementById('password').focus();
+    passwordBox.style.display = 'flex';
+    passwordBox.classList.add('fade-in');
+    
+    setTimeout(() => {
+      document.getElementById('password').focus();
+    }, 100);
+    
     setTimeout(updateButtonStates, 10);
   });
 }
@@ -234,17 +228,17 @@ function showCameraContentBox() {
         <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" title="Odświeżane co 1 minutę" alt="">
       </div>
     `;
+
+    // Add close button event listener
+    contentBox.querySelector('.close-button').addEventListener('click', function() {
+      contentBox.style.display = 'none';
+      isCameraContentBoxVisible = false;
+      setTimeout(updateButtonStates, 10);
+    });
   }
 
   contentBox.style.display = 'flex';
   isCameraContentBoxVisible = true;
-
-  contentBox.querySelector('.close-button').addEventListener('click', function() {
-    contentBox.style.display = 'none';
-    isCameraContentBoxVisible = false;
-    setTimeout(updateButtonStates, 10);
-  });
-  
   setTimeout(updateButtonStates, 10);
 }
 
