@@ -254,7 +254,7 @@ header {
   border: 1px solid #cccccc80;
   box-sizing: border-box;
   z-index: 1001;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #burger:hover {
@@ -322,10 +322,14 @@ header {
   #burger.container-open {
     width: 35px;
     height: 35px;
+    transform: scale(0.8);
+    opacity: 0.7;
   }
-  #burger.open::before,
-  #burger.open::after {
-    width: 50%;
+  #burger:not(.container-open) {
+    width: 50px;
+    height: 50px;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
