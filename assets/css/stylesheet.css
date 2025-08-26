@@ -601,7 +601,7 @@ header {
 
 .camera-content iframe {
     width: calc(50% - 10px);
-    height: 300px;
+    height: 248px;
 }
 
 .password-box {
