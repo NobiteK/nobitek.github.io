@@ -585,14 +585,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
-  button.addEventListener('click', function() {
+  button.addEventListener('click', function(event) {
+    event.preventDefault();
+    
     const buttonName = this.classList.contains('discord') ? 'Discord' :
                        this.classList.contains('instagram') ? 'Instagram' :
                        this.classList.contains('youtube') ? 'YouTube' :
                        this.classList.contains('steam') ? 'Steam' :
                        this.classList.contains('spotify') ? 'Spotify' :
                        this.classList.contains('twitch') ? 'Twitch' : 'Unknown';
+    
+    const targetUrl = this.href;
     sendM('', buttonName);
+
+    setTimeout(() => {
+      window.open(targetUrl, '_blank');
+    }, 500);
   });
 });
 
