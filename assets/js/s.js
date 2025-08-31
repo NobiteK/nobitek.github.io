@@ -608,5 +608,5 @@ buttons.forEach(button => {
 //                DEBUG OUTPUT
 // =============================================
 
-console.log('JS loaded.');
-console.log('Current page:', window.location.href);
+console.log('%c🌐 Current page: %c' + window.location.href, 'color: darkorange; font-weight: bold;', 'color: lightgreen;');
+console.log('%c🧭 User Agent: %c' + navigator.userAgent, 'color: green; font-weight: bold;', 'color: lightblue;');
