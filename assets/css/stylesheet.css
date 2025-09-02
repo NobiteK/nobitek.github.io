@@ -529,6 +529,7 @@ header {
 }
 
 .camera-button {
+    position: relative;
     border: none;
     background-color: #000;
     border-radius: 8px;
