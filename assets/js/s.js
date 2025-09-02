@@ -209,9 +209,9 @@ if (cameraButton) {
       passwordBox = document.createElement('div');
       passwordBox.classList.add('password-box');
       passwordBox.innerHTML = `
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" placeholder="Password" autofocus>
       `;
-      cameraButton.appendChild(passwordBox);
+      document.querySelector('.camera-button').appendChild(passwordBox);
 
       document.getElementById('password').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -233,12 +233,10 @@ if (cameraButton) {
     passwordBox.style.display = 'flex';
     passwordBox.classList.add('fade-in');
 
-    requestAnimationFrame(() => {
-      const input = document.getElementById('password');
-      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      input.focus();
-    });
-
+    setTimeout(() => {
+      document.getElementById('password').focus();
+    }, 300);
+    
     setTimeout(updateButtonStates, 10);
   });
 }
