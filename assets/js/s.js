@@ -211,7 +211,8 @@ if (cameraButton) {
       passwordBox.innerHTML = `
         <input type="password" id="password" placeholder="Password">
       `;
-      document.querySelector('.camera-button').appendChild(passwordBox);
+      document.body.appendChild(passwordBox);
+
       document.getElementById('password').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
           const password = event.target.value;
@@ -232,20 +233,14 @@ if (cameraButton) {
     passwordBox.style.display = 'flex';
     passwordBox.classList.add('fade-in');
 
-  setTimeout(() => {
+    requestAnimationFrame(() => {
     const input = document.getElementById('password');
     input.scrollIntoView({ behavior: 'smooth', block: 'center' });
     input.focus();
-    input.click();
-    
-    setTimeout(() => {
-      if (document.activeElement !== input) {
-        input.focus();
-        input.click();
-      }
-  }, 200);
-}, 300);
 
+    const touchEvent = new Event('touchstart', { bubbles: true });
+    input.dispatchEvent(touchEvent);
+    });
     setTimeout(updateButtonStates, 10);
   });
 }
@@ -266,6 +261,7 @@ function showCameraContentBox() {
         <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" title="Odświeżane co 1 minutę" alt="">
       </div>
     `;
+
     contentBox.querySelector('.close-button').addEventListener('click', function() {
       contentBox.classList.remove('show');
       setTimeout(() => {
@@ -275,6 +271,7 @@ function showCameraContentBox() {
       setTimeout(updateButtonStates, 10);
     });
   }
+
   contentBox.style.display = 'flex';
   contentBox.offsetHeight;
   contentBox.classList.add('show');
