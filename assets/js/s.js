@@ -179,6 +179,7 @@ if (closeButton && contentBox) {
 
 let isCameraContentBoxVisible = false;
 const encodedPassword = 'c2ViYXNlYmEx';
+
 var cameraButton = document.querySelector('.camera-button');
 if (cameraButton) {
   cameraButton.addEventListener('click', function() {
@@ -208,20 +209,10 @@ if (cameraButton) {
       passwordBox = document.createElement('div');
       passwordBox.classList.add('password-box');
       passwordBox.innerHTML = `
-        <input type="password" id="password" placeholder="Password" autocomplete="off">
+        <input type="password" id="password" placeholder="Password">
       `;
       document.querySelector('.camera-button').appendChild(passwordBox);
-      const passwordInput = document.getElementById('password');
-
-      passwordInput.addEventListener('blur', function(event) {
-        setTimeout(() => {
-          if (passwordBox.style.display === 'flex') {
-            passwordInput.focus();
-          }
-        }, 100);
-      });
-      
-      passwordInput.addEventListener('keypress', function(event) {
+      document.getElementById('password').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
           const password = event.target.value;
           if (btoa(password) === encodedPassword) {
@@ -237,19 +228,24 @@ if (cameraButton) {
         }
       });
     }
-    
+
     passwordBox.style.display = 'flex';
     passwordBox.classList.add('fade-in');
 
-    const passwordInput = document.getElementById('password');
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        passwordInput.focus();
-        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-          passwordInput.click();
-        }
-      });
-    });
+  setTimeout(() => {
+    const input = document.getElementById('password');
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    input.focus();
+    input.click();
+    
+    setTimeout(() => {
+      if (document.activeElement !== input) {
+        input.focus();
+        input.click();
+      }
+  }, 200);
+}, 300);
+
     setTimeout(updateButtonStates, 10);
   });
 }
