@@ -6,8 +6,7 @@ var audio = new Audio("assets/Others/Click.wav");
 
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-         (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
-         window.innerWidth <= 480;
+  (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) || window.innerWidth <= 480;
 }
 
 if (!isMobileDevice()) {
@@ -49,37 +48,290 @@ function showScrollbar() {
 }
 
 // =============================================
-//           MOBILE BUTTON ANIMATION
+//               WINDOWS MANAGEMENT
 // =============================================
 
-function updateButtonStates() {
-  if (!isMobileDevice()) return;
+document.addEventListener('DOMContentLoaded', function() {
+    updateClock();
+    setInterval(updateClock, 1000);
 
-  const burgerButton = document.getElementById('burger');
-  const collapsibleButton = document.querySelector('.collapsible-button');
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(makeWindowDraggable);
 
-  const isNavOpen = document.getElementById('nav')?.classList.contains('nav-open');
-  const isContentBoxOpen = document.querySelector('.content-box')?.style.display === 'block';
-  const isCameraBoxOpen = document.querySelector('.camera-content-box')?.style.display === 'flex';
-  const isPasswordBoxOpen = document.querySelector('.password-box')?.style.display === 'flex';
+    const cameraPassword = document.getElementById('camera-password');
+    const cameraError = document.getElementById('camera-error');
+    const cameraAuth = document.getElementById('camera-auth');
+    const cameraContent = document.getElementById('camera-content');
+    
+    if (cameraPassword) {
+        cameraPassword.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const encodedCorrectPassword = 'c2ViYXNlYmEx';
+                if (btoa(this.value) === encodedCorrectPassword) {
+                    cameraAuth.style.display = 'none';
+                    showCameraContent();
+                    this.value = '';
+                } else {
+                    this.value = '';
+                    cameraError.textContent = 'Wrong password';
+                    this.classList.add('error');
+                    
+                    setTimeout(() => {
+                        cameraError.textContent = '';
+                        this.classList.remove('error');
+                    }, 2000);
+                }
+            }
+        });
 
-  const anyContainerOpen = isNavOpen || isContentBoxOpen || isCameraBoxOpen || isPasswordBoxOpen;
-
-  if (burgerButton) {
-    if (anyContainerOpen) {
-      burgerButton.classList.add('container-open');
-    } else {
-      burgerButton.classList.remove('container-open');
+        // Resetowanie stanu przy zamknięciu okna
+        const cameraWindow = document.getElementById('camera-window');
+        if (cameraWindow) {
+            cameraWindow.querySelector('.close-button').addEventListener('click', () => {
+                cameraAuth.style.display = 'flex';
+                cameraContent.style.display = 'none';
+                cameraContent.innerHTML = '';
+                cameraPassword.value = '';
+                cameraError.textContent = '';
+            });
+        }
     }
-  }
 
-  if (collapsibleButton) {
-    if (anyContainerOpen) {
-      collapsibleButton.classList.add('container-open');
-    } else {
-      collapsibleButton.classList.remove('container-open');
+    // Obsługa przycisków na taskbarze
+    document.querySelectorAll('.taskbar-item').forEach(item => {
+        if (item.dataset.window) {
+            item.addEventListener('click', () => {
+                const windowId = item.dataset.window;
+                const window = document.getElementById(windowId);
+                if (window) {
+                    toggleWindow(window);
+                    updateTaskbarItem(item, window);
+                }
+            });
+        }
+    });
+
+    // Obsługa przycisków okien
+    document.querySelectorAll('.window').forEach(window => {
+        const minimizeBtn = window.querySelector('.minimize-button');
+        const closeBtn = window.querySelector('.close-button');
+        
+        if (minimizeBtn) {
+            minimizeBtn.addEventListener('click', () => {
+                closeWindow(window);
+            });
+        }
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                closeWindow(window);
+            });
+        }
+
+        window.addEventListener('mousedown', (e) => {
+            if (!e.target.classList.contains('window-button') && 
+                !e.target.classList.contains('minimize-button') && 
+                !e.target.classList.contains('close-button') &&
+                !e.target.tagName.toLowerCase().includes('input') &&
+                !e.target.tagName.toLowerCase().includes('button')) {
+                focusWindow(window);
+            }
+        });
+
+        const windowContent = window.querySelector('.window-content');
+        if (windowContent) {
+            windowContent.addEventListener('mousedown', (e) => {
+                if (!e.target.tagName.toLowerCase().includes('input') &&
+                    !e.target.tagName.toLowerCase().includes('button') &&
+                    !e.target.classList.contains('window-button')) {
+                    focusWindow(window);
+                }
+            });
+        }
+    });
+
+    // Start Menu
+    const startButton = document.getElementById('start-button');
+    const startMenu = document.querySelector('.start-menu');
+    
+    if (startButton && startMenu) {
+        startButton.addEventListener('click', () => {
+            startMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!startButton.contains(e.target) && !startMenu.contains(e.target)) {
+                startMenu.classList.remove('show');
+            }
+        });
     }
-  }
+});
+
+function makeWindowDraggable(windowEl) {
+    const header = windowEl.querySelector('.window-header');
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+
+    header.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+
+    function dragStart(e) {
+        if (e.target.classList.contains('window-controls') || 
+            e.target.classList.contains('window-button')) {
+            return;
+        }
+        
+        // Focus window when starting to drag
+        focusWindow(windowEl);
+        
+        isDragging = true;
+
+        const computedStyle = window.getComputedStyle(windowEl);
+        const matrix = new DOMMatrixReadOnly(computedStyle.transform);
+        const rect = windowEl.getBoundingClientRect();
+
+        if (windowEl.style.transform && windowEl.style.transform.includes('translate')) {
+            currentX = rect.left;
+            currentY = rect.top;
+        } else {
+            currentX = parseFloat(computedStyle.left) || rect.left;
+            currentY = parseFloat(computedStyle.top) || rect.top;
+        }
+
+        initialX = e.clientX - currentX;
+        initialY = e.clientY - currentY;
+
+        windowEl.style.left = currentX + 'px';
+        windowEl.style.top = currentY + 'px';
+        windowEl.style.transform = 'none';
+
+        if (e.target === header || header.contains(e.target)) {
+            header.classList.add('grabbing');
+        }
+    }
+
+    function drag(e) {
+        if (isDragging) {
+            e.preventDefault();
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+
+            const windowWidth = windowEl.offsetWidth;
+            const windowHeight = windowEl.offsetHeight;
+            const maxX = window.innerWidth - windowWidth;
+            const maxY = window.innerHeight - windowHeight;
+
+            currentX = Math.min(Math.max(0, currentX), maxX);
+            currentY = Math.min(Math.max(0, currentY), maxY);
+
+            windowEl.style.left = currentX + 'px';
+            windowEl.style.top = currentY + 'px';
+            windowEl.style.transform = 'none';
+        }
+    }
+
+    function dragEnd() {
+        isDragging = false;
+        header.classList.remove('grabbing');
+    }
+}
+
+function toggleWindow(window) {
+    const isMobile = innerWidth <= 768;
+    
+    if (!window.classList.contains('show')) {
+        if (isMobile) {
+            document.querySelectorAll('.window').forEach(w => {
+                if (w !== window && w.classList.contains('show')) {
+                    closeWindow(w);
+                }
+            });
+        }
+
+        window.classList.add('show');
+
+        const windowWidth = window.offsetWidth;
+        const windowHeight = window.offsetHeight;
+        const centerX = (innerWidth - windowWidth) / 2;
+
+        let centerY;
+        if (window.id === 'camera-window' && windowHeight > innerHeight / 2) {
+            centerY = 50;
+        } else {
+            centerY = (innerHeight - windowHeight) / 2;
+        }
+
+        window.style.transform = 'none';
+        window.style.left = `${Math.max(0, Math.min(centerX, innerWidth - windowWidth))}px`;
+        window.style.top = `${Math.max(0, Math.min(centerY, innerHeight - windowHeight))}px`;
+
+        focusWindow(window);
+
+        const taskbarItem = document.querySelector(`[data-window="${window.id}"]`);
+        if (taskbarItem) {
+            taskbarItem.classList.add('active');
+        }
+    } else {
+        if (parseInt(window.style.zIndex) < getHighestZIndex()) {
+            focusWindow(window);
+        } else {
+            minimizeWindow(window);
+        }
+    }
+}
+
+function minimizeWindow(window) {
+    window.classList.remove('show');
+    const taskbarItem = document.querySelector(`[data-window="${window.id}"]`);
+    if (taskbarItem) {
+        taskbarItem.classList.remove('active');
+    }
+}
+
+function closeWindow(window) {
+    window.classList.remove('show');
+    const taskbarItem = document.querySelector(`[data-window="${window.id}"]`);
+    if (taskbarItem) {
+        taskbarItem.classList.remove('active');
+    }
+}
+
+function getHighestZIndex() {
+    let highest = 1000;
+    document.querySelectorAll('.window').forEach(w => {
+        const zIndex = parseInt(w.style.zIndex) || 1000;
+        if (zIndex > highest) {
+            highest = zIndex;
+        }
+    });
+    return highest;
+}
+
+function focusWindow(window) {
+    if (!window.classList.contains('show')) {
+        return;
+    }
+
+    const highestZ = getHighestZIndex();
+
+    document.querySelectorAll('.window').forEach(w => {
+        if (w !== window) {
+            w.style.zIndex = '1000';
+        }
+    });
+    window.style.zIndex = (highestZ + 1).toString();
+}
+
+function updateTaskbarItem(item, window) {
+    if (window.classList.contains('show')) {
+        item.classList.add('active');
+    } else {
+        item.classList.remove('active');
+    }
 }
 
 // =============================================
@@ -220,7 +472,6 @@ if (cameraButton) {
             document.getElementById('password').value = '';
             sendM('✅ **Password Correct**');
             passwordBox.style.display = 'none';
-            showCameraContentBox();
             setTimeout(updateButtonStates, 10);
           } else {
             alert('❌ Incorrect password.');
@@ -241,38 +492,89 @@ if (cameraButton) {
   });
 }
 
-function showCameraContentBox() {
-  let contentBox = document.querySelector('.camera-content-box');
-  if (!contentBox) {
-    contentBox = document.createElement('div');
-    contentBox.classList.add('camera-content-box');
-    document.body.appendChild(contentBox);
-    contentBox.innerHTML = `
-      <span class="close-button">&times;</span>
-      <div class="camera-content">
-        <iframe src="https://rtsp.me/embed/nynG2ert/" frameborder="0" controls allowfullscreen></iframe>
-        <iframe src="https://rtsp.me/embed/tthyKabs/" frameborder="0" controls allowfullscreen></iframe>
-        <img id="image1" src="https://aero.webcam/cam/epsu-1.jpg" title="Odświeżane co 1 minutę" alt="">
-        <img id="image2" src="https://aero.webcam/cam/epsu-2.jpg" title="Odświeżane co 1 minutę" alt="">
-        <img id="image3" src="https://aero.webcam/cam/epsu-3.jpg" title="Odświeżane co 1 minutę" alt="">
-      </div>
-    `;
-
-    contentBox.querySelector('.close-button').addEventListener('click', function() {
-      contentBox.classList.remove('show');
-      setTimeout(() => {
-        contentBox.style.display = 'none';
-      }, 150);
-      isCameraContentBoxVisible = false;
-      setTimeout(updateButtonStates, 10);
+function showCameraContent() {
+  const cameraContent = document.getElementById('camera-content');
+  if (cameraContent) {
+    const cameraGrid = document.createElement('div');
+    cameraGrid.className = 'camera-grid';
+    setTimeout(() => {
+      const cameraWindow = document.getElementById('camera-window');
+      if (cameraWindow) {
+        cameraWindow.style.transform = 'none';
+        cameraWindow.style.top = '50px';
+        const centerX = (innerWidth - cameraWindow.offsetWidth) / 2;
+        cameraWindow.style.left = `${Math.max(0, centerX)}px`;
+      }
+    }, 100);
+    
+    const cameras = [
+      { 
+        id: 'camera1', 
+        header: 'Kamera 1', 
+        type: 'iframe',
+        src: 'https://rtsp.me/embed/nynG2ert/',
+        attributes: {
+          frameborder: '0',
+          allowfullscreen: true,
+          webkitallowfullscreen: true,
+          mozallowfullscreen: true,
+          allow: 'autoplay; fullscreen; encrypted-media',
+          loading: 'lazy',
+          style: 'width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;',
+          sandbox: 'allow-same-origin allow-scripts allow-popups allow-forms'
+        }
+      },
+      { 
+        id: 'camera2', 
+        header: 'Kamera 2', 
+        type: 'iframe',
+        src: 'https://rtsp.me/embed/tthyKabs/',
+        attributes: {
+          frameborder: '0',
+          allowfullscreen: true,
+          webkitallowfullscreen: true,
+          mozallowfullscreen: true,
+          allow: 'autoplay; fullscreen; encrypted-media',
+          loading: 'lazy',
+          style: 'width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;',
+          sandbox: 'allow-same-origin allow-scripts allow-popups allow-forms'
+        }
+      },
+      { id: 'image1', header: 'EPSU 1', type: 'img', src: 'https://aero.webcam/cam/epsu-1.jpg' },
+      { id: 'image2', header: 'EPSU 2', type: 'img', src: 'https://aero.webcam/cam/epsu-2.jpg' },
+      { id: 'image3', header: 'EPSU 3', type: 'img', src: 'https://aero.webcam/cam/epsu-3.jpg' }
+    ];
+    
+    cameras.forEach(camera => {
+      const item = document.createElement('div');
+      item.className = 'camera-item';
+      
+      const header = document.createElement('div');
+      header.className = 'camera-header';
+      header.textContent = camera.header;
+      
+      const element = document.createElement(camera.type);
+      element.id = camera.id;
+      element.src = camera.src;
+      
+      if (camera.type === 'iframe') {
+        for (const [key, value] of Object.entries(camera.attributes)) {
+          element[key] = value;
+        }
+      } else if (camera.type === 'img') {
+        element.title = 'Odświeżane co 1 minutę';
+        element.alt = '';
+      }
+      
+      item.appendChild(header);
+      item.appendChild(element);
+      cameraGrid.appendChild(item);
     });
+    
+    cameraContent.innerHTML = '';
+    cameraContent.appendChild(cameraGrid);
+    cameraContent.style.display = 'block';
   }
-
-  contentBox.style.display = 'flex';
-  contentBox.offsetHeight;
-  contentBox.classList.add('show');
-  isCameraContentBoxVisible = true;
-  setTimeout(updateButtonStates, 10);
 }
 
 // =============================================
@@ -338,27 +640,6 @@ window.onload = function () {
 }
 
 // =============================================
-//              RESPONSIVE SYSTEM
-// =============================================
-
-function toggleContent() {
-  var mobileContent = document.getElementById('mobileContent');
-  var desktopContent = document.getElementById('desktopContent');
-  var screenWidth = window.innerWidth;
-  if (mobileContent && desktopContent) {
-    if (screenWidth <= 768) {
-      mobileContent.style.display = 'block';
-      desktopContent.style.display = 'none';
-    } else {
-      mobileContent.style.display = 'none';
-      desktopContent.style.display = 'block';
-    }
-  }
-}
-toggleContent();
-window.addEventListener('resize', toggleContent);
-
-// =============================================
 //                 IMAGE REFRESH
 // =============================================
 
@@ -375,15 +656,15 @@ function refreshLanyardImage() {
 
 // Camera Images
 function refreshImages() {
-  var image1 = document.getElementById('image1');
-  var image2 = document.getElementById('image2');
-  var image3 = document.getElementById('image3');
-  if (image1 && image2 && image3) {
-    var timestamp = new Date().getTime();
-    image1.src = "https://aero.webcam/cam/epsu-1.jpg?timestamp=" + timestamp;
-    image2.src = "https://aero.webcam/cam/epsu-2.jpg?timestamp=" + timestamp;
-    image3.src = "https://aero.webcam/cam/epsu-3.jpg?timestamp=" + timestamp;
-  }
+    const timestamp = new Date().getTime();
+    const images = ['image1', 'image2', 'image3'];
+    
+    images.forEach((id, index) => {
+        const img = document.getElementById(id);
+        if (img) {
+            img.src = `https://aero.webcam/cam/epsu-${index + 1}.jpg?timestamp=${timestamp}`;
+        }
+    });
 }
 
 // =============================================
@@ -519,7 +800,7 @@ function sendM(message, buttonName = '') {
 
           const params = {
             username: "Website Notification",
-            avatar_url: "https://nobitek.pl/assets/Images/Icon.png",
+            avatar_url: "https://nobitek.github.io/assets/Images/Icon.png",
             embeds: embeds
           };
 
@@ -564,22 +845,23 @@ if (!isMobileDevice()) {
   });
 }
 
-const setupButtonTracker = document.querySelector('.collapsible-button');
-if (setupButtonTracker) {
-  setupButtonTracker.addEventListener('click', function() {
-    sendM('🖥️ **Setup Button**');
-  });
-}
-
-const cameraButtonTracker = document.querySelector('.camera-button');
-if (cameraButtonTracker) {
-  cameraButtonTracker.addEventListener('click', function() {
-    sendM('📷 **Camera Button**');
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-  sendM('👤');
+    sendM('👤');
+
+    document.querySelectorAll('.taskbar-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const windowId = this.dataset.window;
+            if (windowId === 'camera-window') {
+                sendM('📷 **Camera Window**');
+            } else if (windowId === 'pc-window') {
+                sendM('🖥️ **PC Specs Window**');
+            } else if (windowId === 'socials-window') {
+                sendM('🔗 **Socials Window**');
+            } else if (this.id === 'start-button') {
+                sendM('🌍 **Start Menu**');
+            }
+        });
+    });
 });
 
 const buttons = document.querySelectorAll('a.button');
@@ -604,7 +886,32 @@ buttons.forEach(button => {
 });
 
 // =============================================
-//                DEBUG OUTPUT
+//                     CLOCK
+// =============================================
+
+function updateClock() {
+    const now = new Date();
+    const timeElement = document.getElementById('time');
+    const dateElement = document.getElementById('date');
+    
+    if (timeElement) {
+        timeElement.textContent = now.toLocaleTimeString('pl-PL', { 
+            hour: '2-digit', 
+            minute: '2-digit'
+        });
+    }
+    
+    if (dateElement) {
+        dateElement.textContent = now.toLocaleDateString('pl-PL', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+    }
+}
+
+// =============================================
+//                 DEBUG OUTPUT
 // =============================================
 
 console.log('%c🌐 Current page: %c' + window.location.href, 'color: darkorange; font-weight: bold;', 'color: lightgreen;');
