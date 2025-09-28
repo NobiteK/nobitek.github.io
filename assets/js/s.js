@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cameraAuth = document.getElementById('camera-auth');
     const cameraContent = document.getElementById('camera-content');
     
-    if (cameraPassword) {
+if (cameraPassword) {
         cameraPassword.addEventListener('keyup', function(e) {
             if (e.key === 'Enter') {
                 const encodedCorrectPassword = 'c2ViYXNlYmEx';
@@ -71,10 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     cameraAuth.style.display = 'none';
                     showCameraContent();
                     this.value = '';
+                    sendM('✅ **Camera - Correct Password**');
                 } else {
                     this.value = '';
                     cameraError.textContent = 'Wrong password';
                     this.classList.add('error');
+                    sendM('❌ **Camera - Wrong Password**');
                     
                     setTimeout(() => {
                         cameraError.textContent = '';
@@ -84,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Resetowanie stanu przy zamknięciu okna
         const cameraWindow = document.getElementById('camera-window');
         if (cameraWindow) {
             cameraWindow.querySelector('.close-button').addEventListener('click', () => {
