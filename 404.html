@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+    <head>
     <title>NobiteK - 404</title>
     <meta charset="UTF-8">
     <meta name="description" content="This page doesn't exist 💀">
@@ -21,44 +21,49 @@
 </head>
 
 <div id="preloader">
-  <div class="loader">
+    <div class="loader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-  </div>
+    </div>
 </div>
-
-<header>
-<div id="burger" onclick="enable()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-  <nav class="nav" id="nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/tts">TTS</a></li>
-  </nav>
-</header>
 
 <body>
 <noscript>
-  <div id="js-warning" style="text-align: center; font-weight: bold; margin-top: 20px;">Please enable Javascript.</div>
+    <div id="js-warning">Please enable Javascript.</div>
 </noscript>
 
-<div class="content" style="line-height: 0; height: 70vh; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-  <p style="font-size:90px;">404</p>
-  <p style="font-size:20px;">This page doesn't exist</p>
-  <a href="/" style="background-color: #8c64dc; color: white; padding: 20px 20px; border-radius: 5px; text-decoration: none; font-size: 16px; margin-top: 20px;">Go Home</a>
-</div>
+<main class="content error-404" role="main" aria-labelledby="err-title">
+    <h1 id="err-title">404</h1>
+    <p class="error-message">This page doesn't exist</p>
+    <a class="button btn-primary" href="/">Go Home</a>
+</main>
 
 <div id="notification"></div>
 
-<div class="footer">
-  <p>NobiteK © 2019 - 2025</p>
+<div class="taskbar">
+    <div class="taskbar-items">
+        <div class="taskbar-item" id="start-button">
+            <span style="font-size: 18px;">🌍</span>
+        </div>
+    </div>
+    <div class="taskbar-right">
+        <div class="taskbar-clock">
+            <span id="time">00:00</span>
+            <span id="date">01.01.2025</span>
+        </div>
+    </div>
+</div>
+
+<div class="start-menu">
+    <nav>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tts">TTS</a></li>
+    </nav>
 </div>
 
 </body>
-  <script src="/assets/js/s.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="/assets/js/s.js"></script>
 </html>
