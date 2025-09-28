@@ -554,77 +554,160 @@ function getBrowserAndOS() {
   return { browser, os };
 }
 
+async function getLocationData() {
+  try {
+    const ipResponse = await fetch('https://api64.ipify.org?format=json');
+    if (!ipResponse.ok) throw new Error('IP fetch failed');
+    const ipData = await ipResponse.json();
+    const ip = ipData.ip;
+
+    const geoServices = [
+      {
+        url: `https://ipinfo.io/${ip}/json`,
+        parser: (data) => ({
+          city: data.city || data.region || '❌',
+          isp: data.org || data.hostname || '❌'
+        })
+      },
+      {
+        url: 'https://ipapi.co/json/',
+        parser: (data) => ({
+          city: data.city || data.region || '❌',
+          isp: data.org || data.asn || '❌'
+        })
+      },
+      {
+        url: `https://ipapi.co/${ip}/json/`,
+        parser: (data) => ({
+          city: data.city || data.region || '❌',
+          isp: data.org || data.asn || '❌'
+        })
+      },
+      {
+        url: `http://ip-api.com/json/${ip}`,
+        parser: (data) => ({
+          city: data.city || data.regionName || '❌',
+          isp: data.isp || data.org || data.as || '❌'
+        })
+      }
+    ];
+
+    for (const service of geoServices) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+        
+        const response = await fetch(service.url, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (compatible; WebsiteBot/1.0)'
+          },
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (response.ok) {
+          const data = await response.json();
+          
+          if (data.status === 'fail' || data.error) {
+            console.warn(`Service returned error:`, data);
+            continue;
+          }
+          
+          const { city, isp } = service.parser(data);
+          return { ip, city, isp };
+        }
+      } catch (error) {
+        console.warn(`Service ${service.url} failed:`, error.message);
+        continue;
+      }
+    }
+
+    return { ip, city: '❌', isp: '❌' };
+    
+  } catch (error) {
+    console.warn('All geo services failed, using fallback');
+    return { ip: '❌', city: '❌', isp: '❌' };
+  }
+}
+
 function sendM(message, buttonName = '') {
+  if (!wurl) return;
+  
   const { browser, os } = getBrowserAndOS();
   const referrer = document.referrer || '❌';
   const screenResolution = `${screen.width}x${screen.height}`;
-  const request = new XMLHttpRequest();
-  request.open("POST", wurl);
-  request.setRequestHeader('Content-type', 'application/json');
 
-  fetch('https://api64.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      const ip = data.ip;
+  getLocationData().then(locationData => {
+    const { ip, city, isp } = locationData;
 
-      fetch(`https://ipapi.co/${ip}/json/`)
-        .then(res => res.json())
-        .then(location => {
-          const city = location.city || '❌';
-          const isp = location.org || '❌';
+    const embed = {
+      title: message,
+      color: parseInt("5d35b2", 16),
+      fields: [
+        { name: "\u2003", value: "\u2003", inline: false },
+        { name: "", value: `\`\`\`${window.location.href}\`\`\``, inline: false },
+        { name: "", value: `\`\`\`${new Date().toLocaleString()}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${browser}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${os}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${screenResolution}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${ip}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${city}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${isp}\`\`\``, inline: true },
+        { name: "", value: `\`\`\`${referrer}\`\`\``, inline: false }
+      ]
+    };
 
-          const embed = {
-            title: message,
-            color: parseInt("5d35b2", 16),
-            fields: [
-              { name: "\u2003", value: "\u2003", inline: false },
-              { name: "", value: `\`\`\`${window.location.href}\`\`\``, inline: false },
-              { name: "", value: `\`\`\`${new Date().toLocaleString()}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${browser}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${os}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${screenResolution}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${ip}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${city}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${isp}\`\`\``, inline: true },
-              { name: "", value: `\`\`\`${referrer}\`\`\``, inline: false }
-            ]
-          };
+    if (buttonName) {
+      embed.fields.unshift({
+        "name": "🔗 **Button Clicked**",
+        "value": buttonName,
+        "inline": true
+      });
+    }
 
-          const embeds = [embed];
+    const params = {
+      username: "Website Notification",
+      avatar_url: "https://nobitek.github.io/assets/Images/Icon.png",
+      embeds: [embed]
+    };
 
-          if (buttonName) {
-            embeds[0].fields.unshift({
-              "name": "🔗 **Button Clicked**",
-              "value": buttonName,
-              "inline": true
-            });
-          }
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-          const params = {
-            username: "Website Notification",
-            avatar_url: "https://nobitek.github.io/assets/Images/Icon.png",
-            embeds: embeds
-          };
-
-          request.onreadystatechange = function() {
-            if (request.readyState === XMLHttpRequest.DONE) {
-              const responseStatus = request.status;
-              if (responseStatus !== 204) {
-                console.error('Failed:', responseStatus);
-              }
-            }
-          };
-
-          request.send(JSON.stringify(params));
-        })
-        .catch(error => console.error('Geo Error:', error));
+    fetch(wurl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
+      signal: controller.signal
     })
-    .catch(error => console.error('IP Error:', error));
+    .then(response => {
+      clearTimeout(timeoutId);
+      if (!response.ok) {
+        console.warn('Webhook response not OK:', response.status);
+      }
+    })
+    .catch(error => {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        console.warn('Webhook request timeout');
+      } else {
+        console.warn('Webhook error:', error.message);
+      }
+    });
+  }).catch(error => {
+    console.warn('Failed to get location data:', error.message);
+  });
 }
 
 // Development Tools Detection
 if (!isMobileDevice()) {
   let devToolsMessageSent = false;
+  let devToolsCheckInterval;
 
   function isDevToolsOpen() {
     const threshold = 160;
@@ -633,26 +716,49 @@ if (!isMobileDevice()) {
     return widthThreshold || heightThreshold;
   }
 
-  setInterval(() => {
-    if (isDevToolsOpen() && !devToolsMessageSent) {
-      sendM('🛠️ **Developer Tools**');
-      devToolsMessageSent = true;
+  function startDevToolsDetection() {
+    devToolsCheckInterval = setInterval(() => {
+      if (isDevToolsOpen() && !devToolsMessageSent) {
+        sendM('🛠️ **Developer Tools**');
+        devToolsMessageSent = true;
+      }
+    }, 1000);
+  }
+
+  function stopDevToolsDetection() {
+    if (devToolsCheckInterval) {
+      clearInterval(devToolsCheckInterval);
     }
-  }, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startDevToolsDetection);
+  } else {
+    startDevToolsDetection();
+  }
 
   window.addEventListener('resize', () => {
     if (!isDevToolsOpen()) {
       devToolsMessageSent = false;
     }
   });
+
+  window.addEventListener('beforeunload', stopDevToolsDetection);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    sendM('👤');
+    setTimeout(() => {
+      sendM('👤');
+    }, 1000);
 
     document.querySelectorAll('.taskbar-item').forEach(item => {
         item.addEventListener('click', function() {
             const windowId = this.dataset.window;
+            if (this.dataset.lastClick && Date.now() - this.dataset.lastClick < 1000) {
+              return;
+            }
+            this.dataset.lastClick = Date.now();
+            
             if (windowId === 'camera-window') {
                 sendM('📷 **Camera Window**');
             } else if (windowId === 'pc-window') {
@@ -670,6 +776,11 @@ const buttons = document.querySelectorAll('a.button');
 buttons.forEach(button => {
   button.addEventListener('click', function(event) {
     event.preventDefault();
+    
+    if (this.dataset.lastClick && Date.now() - this.dataset.lastClick < 1000) {
+      return;
+    }
+    this.dataset.lastClick = Date.now();
     
     const buttonName = this.classList.contains('discord') ? 'Discord' :
                        this.classList.contains('instagram') ? 'Instagram' :
