@@ -226,7 +226,7 @@ a:hover {
     height: 100vh;
     display: flex;
     background-color: #111118;
-    z-index: 99999;
+    z-index: 9999;
 }
 
 .loader {
@@ -299,7 +299,7 @@ a:hover {
     display: flex;
     align-items: center;
     padding: 0 10px;
-    z-index: 9999;
+    z-index: 9998;
     border-top: 1px solid #242433;
 }
 
@@ -378,15 +378,9 @@ a:hover {
     background-color: #0c0c11;
     border: 1px solid #242433;
     border-radius: 8px 8px 0 0;
-    display: none;
-    padding: 12px;
-    z-index: 9998;
-    animation: slideUp 0.2s ease-out;
-    border: 1px solid #242433;
-    border-radius: 8px 8px 0 0;
     margin-left: 8px;
     display: none;
-    padding: 10px;
+    padding: 12px;
     z-index: 9998;
     animation: slideUp 0.2s ease-out;
 }
@@ -457,7 +451,7 @@ a:hover {
     background: #1d1d29;
     color: white;
     border-radius: 4px;
-    z-index: 9999;
+    z-index: 9998;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform: translateY(100%);
     opacity: 0;
@@ -645,7 +639,7 @@ a:hover {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 10000;
     background-color: #0c0c11;
     padding: 10px;
     border-radius: 5px;
