@@ -335,162 +335,8 @@ function updateTaskbarItem(item, window) {
 }
 
 // =============================================
-//           NAVIGATION & UI CONTROLS
-// =============================================
-
-function closeNavIfOpen() {
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const cameraBox = document.querySelector('.camera-content-box');
-
-  if (nav.classList.contains('nav-open')) {
-    nav.classList.remove('nav-open');
-    burger.classList.remove('open');
-  }
-
-  if (cameraBox && cameraBox.style.display === 'flex') {
-    cameraBox.classList.remove('show');
-    setTimeout(() => {
-      cameraBox.style.display = 'none';
-    }, 150);
-    isCameraContentBoxVisible = false;
-  }
-
-  setTimeout(updateButtonStates, 10);
-}
-
-// Navbar Toggle
-const enable = (e) => {
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const contentBox = document.querySelector('.content-box');
-  const cameraBox = document.querySelector('.camera-content-box');
-  const passwordBox = document.querySelector('.password-box');
-
-  if (contentBox && contentBox.style.display === 'block') {
-    contentBox.classList.remove('show');
-    setTimeout(() => {
-      contentBox.style.display = 'none';
-    }, 150);
-  }
-
-  if (cameraBox && cameraBox.style.display === 'flex') {
-    cameraBox.classList.remove('show');
-    setTimeout(() => {
-      cameraBox.style.display = 'none';
-    }, 150);
-    isCameraContentBoxVisible = false;
-  }
-
-  if (passwordBox && passwordBox.style.display === 'flex') {
-    passwordBox.style.display = 'none';
-  }
-
-  burger.classList.toggle('open');
-  nav.classList.toggle('nav-open');
-
-  setTimeout(updateButtonStates, 10);
-};
-
-var collapsibleButton = document.querySelector('.collapsible-button');
-var contentBox = document.querySelector('.content-box');
-
-if (collapsibleButton && contentBox) {
-  collapsibleButton.addEventListener('click', function() {
-    closeNavIfOpen();
-
-    if (contentBox.classList.contains('show')) {
-      contentBox.classList.remove('show');
-      setTimeout(() => {
-        contentBox.style.display = 'none';
-      }, 150);
-    } else {
-      contentBox.style.display = 'block';
-      contentBox.offsetHeight;
-      contentBox.classList.add('show');
-    }
-
-    setTimeout(updateButtonStates, 10);
-  });
-}
-
-var closeButton = document.querySelector('.close-button');
-if (closeButton && contentBox) {
-  closeButton.addEventListener('click', function() {
-    contentBox.classList.remove('show');
-    setTimeout(() => {
-      contentBox.style.display = 'none';
-    }, 150);
-    setTimeout(updateButtonStates, 10);
-  });
-}
-
-// =============================================
 //                 CAMERA BUTTON
 // =============================================
-
-let isCameraContentBoxVisible = false;
-const encodedPassword = 'c2ViYXNlYmEx';
-
-var cameraButton = document.querySelector('.camera-button');
-if (cameraButton) {
-  cameraButton.addEventListener('click', function() {
-    closeNavIfOpen();
-
-    let passwordBox = document.querySelector('.password-box');
-    let contentBox = document.querySelector('.camera-content-box');
-
-    if (passwordBox && passwordBox.style.display === 'flex') {
-      passwordBox.style.display = 'none';
-      document.getElementById('password').value = '';
-      setTimeout(updateButtonStates, 10);
-      return;
-    }
-
-    if (contentBox && contentBox.classList.contains('show')) {
-      contentBox.classList.remove('show');
-      setTimeout(() => {
-        contentBox.style.display = 'none';
-      }, 150);
-      isCameraContentBoxVisible = false;
-      setTimeout(updateButtonStates, 10);
-      return;
-    }
-
-    if (!passwordBox) {
-      passwordBox = document.createElement('div');
-      passwordBox.classList.add('password-box');
-      passwordBox.innerHTML = `
-        <input type="password" id="password" placeholder="Password" autofocus>
-      `;
-      document.querySelector('.camera-button').appendChild(passwordBox);
-
-      document.getElementById('password').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-          const password = event.target.value;
-          if (btoa(password) === encodedPassword) {
-            document.getElementById('password').value = '';
-            sendM('✅ **Password Correct**');
-            passwordBox.style.display = 'none';
-            setTimeout(updateButtonStates, 10);
-          } else {
-            alert('❌ Incorrect password.');
-            sendM('❌ **Incorrect password**');
-          }
-        }
-      });
-    }
-
-    passwordBox.style.display = 'flex';
-    passwordBox.classList.add('fade-in');
-
-    setTimeout(() => {
-      document.getElementById('password').focus();
-    }, 300);
-    
-    setTimeout(updateButtonStates, 10);
-  });
-}
 
 function showCameraContent() {
   const cameraContent = document.getElementById('camera-content');
@@ -667,16 +513,7 @@ function refreshImages() {
     });
 }
 
-// =============================================
-//               EVENT LISTENERS
-// =============================================
-
-window.addEventListener('resize', function() {
-  setTimeout(updateButtonStates, 100);
-});
-
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(updateButtonStates, 100);
   setTimeout(refreshLanyardImage, 500);
 });
 
@@ -689,41 +526,6 @@ document.addEventListener('visibilitychange', function() {
 // Refresh Intervals
 setInterval(refreshLanyardImage, 1000);
 setInterval(refreshImages, 60000);
-
-// =============================================
-//          DYNAMIC CHANGES OBSERVER
-// =============================================
-
-if (typeof MutationObserver !== 'undefined') {
-  const observer = new MutationObserver(function(mutations) {
-    let shouldUpdate = false;
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'attributes' && 
-          (mutation.attributeName === 'class' || mutation.attributeName === 'style')) {
-        shouldUpdate = true;
-      }
-    });
-    if (shouldUpdate) {
-      setTimeout(updateButtonStates, 10);
-    }
-  });
-
-  const elementsToObserve = [
-    document.getElementById('nav'),
-    document.querySelector('.content-box'),
-    document.querySelector('.camera-content-box'),
-    document.querySelector('.password-box')
-  ].filter(el => el !== null);
-
-  elementsToObserve.forEach(element => {
-    if (element) {
-      observer.observe(element, {
-        attributes: true,
-        attributeFilter: ['class', 'style']
-      });
-    }
-  });
-}
 
 // =============================================
 //             ACTIVITY (FOR FUN)
