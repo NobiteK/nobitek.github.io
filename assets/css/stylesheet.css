@@ -39,35 +39,71 @@ a:hover {
 }
 
 /*  ============================================= 
-                    MEDIA QUERIES
+                    MOBILE FIXES
     ============================================= */
 
 @media only screen and (max-device-width: 480px) {
+    .taskbar-item {
+        padding: 0 6px;
+        font-size: 12px;
+        min-width: 0;
+        flex-shrink: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .taskbar-items {
+        display: flex;
+        gap: 3px;
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .taskbar {
+        height: 40px;
+        padding: 0 8px;
+    }
+
+    .taskbar-clock {
+        font-size: 10px;
+        margin-right: 8px;
+    }
+
     .window {
         width: calc(100% - 20px) !important;
-        height: calc(100vh - 70px) !important;
+        height: calc(100vh - 85px) !important;
         margin: 10px !important;
         left: 0 !important;
         transform: none !important;
         top: 0 !important;
         position: fixed !important;
+        max-height: calc(100vh - 85px) !important;
     }
+
     .window-content {
         height: calc(100% - 50px) !important;
         max-height: none !important;
+        padding-bottom: 15px;
+        overflow-y: auto;
+        box-sizing: border-box;
     }
+
     iframe {
         width: 100% !important;
         height: 200px !important;
     }
+
     #image1, #image2, #image3 {
         width: 100%;
         height: auto;
         aspect-ratio: 16/9;
     }
+
     .camera-grid {
         padding: 5px !important;
     }
+
     .camera-item {
         width: 100% !important;
         margin: 5px 0 !important;
