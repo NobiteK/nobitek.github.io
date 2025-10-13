@@ -1,12 +1,4 @@
 // =============================================
-//           user-scalable=no IOS FIX
-// =============================================
-
-document.documentElement.addEventListener('touchmove', function (event) {
-    event.preventDefault();
-}, false);
-
-// =============================================
 //            CLICK SOUND (PC ONLY)
 // =============================================
 
