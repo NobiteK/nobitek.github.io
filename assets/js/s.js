@@ -2,13 +2,9 @@
 //           user-scalable=no IOS FIX
 // =============================================
 
-$(window).bind('gesturestart touchmove', function(event) {
-    event = event.originalEvent || event;
-    if (event.scale !== 1) {
-         event.preventDefault();
-         document.body.style.transform = 'scale(1)'
-    }
-});
+document.documentElement.addEventListener('touchmove', function (event) {
+    event.preventDefault();
+}, false);
 
 // =============================================
 //            CLICK SOUND (PC ONLY)
