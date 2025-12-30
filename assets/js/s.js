@@ -865,7 +865,7 @@ async function loadPCSpecs() {
           
           if (subItem.price === null || subItem.price === 0) {
             content += ` <span style="color: #888;">[?]</span>`;
-          } else if (subItem.price > 0 && !subItem.name.includes('<a')) {
+          } else if (subItem.price > 0) {
             content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
