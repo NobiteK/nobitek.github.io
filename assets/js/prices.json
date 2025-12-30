@@ -1,0 +1,142 @@
+{
+  "specs": [
+    {
+      "category": "CPU",
+      "name": "AMD Ryzen 5 3600",
+      "price": 545.99,
+      "comment": "AMD Ryzen 7 5800XT"
+    },
+    {
+      "category": "GPU",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
+      "price": 1599.00
+    },
+    {
+      "category": "MOBO",
+      "name": "ASUS Prime B450-PLUS",
+      "price": 565.00
+    },
+    {
+      "category": "RAM",
+      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16",
+      "price": 0
+    },
+    {
+      "category": "PSU",
+      "name": "Lian Li 750W 80+ Gold (SP750 V2)",
+      "price": 550.00
+    },
+    {
+      "category": "SSD",
+      "name": "Kingston NV2 M.2 NVMe 1TB w/ be quiet! MC1",
+      "price": 450.00,
+      "subItems": [
+        {
+          "name": "Samsung 870 QVO 1TB",
+          "price": 600.00
+        }
+      ]
+    },
+    {
+      "category": "Cooler",
+      "name": "Deepcool AK400 WH + Pactum PT-1",
+      "price": 170.00
+    },
+    {
+      "category": "Fans",
+      "name": "ARCTIC P12 Max White x3",
+      "price": 120.00
+    },
+    {
+      "category": "Case",
+      "name": "Lian Li O11 Dynamic Mini Snow Edition",
+      "price": 500.00
+    },
+    {
+      "category": "Custom Cables",
+      "name": "EZDIY-FAB White Sleeved Cables",
+      "price": 120.00
+    },
+    {
+      "category": "WiFi",
+      "name": "TP-Link TL-WN781ND",
+      "price": 50.00
+    },
+    { "spacer": true },
+    {
+      "category": "Mouse",
+      "name": "Logitech G Pro X Superlight White (58g)",
+      "price": 500.00,
+      "extra": "w/ <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005005617841428.html\">Ultraglide Silence Dot Skates</a>"
+    },
+    {
+      "category": "Mousepad",
+      "name": "X-Raypad Aqua Control Plus Wave Series Storm 900x400x4mm",
+      "price": 120.00
+    },
+    { "spacer": true },
+    {
+      "category": "Keyboard",
+      "subItems": [
+        {
+          "name": "Base - Zuoya GMK67 White Wireless w/ 3 Layer Tape Mod",
+          "price": 180.00
+        },
+        {
+          "name": "Switch - Gateron G Pro 3.0 Yellow w/ Krytox 205g0",
+          "price": 80.00
+        },
+        {
+          "name": "Stabilizers - Stock Tuned w/ Krytox 205g0 & Band-aid Mod",
+          "price": 0.00
+        },
+        {
+          "name": "Keycaps - <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006086600608.html\">XVX Jelly White</a> or <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005004452360229.html\">Ali Minimalist White Japanese PBT</a>",
+          "price": 80.00
+        }
+      ]
+    },
+    { "spacer": true },
+    {
+      "category": "Monitors",
+      "subItems": [
+        {
+          "name": "Acer Nitro VG240Ybmiix 24\" 75Hz",
+          "price": 500.00
+        },
+        {
+          "name": "LG 24MP60G-B 24\" 75Hz",
+          "price": 550.00
+        }
+      ]
+    },
+    { "spacer": true },
+    {
+      "category": "Headphones",
+      "name": "HyperX Cloud Alpha Wireless",
+      "price": 599.00,
+      "comment": "w/ Ali Plush Earpads"
+    },
+    {
+      "category": "Microphone",
+      "name": "Fifine K688 Black",
+      "price": 450.00
+    },
+    {
+      "category": "Boom Arm",
+      "name": "Mozos SB38 White",
+      "price": 120.00
+    },
+    {
+      "category": "Desk",
+      "name": "Custom White 167x60x3cm",
+      "price": 0
+    },
+    {
+      "category": "Chair",
+      "name": "IMBA Warlock Fabric Black",
+      "price": 650.00
+    }
+  ],
+  "lastUpdate": "2025-12-30"
+}
