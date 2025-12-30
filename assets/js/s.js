@@ -864,9 +864,9 @@ async function loadPCSpecs() {
           let content = subItem.name;
           
           if (subItem.price === null || subItem.price === 0) {
-            content += ` <span style="color: #888;">[?]</span>`;
+            content += ` <span style="color: #4dabf7; font-weight: 700;">[?]</span>`;
           } else if (subItem.price > 0) {
-            content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
+            content += ` <span style="color: #4dabf7; font-weight: 700;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
           subLi.innerHTML = content;
@@ -880,14 +880,10 @@ async function loadPCSpecs() {
       let content = `${item.category} - ${item.name}`;
       
       if (item.price === null || item.price === 0) {
-        content += ` <span style="color: #888;">[?]</span>`;
+        content += ` <span style="color: #4dabf7; font-weight: 700;">[?]</span>`;
       } else if (item.price > 0) {
         totalPrice += item.price;
-        content += ` <span style="color: #888;">[${item.price.toFixed(2)} zł]</span>`;
-      }
-      
-      if (item.extra) {
-        content += ` ${item.extra}`;
+        content += ` <span style="color: #4dabf7; font-weight: 700;">[${item.price.toFixed(2)} zł]</span>`;
       }
       
       li.innerHTML = content;
@@ -904,9 +900,9 @@ async function loadPCSpecs() {
           let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
           
           if (subItem.price === null || subItem.price === 0) {
-            subContent += ` <span style="color: #888;">[?]</span>`;
+            subContent += ` <span style="color: #4dabf7; font-weight: 700;">[?]</span>`;
           } else if (subItem.price > 0) {
-            subContent += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
+            subContent += ` <span style="color: #4dabf7; font-weight: 700;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
           subLi.innerHTML = subContent;
