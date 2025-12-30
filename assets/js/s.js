@@ -861,12 +861,8 @@ async function loadPCSpecs() {
           const subLi = document.createElement('li');
           let content = subItem.name;
           
-          if (subItem.price > 0) {
-            if (!subItem.noLink && subItem.ceneoId !== "0") {
-              content += ` <a href="https://www.ceneo.pl/${subItem.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${subItem.price.toFixed(2)} zł]</a>`;
-            } else if (!subItem.name.includes('<a')) {
-              content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
-            }
+          if (subItem.price > 0 && !subItem.name.includes('<a')) {
+            content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
           subLi.innerHTML = content;
@@ -881,12 +877,7 @@ async function loadPCSpecs() {
       
       if (item.price > 0) {
         totalPrice += item.price;
-        
-        if (!item.noLink && item.ceneoId !== "0") {
-          content += ` <a href="https://www.ceneo.pl/${item.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${item.price.toFixed(2)} zł]</a>`;
-        } else {
-          content += ` <span style="color: #888;">[${item.price.toFixed(2)} zł]</span>`;
-        }
+        content += ` <span style="color: #888;">[${item.price.toFixed(2)} zł]</span>`;
       }
       
       if (item.extra) {
@@ -905,11 +896,7 @@ async function loadPCSpecs() {
           let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
           
           if (subItem.price > 0) {
-            if (!subItem.noLink && subItem.ceneoId !== "0") {
-              subContent += ` <a href="https://www.ceneo.pl/${subItem.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${subItem.price.toFixed(2)} zł]</a>`;
-            } else {
-              subContent += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
-            }
+            subContent += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
           subLi.innerHTML = subContent;
