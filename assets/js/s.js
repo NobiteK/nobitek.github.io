@@ -826,6 +826,130 @@ function updateClock() {
 }
 
 // =============================================
+//            PC SPECS WITH PRICES
+// =============================================
+
+async function loadPCSpecs() {
+  console.log('Loading PC specs...');
+  try {
+    const response = await fetch('/assets/Others/prices.json');
+    const data = await response.json();
+    
+    const pcWindow = document.querySelector('#pc-window .window-content ul');
+    if (!pcWindow) return;
+    
+    pcWindow.innerHTML = '';
+    
+    let totalPrice = 0;
+    
+    data.specs.forEach(item => {
+      if (item.spacer) {
+        const br = document.createElement('br');
+        pcWindow.appendChild(br);
+        return;
+      }
+
+      if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
+        const li = document.createElement('li');
+        li.textContent = item.category + ':';
+        pcWindow.appendChild(li);
+        
+        const ul = document.createElement('ul');
+        item.subItems.forEach(subItem => {
+          totalPrice += subItem.price;
+          
+          const subLi = document.createElement('li');
+          let content = subItem.name;
+          
+          if (subItem.price > 0) {
+            if (!subItem.noLink && subItem.ceneoId !== "0") {
+              content += ` <a href="https://www.ceneo.pl/${subItem.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${subItem.price.toFixed(2)} zł]</a>`;
+            } else if (!subItem.name.includes('<a')) {
+              content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
+            }
+          }
+          
+          subLi.innerHTML = content;
+          ul.appendChild(subLi);
+        });
+        pcWindow.appendChild(ul);
+        return;
+      }
+
+      const li = document.createElement('li');
+      let content = `${item.category} - ${item.name}`;
+      
+      if (item.price > 0) {
+        totalPrice += item.price;
+        
+        if (!item.noLink && item.ceneoId !== "0") {
+          content += ` <a href="https://www.ceneo.pl/${item.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${item.price.toFixed(2)} zł]</a>`;
+        } else {
+          content += ` <span style="color: #888;">[${item.price.toFixed(2)} zł]</span>`;
+        }
+      }
+      
+      if (item.extra) {
+        content += ` ${item.extra}`;
+      }
+      
+      li.innerHTML = content;
+      pcWindow.appendChild(li);
+
+      if (item.subItems && item.category === 'SSD') {
+        const ul = document.createElement('ul');
+        item.subItems.forEach(subItem => {
+          totalPrice += subItem.price;
+          
+          const subLi = document.createElement('li');
+          let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
+          
+          if (subItem.price > 0) {
+            if (!subItem.noLink && subItem.ceneoId !== "0") {
+              subContent += ` <a href="https://www.ceneo.pl/${subItem.ceneoId}" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration: none;">[${subItem.price.toFixed(2)} zł]</a>`;
+            } else {
+              subContent += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
+            }
+          }
+          
+          subLi.innerHTML = subContent;
+          ul.appendChild(subLi);
+        });
+        pcWindow.appendChild(ul);
+      }
+    });
+    
+    const spacerLi = document.createElement('li');
+    spacerLi.innerHTML = '&nbsp;';
+    spacerLi.style.borderTop = '1px solid #242433';
+    spacerLi.style.marginTop = '10px';
+    spacerLi.style.paddingTop = '5px';
+    spacerLi.style.marginBottom = '0';
+    pcWindow.appendChild(spacerLi);
+    
+    const totalLi = document.createElement('li');
+    totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
+    totalLi.style.fontWeight = '900';
+    totalLi.style.marginTop = '5px';
+    pcWindow.appendChild(totalLi);
+    
+    const updateLi = document.createElement('li');
+    updateLi.innerHTML = `<span style="color: #888; font-size: 0.85em; font-style: italic;">Last price update: ${data.lastUpdate}</span>`;
+    updateLi.style.marginTop = '3px';
+    pcWindow.appendChild(updateLi);
+    
+  } catch (error) {
+    console.error('Failed to load PC specs:', error);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadPCSpecs);
+} else {
+  loadPCSpecs();
+}
+
+// =============================================
 //                 DEBUG OUTPUT
 // =============================================
 
