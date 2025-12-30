@@ -856,12 +856,16 @@ async function loadPCSpecs() {
         
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
-          totalPrice += subItem.price;
+          if (subItem.price && subItem.price > 0) {
+            totalPrice += subItem.price;
+          }
           
           const subLi = document.createElement('li');
           let content = subItem.name;
           
-          if (subItem.price > 0 && !subItem.name.includes('<a')) {
+          if (subItem.price === null || subItem.price === 0) {
+            content += ` <span style="color: #888;">[?]</span>`;
+          } else if (subItem.price > 0 && !subItem.name.includes('<a')) {
             content += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
@@ -875,7 +879,9 @@ async function loadPCSpecs() {
       const li = document.createElement('li');
       let content = `${item.category} - ${item.name}`;
       
-      if (item.price > 0) {
+      if (item.price === null || item.price === 0) {
+        content += ` <span style="color: #888;">[?]</span>`;
+      } else if (item.price > 0) {
         totalPrice += item.price;
         content += ` <span style="color: #888;">[${item.price.toFixed(2)} zł]</span>`;
       }
@@ -890,12 +896,16 @@ async function loadPCSpecs() {
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
-          totalPrice += subItem.price;
+          if (subItem.price && subItem.price > 0) {
+            totalPrice += subItem.price;
+          }
           
           const subLi = document.createElement('li');
           let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
           
-          if (subItem.price > 0) {
+          if (subItem.price === null || subItem.price === 0) {
+            subContent += ` <span style="color: #888;">[?]</span>`;
+          } else if (subItem.price > 0) {
             subContent += ` <span style="color: #888;">[${subItem.price.toFixed(2)} zł]</span>`;
           }
           
