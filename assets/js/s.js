@@ -848,7 +848,7 @@ async function loadPCSpecs() {
         pcWindow.appendChild(br);
         return;
       }
-
+      
       if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
         const li = document.createElement('li');
         li.textContent = item.category + ':';
@@ -863,6 +863,8 @@ async function loadPCSpecs() {
           const subLi = document.createElement('li');
           let content = subItem.name;
           
+          content = content.replace(/ or /g, ' <span style="color: #6b6b6b; font-style: italic;">or</span> ');
+          
           if (subItem.price === null || subItem.price === 0) {
             content += ` <span style="color: #4dabf7; font-weight: 600;">[?]</span>`;
           } else if (subItem.price > 0) {
@@ -875,7 +877,7 @@ async function loadPCSpecs() {
         pcWindow.appendChild(ul);
         return;
       }
-
+      
       const li = document.createElement('li');
       let content = `${item.category} - ${item.name}`;
       
@@ -888,7 +890,7 @@ async function loadPCSpecs() {
       
       li.innerHTML = content;
       pcWindow.appendChild(li);
-
+      
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
