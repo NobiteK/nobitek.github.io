@@ -3,28 +3,28 @@
     {
       "category": "CPU",
       "name": "AMD Ryzen 5 3600",
-      "price": 545.99,
+      "price": 600.00,
       "comment": "AMD Ryzen 7 5800XT"
     },
     {
       "category": "GPU",
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
-      "price": 1599.00
+      "price": 1999.00
     },
     {
       "category": "MOBO",
       "name": "ASUS Prime B450-PLUS",
-      "price": 565.00
+      "price": 450.00
     },
     {
       "category": "RAM",
       "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16",
-      "price": 0
+      "price": 650.00
     },
     {
       "category": "PSU",
-      "name": "Lian Li 750W 80+ Gold (SP750 V2)",
-      "price": 550.00
+      "name": "Corsair SF750 80+ Platinum (750W SFX) (2024)",
+      "price": 700.00
     },
     {
       "category": "SSD",
