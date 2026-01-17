@@ -20,32 +20,38 @@ if (!isMobileDevice()) {
 //                   PRELOADER
 // =============================================
 
-setTimeout(function() {
-  $("#preloader").fadeOut("slow");
-}, 2000);
+(function () {
+  const PRELOADER_DURATION = 2600;
 
-var loader = document.getElementById("preloader");
-window.addEventListener("load", function() {
-  window.addEventListener("scroll", disableScroll);
-  hideScrollbar();
+  function lockScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '0';
+    document.body.style.width = '100%';
+  }
 
-  setTimeout(function() {
-    window.removeEventListener("scroll", disableScroll);
-    showScrollbar();
-  }, 2600);
-});
+  function unlockScroll() {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+  }
 
-function disableScroll() {
-  window.scrollTo(0, 0);
-}
+  lockScroll();
 
-function hideScrollbar() {
-  document.documentElement.style.overflow = 'hidden';
-}
+  setTimeout(function () {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.transition = 'opacity 0.6s ease';
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 600);
+    }
+  }, 2000);
 
-function showScrollbar() {
-  document.documentElement.style.overflow = 'auto';
-}
+  window.addEventListener('load', function () {
+    setTimeout(unlockScroll, PRELOADER_DURATION);
+  });
+})();
 
 // =============================================
 //               WINDOWS MANAGEMENT
