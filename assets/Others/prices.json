@@ -28,7 +28,7 @@
     },
     {
       "category": "SSD",
-      "name": "Kingston NV2 M.2 NVMe 1TB w/ be quiet! MC1",
+      "name": "Kingston NV2 M.2 NVMe 1TB (w/ be quiet! MC1)",
       "price": 450.00,
       "subItems": [
         {
@@ -65,7 +65,7 @@
     { "spacer": true },
     {
       "category": "Mouse",
-      "name": "Logitech G Pro X Superlight White (58g) w/ <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005005617841428.html\">Ultraglide Silence Dot Skates</a>",
+      "name": "Logitech G Pro X Superlight White (58g) (w/ <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005005617841428.html\">Ultraglide Silence Dot Skates</a>)",
       "price": 500.00
     },
     {
@@ -78,16 +78,16 @@
       "category": "Keyboard",
       "subItems": [
         {
-          "name": "Base - Zuoya GMK67 White Wireless w/ 3 Layer Tape Mod",
+          "name": "Base - Zuoya GMK67 White Wireless (w/ 3 Layer Tape Mod)",
           "price": 180.00
         },
         {
-          "name": "Switch - Gateron G Pro 3.0 Yellow w/ Krytox 205g0",
+          "name": "Switch - Gateron G Pro 3.0 Yellow (w/ Krytox 205g0) or KTT Kang White V3 (w/ Krytox 205g0)",
           "price": 80.00
         },
         {
-          "name": "Stabilizers - Stock Tuned w/ Krytox 205g0 & Band-aid Mod",
-          "price": 0.00
+          "name": "Stabilizers - DUROCK Plate Mounted V3 CS 4x2u 1x6.25u (w/ Krytox 205g0 & Band-aid Mod)",
+          "price": 30.00
         },
         {
           "name": "Keycaps - <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006086600608.html\">XVX Jelly White</a> or <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005004452360229.html\">Ali Minimalist White Japanese PBT</a>",
@@ -136,5 +136,5 @@
       "price": 650.00
     }
   ],
-  "lastUpdate": "2025-12-30"
+  "lastUpdate": "2026-01-17"
 }
