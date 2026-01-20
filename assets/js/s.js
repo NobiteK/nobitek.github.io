@@ -175,23 +175,20 @@ if (cameraPassword) {
     }
 });
 
-function makeWindowDraggable(windowEl) {
-    const header = windowEl.querySelector('.window-header');
-    let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
+    // Draggable windows
+    function makeWindowDraggable(windowEl) {
+        const header = windowEl.querySelector('.window-header');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
 
-    header.addEventListener('mousedown', dragStart);
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('mouseup', dragEnd);
-
-    function dragStart(e) {
-        if (e.target.classList.contains('window-controls') || 
-            e.target.classList.contains('window-button')) {
+        function dragStart(e) {
+            if (e.target.classList.contains('window-controls') || 
+                e.target.classList.contains('window-button')) {
             return;
-        }
+        } 
 
         focusWindow(windowEl);
         isDragging = true;
@@ -218,7 +215,10 @@ function makeWindowDraggable(windowEl) {
         if (e.target === header || header.contains(e.target)) {
             header.classList.add('grabbing');
         }
+
       e.preventDefault();
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', dragEnd);
     }
 
     function drag(e) {
@@ -245,9 +245,12 @@ function makeWindowDraggable(windowEl) {
     function dragEnd() {
         isDragging = false;
         header.classList.remove('grabbing');
-        }
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('mouseup', dragEnd);
     }
-
+    
+    header.addEventListener('mousedown', dragStart);
+    }
     function toggleWindow(window) {
         const isMobile = innerWidth <= 768;
     
