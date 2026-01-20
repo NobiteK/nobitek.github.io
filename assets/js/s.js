@@ -105,7 +105,7 @@ if (cameraPassword) {
         }
     }
 
-    // Obsługa przycisków na taskbarze
+    // Buttons on taskbar
     document.querySelectorAll('.taskbar-item').forEach(item => {
         if (item.dataset.window) {
             item.addEventListener('click', () => {
@@ -119,7 +119,7 @@ if (cameraPassword) {
         }
     });
 
-    // Obsługa przycisków okien
+    // Windows
     document.querySelectorAll('.window').forEach(window => {
         const minimizeBtn = window.querySelector('.minimize-button');
         const closeBtn = window.querySelector('.close-button');
@@ -192,10 +192,8 @@ function makeWindowDraggable(windowEl) {
             e.target.classList.contains('window-button')) {
             return;
         }
-        
-        // Focus window when starting to drag
+
         focusWindow(windowEl);
-        
         isDragging = true;
 
         const computedStyle = window.getComputedStyle(windowEl);
@@ -220,6 +218,7 @@ function makeWindowDraggable(windowEl) {
         if (e.target === header || header.contains(e.target)) {
             header.classList.add('grabbing');
         }
+      e.preventDefault();
     }
 
     function drag(e) {
@@ -246,15 +245,15 @@ function makeWindowDraggable(windowEl) {
     function dragEnd() {
         isDragging = false;
         header.classList.remove('grabbing');
+        }
     }
-}
 
-function toggleWindow(window) {
-    const isMobile = innerWidth <= 768;
+    function toggleWindow(window) {
+        const isMobile = innerWidth <= 768;
     
-    if (!window.classList.contains('show')) {
-        if (isMobile) {
-            document.querySelectorAll('.window').forEach(w => {
+        if (!window.classList.contains('show')) {
+            if (isMobile) {
+              document.querySelectorAll('.window').forEach(w => {
                 if (w !== window && w.classList.contains('show')) {
                     closeWindow(w);
                 }
