@@ -175,81 +175,86 @@ if (cameraPassword) {
     }
 });
 
-    // Draggable windows
+// Draggable windows
     function makeWindowDraggable(windowEl) {
         const header = windowEl.querySelector('.window-header');
         let isDragging = false;
+        let hasMoved = false;
         let currentX;
         let currentY;
         let initialX;
         let initialY;
-
+        
         function dragStart(e) {
             if (e.target.classList.contains('window-controls') || 
                 e.target.classList.contains('window-button')) {
-            return;
-        } 
-
-        focusWindow(windowEl);
-        isDragging = true;
-
-        const computedStyle = window.getComputedStyle(windowEl);
-        const matrix = new DOMMatrixReadOnly(computedStyle.transform);
-        const rect = windowEl.getBoundingClientRect();
-
-        if (windowEl.style.transform && windowEl.style.transform.includes('translate')) {
-            currentX = rect.left;
-            currentY = rect.top;
-        } else {
-            currentX = parseFloat(computedStyle.left) || rect.left;
-            currentY = parseFloat(computedStyle.top) || rect.top;
-        }
-
-        initialX = e.clientX - currentX;
-        initialY = e.clientY - currentY;
-
-        windowEl.style.left = currentX + 'px';
-        windowEl.style.top = currentY + 'px';
-        windowEl.style.transform = 'none';
-
-        if (e.target === header || header.contains(e.target)) {
-            header.classList.add('grabbing');
-        }
-
-      e.preventDefault();
-      document.addEventListener('mousemove', drag);
-      document.addEventListener('mouseup', dragEnd);
-    }
-
-    function drag(e) {
-        if (isDragging) {
+                return;
+            } 
+            
+            focusWindow(windowEl);
+            isDragging = true;
+            hasMoved = false;
+            
+            const computedStyle = window.getComputedStyle(windowEl);
+            const rect = windowEl.getBoundingClientRect();
+            
+            if (windowEl.style.transform && windowEl.style.transform.includes('translate')) {
+                currentX = rect.left;
+                currentY = rect.top;
+            } else {
+                currentX = parseFloat(computedStyle.left) || rect.left;
+                currentY = parseFloat(computedStyle.top) || rect.top;
+            }
+            
+            initialX = e.clientX - currentX;
+            initialY = e.clientY - currentY;
+            
+            windowEl.style.left = currentX + 'px';
+            windowEl.style.top = currentY + 'px';
+            windowEl.style.transform = 'none';
+            
+            if (e.target === header || header.contains(e.target)) {
+                header.classList.add('grabbing');
+            }
+            
             e.preventDefault();
-            e.stopPropagation();
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', dragEnd);
+        }
+        
+        function drag(e) {
+            if (!isDragging) return;
+            
+            hasMoved = true;
+            e.preventDefault();
+            
             currentX = e.clientX - initialX;
             currentY = e.clientY - initialY;
-
+            
             const windowWidth = windowEl.offsetWidth;
             const windowHeight = windowEl.offsetHeight;
             const maxX = window.innerWidth - windowWidth;
             const maxY = window.innerHeight - windowHeight;
-
+            
             currentX = Math.min(Math.max(0, currentX), maxX);
             currentY = Math.min(Math.max(0, currentY), maxY);
-
+            
             windowEl.style.left = currentX + 'px';
             windowEl.style.top = currentY + 'px';
             windowEl.style.transform = 'none';
         }
-    }
-
-    function dragEnd() {
-        isDragging = false;
-        header.classList.remove('grabbing');
-        document.removeEventListener('mousemove', drag);
-        document.removeEventListener('mouseup', dragEnd);
-    }
-    
-    header.addEventListener('mousedown', dragStart);
+        
+        function dragEnd(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            hasMoved = false;
+            header.classList.remove('grabbing');
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', dragEnd);
+        }
+        
+        header.addEventListener('mousedown', dragStart);
     }
     function toggleWindow(window) {
         const isMobile = innerWidth <= 768;
