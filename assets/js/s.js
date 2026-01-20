@@ -225,6 +225,7 @@ function makeWindowDraggable(windowEl) {
     function drag(e) {
         if (isDragging) {
             e.preventDefault();
+            e.stopPropagation();
             currentX = e.clientX - initialX;
             currentY = e.clientY - initialY;
 
