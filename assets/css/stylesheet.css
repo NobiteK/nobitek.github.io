@@ -1060,12 +1060,14 @@ a:hover {
 #socials-window { 
     width: 100%;
     height: auto;
+    overflow-y: hidden;
 }
 
 @media (min-width: 768px) {
     #socials-window { 
         width: 600px;
         height: auto;
+        overflow-y: hidden;
     }
 }
 
@@ -1097,8 +1099,16 @@ a:hover {
 #pc-window { 
     width: 100%; 
     height: calc(100vh - 41px);
-    overflow-y: auto;
+    overflow-y: hidden;
     color: #fff;
+    box-sizing: border-box;
+}
+
+#pc-window .window-content {
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 #pc-window ul {
@@ -1126,34 +1136,24 @@ a:hover {
         width: 870px; 
         max-height: 80vh; 
         height: auto;
+        overflow-y: hidden;
     }
-}
-
-#pc-window::-webkit-scrollbar {
-    width: 8px;
-}
-
-#pc-window::-webkit-scrollbar-track {
-    background: #1d1d29;
-    border-radius: 4px;
-}
-
-#pc-window::-webkit-scrollbar-thumb {
-    background: #3d3d49;
-    border-radius: 4px;
-}
-
-#pc-window::-webkit-scrollbar-thumb:hover {
-    background: #4d4d59;
+    
+    #pc-window .window-content {
+        max-height: calc(80vh - 60px);
+        padding: 16px;
+    }
 }
 
 #camera-window {
     width: 100%;
+    overflow-y: hidden;
 }
 
 @media (min-width: 768px) {
     #camera-window {
         width: 800px;
+        overflow-y: hidden;
     }
 }
 
@@ -1228,13 +1228,15 @@ a:hover {
     pointer-events: auto !important;
     overflow-y: auto !important;
     height: calc(100% - 41px);
+    box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
     .window-content {
         padding: 16px;
         height: auto;
-        max-height: calc(100vh - 200px);
+        max-height: calc(80vh - 60px);
+        box-sizing: border-box;
     }
 }
 
