@@ -179,7 +179,6 @@ if (cameraPassword) {
     function makeWindowDraggable(windowEl) {
         const header = windowEl.querySelector('.window-header');
         let isDragging = false;
-        let hasMoved = false;
         let currentX;
         let currentY;
         let initialX;
@@ -193,7 +192,6 @@ if (cameraPassword) {
             
             focusWindow(windowEl);
             isDragging = true;
-            hasMoved = false;
             
             const computedStyle = window.getComputedStyle(windowEl);
             const rect = windowEl.getBoundingClientRect();
@@ -224,8 +222,7 @@ if (cameraPassword) {
         
         function drag(e) {
             if (!isDragging) return;
-            
-            hasMoved = true;
+
             e.preventDefault();
             
             currentX = e.clientX - initialX;
@@ -248,7 +245,6 @@ if (cameraPassword) {
             if (!isDragging) return;
             
             isDragging = false;
-            hasMoved = false;
             header.classList.remove('grabbing');
             document.removeEventListener('mousemove', drag);
             document.removeEventListener('mouseup', dragEnd);
