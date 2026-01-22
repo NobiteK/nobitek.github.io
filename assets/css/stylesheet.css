@@ -76,26 +76,38 @@ a:hover {
         top: 10px !important;
         left: 10px !important;
         right: 10px !important;
-        bottom: calc(40px + 10px) !important;
+        bottom: 50px !important;
         width: auto !important;
         height: auto !important;
         margin: 0 !important;
-        max-height: calc(100vh - (40px + 20px)) !important;
-        overflow: hidden;
+        max-height: none !important;
+        overflow: hidden !important;
         box-sizing: border-box;
+        display: flex !important;
+        flex-direction: column !important;
     }
-
+    
+    .window-header {
+        flex-shrink: 0 !important;
+    }
+    
     .window-content {
-        height: calc(100% - 41px) !important;
+        flex: 1 !important;
+        height: auto !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         box-sizing: border-box !important;
         padding: 10px !important;
-        -webkit-overflow-scrolling: touch;
+        padding-bottom: 20px !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    #pc-window {
+        overflow: hidden !important;
     }
     
     #pc-window .window-content {
-        height: 100% !important;
-        padding: 10px !important;
+        padding-bottom: 30px !important;
     }
 
     #pc-window,
