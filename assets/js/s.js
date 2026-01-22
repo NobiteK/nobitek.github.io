@@ -841,7 +841,6 @@ function updateClock() {
 // =============================================
 
 async function loadPCSpecs() {
-  console.log('Loading PC specs...');
   try {
     const response = await fetch('/assets/Others/prices.json');
     const data = await response.json();
