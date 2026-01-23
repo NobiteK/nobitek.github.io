@@ -2,7 +2,7 @@
 //            CLICK SOUND (PC ONLY)
 // =============================================
 
-var audio = new Audio("assets/Others/Click.wav");
+var audio = new Audio("C:\\Users\\Norbert\\Desktop\\nobitek.github.io\\assets\\Others\\Click.wav");
 
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
@@ -502,8 +502,49 @@ window.onload = function () {
 //                 IMAGE REFRESH
 // =============================================
 
-// Lanyard Image
-function refreshLanyardImage() {
+// Lanyard WebSocket
+function initLanyardWebSocket() {
+  const ws = new WebSocket('wss://api.lanyard.rest/socket');
+  let heartbeatInterval;
+  const userId = '430436408386125824';
+
+  ws.onopen = () => {
+    console.log('Connected to Lanyard WebSocket');
+  };
+
+  ws.onmessage = (event) => {
+    const message = JSON.parse(event.data);
+    if (message.op === 1) {
+      const heartbeatInterval_ = message.d.heartbeat_interval;
+      ws.send(JSON.stringify({
+        op: 2,
+        d: {
+          subscribe_to_id: userId
+        }
+      }));
+      heartbeatInterval = setInterval(() => {
+        ws.send(JSON.stringify({ op: 3 }));
+      }, heartbeatInterval_);
+    }
+    if (message.op === 0) {
+      if (message.t === 'INIT_STATE' || message.t === 'PRESENCE_UPDATE') {
+        updateLanyardImage();
+      }
+    }
+  };
+
+  ws.onclose = () => {
+    console.log('Disconnected from Lanyard WebSocket, reconnecting in 5s...');
+    clearInterval(heartbeatInterval);
+    setTimeout(initLanyardWebSocket, 5000);
+  };
+
+  ws.onerror = (error) => {
+    console.error('Lanyard WebSocket error:', error);
+  };
+}
+
+function updateLanyardImage() {
   var lanyardImage = document.getElementById('lanyardImage');
   if (lanyardImage) {
     var timestamp = new Date().getTime();
@@ -527,17 +568,17 @@ function refreshImages() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(refreshLanyardImage, 500);
+  initLanyardWebSocket();
+  setTimeout(refreshImages, 500);
 });
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
-    setTimeout(refreshLanyardImage, 100);
+    setTimeout(refreshImages, 100);
   }
 });
 
 // Refresh Intervals
-setInterval(refreshLanyardImage, 1000);
 setInterval(refreshImages, 60000);
 
 // =============================================
@@ -958,6 +999,409 @@ if (document.readyState === 'loading') {
 } else {
   loadPCSpecs();
 }
+
+// =============================================
+//                  TTS LOGIC
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const textInput = document.getElementById('textInput');
+    const voiceSelect = document.getElementById('voice');
+    const rateInput = document.getElementById('rate');
+    const volumeInput = document.getElementById('volume');
+    const infiniteRepeatCheckbox = document.getElementById('infiniteRepeat');
+    const wakeLockToggle = document.getElementById('wakeLockToggle');
+    const rateValue = document.getElementById('rateValue');
+    const volumeValue = document.getElementById('volumeValue');
+    const status = document.getElementById('status');
+
+    if (!playBtn) return;
+
+    const synth = window.speechSynthesis;
+    let utterance = null;
+    let voices = [];
+    let isPaused = false;
+    let currentRepeat = 0;
+    let isInfiniteRepeat = false;
+    let currentText = '';
+    let wakeLock = null;
+    let isWakeLockEnabled = false;
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    const allowedVoices = [
+        { name: "Google polski", lang: "pl-PL" },
+        { name: "Google US English", lang: "en-US" },
+        { name: "Google русский", lang: "ru-RU" }
+    ];
+
+    async function requestWakeLock() {
+        if ('wakeLock' in navigator && !wakeLock) {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                isWakeLockEnabled = true;
+                console.log('Wake lock activated');
+                
+                wakeLock.addEventListener('release', () => {
+                    console.log('Wake lock released');
+                    wakeLock = null;
+                    isWakeLockEnabled = false;
+                    wakeLockToggle.checked = false;
+                });
+                
+            } catch (err) {
+                console.error('Wake lock failed:', err);
+                wakeLockToggle.checked = false;
+                updateStatus('Wake lock not supported or failed');
+            }
+        }
+    }
+
+    async function releaseWakeLock() {
+        if (wakeLock) {
+            try {
+                await wakeLock.release();
+                wakeLock = null;
+                isWakeLockEnabled = false;
+                console.log('Wake lock released manually');
+            } catch (err) {
+                console.error('Failed to release wake lock:', err);
+            }
+        }
+    }
+
+    wakeLockToggle.addEventListener('change', async function() {
+        if (this.checked) {
+            await requestWakeLock();
+        } else {
+            await releaseWakeLock();
+        }
+    });
+
+    document.addEventListener('visibilitychange', async () => {
+        if (!document.hidden && wakeLockToggle.checked && !wakeLock) {
+            await requestWakeLock();
+        }
+    });
+
+    function setupiOSBackgroundAudio() {
+        if (isIOS) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                gainNode.gain.value = 0;
+                oscillator.frequency.value = 440;
+                oscillator.start();
+                window.audioContext = audioContext;
+                window.silentOscillator = oscillator;
+                window.silentGainNode = gainNode;
+            } catch (err) {
+                console.error('Failed to setup iOS background audio:', err);
+            }
+        }
+    }
+
+    function enableiOSBackgroundMode() {
+        if (isIOS) {
+            const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAAAQAwAAEAAAAABAAgAZGF0YQQAAAAAAA==');
+            audio.volume = 0.01;
+            audio.play().catch(err => console.log('Silent audio play failed:', err));
+        }
+    }
+
+    function initializeMediaSession() {
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: 'Text-to-Speech',
+                artist: 'NobiteK TTS Reader',
+                album: 'Voice Synthesis',
+                artwork: [
+                    { src: '/assets/Images/Icon.png', sizes: '96x96', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '128x128', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '192x192', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '256x256', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '384x384', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '512x512', type: 'image/png' }
+                ]
+            });
+
+            navigator.mediaSession.setActionHandler('play', () => {
+                if (isPaused && synth.paused) {
+                    synth.resume();
+                    isPaused = false;
+                    speakingUI();
+                    navigator.mediaSession.playbackState = 'playing';
+                } else {
+                    speak();
+                }
+            });
+
+            navigator.mediaSession.setActionHandler('pause', () => {
+                if (synth.speaking && !synth.paused) {
+                    synth.pause();
+                    isPaused = true;
+                    pausedUI();
+                    navigator.mediaSession.playbackState = 'paused';
+                }
+            });
+
+            navigator.mediaSession.setActionHandler('stop', () => {
+                stop();
+                navigator.mediaSession.playbackState = 'none';
+            });
+        }
+    }
+
+    function updateMediaSessionMetadata(text) {
+        if ('mediaSession' in navigator) {
+            const truncatedText = text.length > 50 ? text.substring(0, 50) + '...' : text;
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: truncatedText,
+                artist: 'NobiteK TTS Reader',
+                album: `Voice: ${voices[voiceSelect.value]?.name || 'Default'}`,
+                artwork: [
+                    { src: '/assets/Images/Icon.png', sizes: '96x96', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '128x128', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '192x192', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '256x256', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '384x384', type: 'image/png' },
+                    { src: '/assets/Images/Icon.png', sizes: '512x512', type: 'image/png' }
+                ]
+            });
+        }
+    }
+
+    function loadVoices() {
+        const allVoices = synth.getVoices();
+        
+        if (allVoices.length === 0) {
+            return;
+        }
+        
+        if (isIOS) {
+            voices = allVoices.filter(voice => {
+                return voice.lang.startsWith('pl-') || 
+                       voice.lang.startsWith('en-') || 
+                       voice.lang.startsWith('ru-');
+            });
+        } else {
+            voices = allVoices.filter(voice => {
+                return allowedVoices.some(allowed => 
+                    voice.name.includes(allowed.name) && 
+                    voice.lang.includes(allowed.lang) &&
+                    !voice.name.includes("UK")
+                );
+            });
+            
+            if (voices.length === 0) {
+                voices = allVoices;
+            }
+        }
+        
+        voiceSelect.innerHTML = '';
+        
+        voices.forEach((voice, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = `${voice.name}`;
+            voiceSelect.appendChild(option);
+        });
+    }
+
+    function waitForVoices() {
+        return new Promise((resolve) => {
+            const checkVoices = () => {
+                const allVoices = synth.getVoices();
+                if (allVoices.length > 0) {
+                    resolve();
+                } else {
+                    setTimeout(checkVoices, 100);
+                }
+            };
+            checkVoices();
+        });
+    }
+
+    if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = loadVoices;
+    }
+    
+    waitForVoices().then(() => {
+        loadVoices();
+        initializeMediaSession();
+        setupiOSBackgroundAudio();
+    });
+
+    function updateStatus(message) {
+        status.textContent = message;
+    }
+
+    function resetUI() {
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        stopBtn.disabled = true;
+        updateStatus('Ready to speak');
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'none';
+        }
+        if (wakeLock && !wakeLockToggle.checked) {
+            releaseWakeLock();
+        }
+    }
+
+    function speakingUI() {
+        playBtn.disabled = true;
+        pauseBtn.disabled = false;
+        stopBtn.disabled = false;
+        
+        if (isInfiniteRepeat) {
+            updateStatus(`Speaking... (Infinite mode: ${currentRepeat})`);
+        } else {
+            updateStatus(`Speaking...`);
+        }
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'playing';
+        }
+        
+        if (wakeLockToggle.checked && !wakeLock) {
+            requestWakeLock();
+        }
+    }
+
+    function pausedUI() {
+        playBtn.disabled = true;
+        pauseBtn.disabled = true;
+        stopBtn.disabled = false;
+        
+        if (isInfiniteRepeat) {
+            updateStatus(`Paused (Infinite mode: ${currentRepeat})`);
+        } else {
+            updateStatus(`Paused`);
+        }
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'paused';
+        }
+    }
+
+    rateInput.addEventListener('input', function() {
+        rateValue.textContent = parseFloat(this.value).toFixed(1);
+    });
+
+    volumeInput.addEventListener('input', function() {
+        volumeValue.textContent = parseFloat(this.value).toFixed(1);
+    });
+
+    playBtn.addEventListener('click', function() {
+        speak();
+    });
+
+    pauseBtn.addEventListener('click', function() {
+        if (synth.speaking) {
+            synth.pause();
+            isPaused = true;
+            pausedUI();
+        }
+    });
+
+    stopBtn.addEventListener('click', function() {
+        stop();
+    });
+
+    function speak(isRepeat = false) {
+        if (!isRepeat) {
+            currentRepeat = 1;
+            isInfiniteRepeat = infiniteRepeatCheckbox.checked;
+        }
+
+        if (synth.speaking && !isRepeat) {
+            synth.cancel();
+        }
+
+        const text = textInput.value.trim();
+        if (!text) {
+            updateStatus('Please enter some text to speak');
+            return;
+        }
+
+        if (isIOS) {
+            enableiOSBackgroundMode();
+        }
+
+        currentText = text;
+        updateMediaSessionMetadata(text);
+
+        utterance = new SpeechSynthesisUtterance(text);
+
+        const selectedVoice = voices[voiceSelect.value];
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+        }
+
+        utterance.rate = parseFloat(rateInput.value);
+        utterance.volume = parseFloat(volumeInput.value);
+
+        utterance.onstart = function() {
+            speakingUI();
+        };
+
+        utterance.onend = function() {
+            if (isInfiniteRepeat) {
+                currentRepeat++;
+                setTimeout(() => {
+                    if (isIOS) {
+                        enableiOSBackgroundMode();
+                    }
+                    speak(true);
+                }, 500);
+            } else {
+                resetUI();
+            }
+        };
+
+        utterance.onerror = function(event) {
+            updateStatus('Error occurred: ' + event.error);
+            resetUI();
+        };
+
+        if (isIOS) {
+            utterance.onboundary = function(event) {
+                if (window.audioContext && window.audioContext.state === 'suspended') {
+                    window.audioContext.resume();
+                }
+            };
+        }
+
+        synth.speak(utterance);
+    }
+
+    function stop() {
+        synth.cancel();
+        isPaused = false;
+        currentRepeat = 1;
+        resetUI();
+    }
+
+    resetUI();
+    initializeMediaSession();
+
+    const ttsTaskbarItem = document.querySelector('[data-window="tts-window"]');
+    if (ttsTaskbarItem) {
+        ttsTaskbarItem.addEventListener('click', function() {
+            if (this.dataset.lastClick && Date.now() - this.dataset.lastClick < 1000) {
+                return;
+            }
+            this.dataset.lastClick = Date.now();
+            sendM('🔊 **TTS Reader Window**');
+        });
+    }
+});
 
 // =============================================
 //                 DEBUG OUTPUT
