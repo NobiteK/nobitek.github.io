@@ -285,22 +285,10 @@ a:hover {
 
 @media only screen and (max-width: 480px) {
     #lanyardImage {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        margin: 15px auto !important;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        object-fit: contain;
-        object-position: center;
+        display: none;
     }
     .lanyard-container {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: none;
     }
 }
 
