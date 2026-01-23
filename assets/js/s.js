@@ -2,7 +2,7 @@
 //            CLICK SOUND (PC ONLY)
 // =============================================
 
-var audio = new Audio("C:\\Users\\Norbert\\Desktop\\nobitek.github.io\\assets\\Others\\Click.wav");
+var audio = new Audio("assets/Others/Click.wav");
 
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
