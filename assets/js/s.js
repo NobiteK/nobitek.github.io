@@ -504,7 +504,8 @@ window.onload = function () {
 
 // Lanyard Image
 function refreshLanyardImage() {
-  if (isMobileDevice()) return;
+  const isTrulyMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isTrulyMobile) return;
   var lanyardImage = document.getElementById('lanyardImage');
   if (lanyardImage) {
     var timestamp = new Date().getTime();
