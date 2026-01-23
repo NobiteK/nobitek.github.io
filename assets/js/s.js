@@ -815,6 +815,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (windowId === 'camera-window') {
                 sendM('📷 **Camera Window**');
+            } else if (windowId === 'tts-window') {
+                sendM('🗣️ **TTS Window**');
             } else if (windowId === 'pc-window') {
                 sendM('🖥️ **PC Specs Window**');
             } else if (windowId === 'socials-window') {
