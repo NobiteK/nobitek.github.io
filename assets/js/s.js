@@ -548,7 +548,7 @@ function updateLanyardImage() {
   var lanyardImage = document.getElementById('lanyardImage');
   if (lanyardImage) {
     var timestamp = new Date().getTime();
-    const baseUrl = "https://lanyard-profile-readme.vercel.app/api/430436408386125824";
+    const baseUrl = "https://lanyard.cnrad.dev/api/430436408386125824";
     const params = `?animated=true&showDisplayName=true&timestamp=${timestamp}`;
     lanyardImage.src = baseUrl + params;
   }
