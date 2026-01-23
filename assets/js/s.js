@@ -502,49 +502,8 @@ window.onload = function () {
 //                 IMAGE REFRESH
 // =============================================
 
-// Lanyard WebSocket
-function initLanyardWebSocket() {
-  const ws = new WebSocket('wss://api.lanyard.rest/socket');
-  let heartbeatInterval;
-  const userId = '430436408386125824';
-
-  ws.onopen = () => {
-    console.log('Connected to Lanyard WebSocket');
-  };
-
-  ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (message.op === 1) {
-      const heartbeatInterval_ = message.d.heartbeat_interval;
-      ws.send(JSON.stringify({
-        op: 2,
-        d: {
-          subscribe_to_id: userId
-        }
-      }));
-      heartbeatInterval = setInterval(() => {
-        ws.send(JSON.stringify({ op: 3 }));
-      }, heartbeatInterval_);
-    }
-    if (message.op === 0) {
-      if (message.t === 'INIT_STATE' || message.t === 'PRESENCE_UPDATE') {
-        updateLanyardImage();
-      }
-    }
-  };
-
-  ws.onclose = () => {
-    console.log('Disconnected from Lanyard WebSocket, reconnecting in 5s...');
-    clearInterval(heartbeatInterval);
-    setTimeout(initLanyardWebSocket, 5000);
-  };
-
-  ws.onerror = (error) => {
-    console.error('Lanyard WebSocket error:', error);
-  };
-}
-
-function updateLanyardImage() {
+// Lanyard Image
+function refreshLanyardImage() {
   var lanyardImage = document.getElementById('lanyardImage');
   if (lanyardImage) {
     var timestamp = new Date().getTime();
@@ -568,17 +527,19 @@ function refreshImages() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  initLanyardWebSocket();
+  setTimeout(refreshLanyardImage, 500);
   setTimeout(refreshImages, 500);
 });
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
+    setTimeout(refreshLanyardImage, 100);
     setTimeout(refreshImages, 100);
   }
 });
 
 // Refresh Intervals
+setInterval(refreshLanyardImage, 1000);
 setInterval(refreshImages, 60000);
 
 // =============================================
