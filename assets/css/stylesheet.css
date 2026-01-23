@@ -8,6 +8,43 @@
     --cursor-default: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png') 5 3, default;
     --cursor-pointer: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     --cursor-grabbing: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-grabbing.png') 5 3, grabbing;
+
+    --bg-primary: #111118;
+    --bg-secondary: #0c0c11;
+    --bg-tertiary: #1d1d29;
+    --bg-quaternary: #242433;
+    --bg-hover: #2d2d39;
+    --bg-input: #2d2d2d;
+    --bg-card: #1e1e1e;
+    --bg-loader: #161616;
+
+    --text-white: #fff;
+    --text-primary: #e0e0e0;
+    --text-muted: #888;
+    --text-dark-muted: #777;
+    --text-accent: #8c64dc;
+    --text-accent-hover: #ac76ff;
+    --text-light: #d1dce6;
+    --text-light-alt: #dcd6f8;
+
+    --accent-purple: #5d35b2;
+    --accent-blue: #4dabf7;
+    --accent-blue-hover: #339af0;
+    --accent-red: #ff4444;
+    --accent-gray: #444;
+    --accent-gray-light: #555;
+    --accent-gray-lighter: #666;
+
+    --border-primary: #242433;
+    --border-secondary: #333;
+    --border-light: #cccccc80;
+
+    --discord: #5865F2;
+    --instagram: #833AB4;
+    --youtube: #FF4444;
+    --twitch: #6441A5;
+    --steam: #1B2838;
+    --spotify: #0DD452;
 }
 
 * {
@@ -23,20 +60,20 @@ html, body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #111118;
+    background-color: var(--bg-primary);
     margin: 0;
     padding: 0;
-    color: #8c64dc;
+    color: var(--text-accent);
     color-scheme: dark;
 }
 
 a {
     text-decoration: none;
-    color: #8c64dc;
+    color: var(--text-accent);
 }
 
 a:hover {
-    color: #ac76ff;
+    color: var(--text-accent-hover);
 }
 
 /*  ============================================= 
@@ -137,7 +174,7 @@ a:hover {
 
 .button {
     border: none;
-    color: #fff;
+    color: var(--text-white);
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
@@ -147,81 +184,81 @@ a:hover {
     border-radius: 8px;
     max-width: 99%;
     max-height: 99%;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: var(--cursor-pointer);
 }
 
 .discord {
-    background-color: #5865F2;
-    color: #d1dce6;
-    border: 2px solid #5865F2;
+    background-color: var(--discord);
+    color: var(--text-light);
+    border: 2px solid var(--discord);
 }
 
 .discord:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #5865F2;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--discord);
 }
 
 .instagram {
-    background-color: #833AB4;
-    color: #d1dce6;
-    border: 2px solid #833AB4;
+    background-color: var(--instagram);
+    color: var(--text-light);
+    border: 2px solid var(--instagram);
 }
 
 .instagram:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #833AB4;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--instagram);
 }
 
 .youtube {
-    background-color: #FF4444;
-    color: #d1dce6;
-    border: 2px solid #FF4444;
+    background-color: var(--youtube);
+    color: var(--text-light);
+    border: 2px solid var(--youtube);
 }
 
 .youtube:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #FF4444;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--youtube);
 }
 
 .twitch {
-    background-color: #6441A5;
-    color: #d1dce6;
-    border: 2px solid #6441A5;
+    background-color: var(--twitch);
+    color: var(--text-light);
+    border: 2px solid var(--twitch);
 }
 
 .twitch:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #6441A5;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--twitch);
 }
 
 .steam {
-    background-color: #1B2838;
-    color: #d1dce6;
-    border: 2px solid #1B2838;
+    background-color: var(--steam);
+    color: var(--text-light);
+    border: 2px solid var(--steam);
 }
 
 .steam:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #1B2838;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--steam);
 }
 
 .spotify {
-    background-color: #0DD452;
-    color: #d1dce6;
-    border: 2px solid #0DD452;
+    background-color: var(--spotify);
+    color: var(--text-light);
+    border: 2px solid var(--spotify);
 }
 
 .spotify:hover {
-    background-color: #111118; /* Same as page background color */
-    color: #d1dce6;
-    border: 2px solid #0DD452;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--spotify);
 }
 
 /*  ============================================= 
@@ -282,7 +319,7 @@ a:hover {
     width: 100%;
     height: 100vh;
     display: flex;
-    background-color: #111118;
+    background-color: var(--bg-primary);
     z-index: 9999;
 }
 
@@ -329,7 +366,7 @@ a:hover {
     left: 3px;
     right: 3px;
     bottom: 3px;
-    background-color: #161616;
+    background-color: var(--bg-loader);
     border-radius: 50%;
 }
 
@@ -351,13 +388,13 @@ a:hover {
     bottom: 0;
     width: 100%;
     height: 40px;
-    background-color: #0c0c11;
-    color: #fff;
+    background-color: var(--bg-secondary);
+    color: var(--text-white);
     display: flex;
     align-items: center;
     padding: 0 10px;
     z-index: 9998;
-    border-top: 1px solid #242433;
+    border-top: 1px solid var(--border-primary);
 }
 
 .taskbar-right {
@@ -374,11 +411,11 @@ a:hover {
     margin-right: 15px;
     font-size: 11px;
     line-height: 1.3;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .taskbar-clock span {
-    color: #fff;
+    color: var(--text-white);
 }
 
 .taskbar-items {
@@ -393,7 +430,7 @@ a:hover {
     padding: 0 10px;
     display: flex;
     align-items: center;
-    background-color: #1d1d29;
+    background-color: var(--bg-tertiary);
     border-radius: 4px;
     cursor: var(--cursor-pointer);
     transition: all 0.2s ease;
@@ -401,11 +438,11 @@ a:hover {
 
 #start-button {
     padding: 0 7px;
-    background-color: #242433;
+    background-color: var(--bg-quaternary);
 }
 
 #start-button:hover {
-    background-color: #2d2d39;
+    background-color: var(--bg-hover);
     transform: scale(1.05);
 }
 
@@ -424,7 +461,7 @@ a:hover {
 
 .taskbar-item.active {
     background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: inset 0 -2px 0 #8c64dc;
+    box-shadow: inset 0 -2px 0 var(--text-accent);
 }
 
 .start-menu {
@@ -432,8 +469,8 @@ a:hover {
     bottom: 40px;
     left: 0;
     width: 150px;
-    background-color: #0c0c11;
-    border: 1px solid #242433;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
     border-radius: 8px 8px 0 0;
     margin-left: 8px;
     display: none;
@@ -455,7 +492,7 @@ a:hover {
 .start-menu::before {
     content: 'Start Menu';
     display: block;
-    color: #fff;
+    color: var(--text-white);
     font-size: 14px;
     margin-bottom: 10px;
     padding: 0 8px;
@@ -471,14 +508,14 @@ a:hover {
     align-items: center;
     padding: 8px 12px;
     border-radius: 4px;
-    color: #fff;
+    color: var(--text-white);
     text-decoration: none;
     transition: background-color 0.2s;
     font-size: 14px;
 }
 
 .start-menu a:hover {
-    background-color: #1d1d29;
+    background-color: var(--bg-tertiary);
 }
 
 @keyframes slideUp {
@@ -505,8 +542,8 @@ a:hover {
     bottom: 45px;
     right: 10px;
     padding: 8px 12px;
-    background: #1d1d29;
-    color: #fff;
+    background: var(--bg-tertiary);
+    color: var(--text-white);
     border-radius: 4px;
     z-index: 9998;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -518,7 +555,7 @@ a:hover {
     text-align: left;
     pointer-events: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #242433;
+    border: 1px solid var(--border-primary);
 }
 
 /*  ============================================= 
@@ -531,12 +568,12 @@ a:hover {
     right: 7px;
     cursor: var(--cursor-pointer);
     font-size: 30px;
-    color: #fff;
+    color: var(--text-white);
     background-color: rgba(30, 30, 30, 0.8);
     width: 35px;
     height: 35px;
     border-radius: 5px;
-    border: 1px solid #cccccc80;
+    border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -566,20 +603,20 @@ a:hover {
     width: 250px;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #242433;
+    border: 1px solid var(--border-primary);
     border-radius: 4px;
-    background: #1d1d29;
-    color: #fff;
+    background: var(--bg-tertiary);
+    color: var(--text-white);
     text-align: center;
 }
 
 .camera-password:focus {
     outline: none;
-    border-color: #8c64dc;
+    border-color: var(--text-accent);
 }
 
 .camera-error {
-    color: #ff4444;
+    color: var(--accent-red);
     margin-top: 10px;
     font-size: 14px;
     height: 20px;
@@ -618,7 +655,7 @@ a:hover {
 }
 
 .camera-item {
-    background: #1d1d29;
+    background: var(--bg-tertiary);
     border-radius: 4px;
     overflow: hidden;
     width: 100%;
@@ -628,8 +665,8 @@ a:hover {
 
 .camera-header {
     padding: 8px 12px;
-    background: #242433;
-    color: #fff;
+    background: var(--bg-quaternary);
+    color: var(--text-white);
     font-size: 14px;
 }
 
@@ -697,9 +734,9 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10000;
-    background-color: #0c0c11;
+    background-color: var(--bg-secondary);
     padding: 10px;
-    border: 2px solid #5d35b2;
+    border: 2px solid var(--accent-purple);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -729,7 +766,7 @@ a:hover {
     font-weight: 900;
     letter-spacing: 6px;
     line-height: 1;
-    background: linear-gradient(90deg, #3a1d6f 0%, #5d35b2 50%, #372c8c 100%);
+    background: linear-gradient(90deg, #3a1d6f 0%, var(--accent-purple) 50%, #372c8c 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -739,14 +776,14 @@ a:hover {
 .error-message {
     margin: 0;
     font-size: clamp(14px, 2.5vw, 20px);
-    color: #dcd6f8;
+    color: var(--text-light-alt);
     opacity: 0.95;
 }
 
 .btn-primary {
-    background-color: #5d35b2;
-    color: #d1dce6;
-    border: 2px solid #5d35b2;
+    background-color: var(--accent-purple);
+    color: var(--text-light);
+    border: 2px solid var(--accent-purple);
     padding: 12px 22px;
     border-radius: 8px;
     text-decoration: none;
@@ -758,9 +795,9 @@ a:hover {
 }
 
 .btn-primary:hover {
-    background-color: #111118;
-    color: #d1dce6;
-    border: 2px solid #5d35b2;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    border: 2px solid var(--accent-purple);
     transform: scale(1.05);
 }
 
@@ -791,14 +828,14 @@ a:hover {
 }
 
 .tts-header h1 {
-    color: #8c64dc;
+    color: var(--text-accent);
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 900;
 }
 
 .tts-subtitle {
-    color: #888;
+    color: var(--text-muted);
     margin-bottom: 10px;
     font-size: 14px;
     margin: 0;
@@ -811,12 +848,12 @@ a:hover {
 }
 
 .tts-card {
-    background-color: #1e1e1e;
+    background-color: var(--bg-card);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid #333;
+    border: 1px solid var(--border-secondary);
 }
 
 .tts-controls {
@@ -827,8 +864,8 @@ a:hover {
 }
 
 .tts-btn {
-    background-color: #4dabf7;
-    color: #fff;
+    background-color: var(--accent-blue);
+    color: var(--text-white);
     border: none;
     padding: 12px 8px;
     border-radius: 8px;
@@ -840,36 +877,36 @@ a:hover {
 }
 
 .tts-btn:hover {
-    background-color: #339af0;
+    background-color: var(--accent-blue-hover);
     transform: scale(1.02);
 }
 
 .tts-btn:active {
     transform: scale(0.95);
-    background-color: #339af0;
+    background-color: var(--accent-blue-hover);
 }
 
 .tts-btn:disabled {
-    background-color: #444;
-    color: #777;
+    background-color: var(--accent-gray);
+    color: var(--text-dark-muted);
     cursor: not-allowed;
     transform: none;
 }
 
 .tts-btn-primary {
-    background-color: #4dabf7;
+    background-color: var(--accent-blue);
 }
 
 .tts-btn-primary:hover:not(:disabled) {
-    background-color: #339af0;
+    background-color: var(--accent-blue-hover);
 }
 
 .tts-btn-secondary {
-    background-color: #555;
+    background-color: var(--accent-gray-light);
 }
 
 .tts-btn-secondary:hover:not(:disabled) {
-    background-color: #666;
+    background-color: var(--accent-gray-lighter);
 }
 
 .tts-settings {
@@ -886,15 +923,15 @@ a:hover {
 .tts-setting-row label {
     font-weight: 600;
     min-width: 60px;
-    color: #e0e0e0;
+    color: var(--text-primary);
 }
 
 .tts-select {
     padding: 8px;
     border-radius: 8px;
-    border: 1px solid #333;
-    background-color: #2d2d2d;
-    color: #e0e0e0;
+    border: 1px solid var(--border-secondary);
+    background-color: var(--bg-input);
+    color: var(--text-primary);
     flex-grow: 1;
     cursor: var(--cursor-pointer);
     font-family: 'Poppins', sans-serif;
@@ -902,23 +939,23 @@ a:hover {
 
 .tts-select:focus {
     outline: none;
-    border-color: #4dabf7;
+    border-color: var(--accent-blue);
 }
 
 .tts-slider {
     flex-grow: 1;
     padding: 0;
-    background-color: #333;
+    background-color: var(--border-secondary);
     height: 6px;
     border-radius: 8px;
-    border: 1px solid #333;
+    border: 1px solid var(--border-secondary);
     cursor: var(--cursor-pointer);
     -webkit-appearance: none;
     appearance: none;
 }
 
 .tts-slider::-webkit-slider-thumb {
-    background: #4dabf7;
+    background: var(--accent-blue);
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -928,7 +965,7 @@ a:hover {
 }
 
 .tts-slider::-moz-range-thumb {
-    background: #4dabf7;
+    background: var(--accent-blue);
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -943,7 +980,7 @@ a:hover {
 .tts-value {
     min-width: 30px;
     text-align: right;
-    color: #e0e0e0;
+    color: var(--text-primary);
     font-size: 14px;
 }
 
@@ -959,7 +996,7 @@ a:hover {
     width: 18px;
     height: 18px;
     cursor: var(--cursor-pointer);
-    accent-color: #4dabf7;
+    accent-color: var(--accent-blue);
 }
 
 .tts-checkbox-container label {
@@ -972,9 +1009,9 @@ a:hover {
     height: 180px;
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid #333;
-    background-color: #2d2d2d;
-    color: #e0e0e0;
+    border: 1px solid var(--border-secondary);
+    background-color: var(--bg-input);
+    color: var(--text-primary);
     resize: vertical;
     font-size: 16px;
     line-height: 1.5;
@@ -985,16 +1022,16 @@ a:hover {
 
 .tts-textarea:focus {
     outline: none;
-    border-color: #4dabf7;
+    border-color: var(--accent-blue);
 }
 
 .tts-textarea::placeholder {
-    color: #888;
+    color: var(--text-muted);
 }
 
 .tts-status {
     font-style: italic;
-    color: #888;
+    color: var(--text-muted);
     margin-top: 8px;
     font-size: 14px;
 }
@@ -1042,8 +1079,8 @@ a:hover {
 
 .window {
     position: fixed;
-    background: #0c0c11;
-    border: 1px solid #242433;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
     border-radius: 8px;
     display: none;
     z-index: 1000;
@@ -1113,7 +1150,7 @@ a:hover {
     width: 100%; 
     height: calc(100vh - 40px);
     overflow-y: hidden;
-    color: #fff;
+    color: var(--text-white);
     box-sizing: border-box;
 }
 
@@ -1135,13 +1172,13 @@ a:hover {
 }
 
 #pc-window a {
-    color: #8c64dc;
+    color: var(--text-accent);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 #pc-window a:hover {
-    color: #ac76ff;
+    color: var(--text-accent-hover);
 }
 
 @media (min-width: 768px) {
@@ -1170,14 +1207,40 @@ a:hover {
     }
 }
 
+#tts-window {
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+@media (min-width: 768px) {
+    #tts-window {
+        width: 600px;
+        height: auto;
+        max-height: 80vh;
+    }
+}
+
+#tts-window .window-content {
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#tts-window .tts-card {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
 .window.show {
     display: block;
 }
 
 .window-header {
-    background: #1d1d29;
+    background: var(--bg-tertiary);
     padding: 10px;
-    border-bottom: 1px solid #242433;
+    border-bottom: 1px solid var(--border-primary);
     border-radius: 8px 8px 0 0;
     display: flex;
     align-items: center;
@@ -1205,7 +1268,7 @@ a:hover {
 .window-title {
     margin: 0;
     font-size: 14px;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .window-controls {
@@ -1221,8 +1284,8 @@ a:hover {
     min-width: 24px;
     border: none;
     border-radius: 4px;
-    background: #2d2d39;
-    color: #fff;
+    background: var(--bg-hover);
+    color: var(--text-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1261,6 +1324,6 @@ a:hover {
 
 /* 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #111118; }
-::-webkit-scrollbar-thumb { background: #1d1d29; border-radius: 10px; } 
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 10px; } 
 */
