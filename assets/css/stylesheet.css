@@ -1332,6 +1332,7 @@ a:hover {
     z-index: 1;
     pointer-events: none;
     user-select: none;
+    padding-bottom: 40px;
 }
 
 .moon-wallpaper::before {
@@ -1351,6 +1352,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    .moon-wallpaper {
+        padding-bottom: 60px;
+    }
+    
     .moon-wallpaper::before {
         font-size: clamp(100px, 40vw, 250px);
         opacity: 0.12;
@@ -1365,7 +1370,6 @@ a:hover {
         }
     }
 }
-
 /*  ============================================= 
                     SCROLLBAR
     ============================================= */
