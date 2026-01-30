@@ -881,6 +881,7 @@ async function loadPCSpecs() {
           
           content = content.replace(/ or /g, ' <span style="color: #888888;">or</span> ');
           content = content.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
+          content = content.replace(/\((?!w\/ )([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
           
           if (subItem.price === null || subItem.price === 0) {
             content += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
@@ -899,12 +900,13 @@ async function loadPCSpecs() {
       let content = `${item.category} - ${item.name}`;
       
       content = content.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
+      content = content.replace(/\((?!w\/ )([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
       
       if (item.price === null || item.price === 0) {
         content += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
       } else if (item.price > 0) {
         totalPrice += item.price;
-        content += ` <span style="color: #4dabf7; font-weight: 600;">[${item.price.toFixed(2)} zł]</span>`;
+        content += ` <span style="color: #4dabf7; font-weight: 600;">[${subItem.price.toFixed(2)} zł]</span>`;
       }
       
       li.innerHTML = content;
@@ -921,6 +923,7 @@ async function loadPCSpecs() {
           let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
           
           subContent = subContent.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
+          subContent = subContent.replace(/\((?!w\/ )([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
           
           if (subItem.price === null || subItem.price === 0) {
             subContent += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
