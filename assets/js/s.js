@@ -906,7 +906,7 @@ async function loadPCSpecs() {
         content += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
       } else if (item.price > 0) {
         totalPrice += item.price;
-        content += ` <span style="color: #4dabf7; font-weight: 600;">[${subItem.price.toFixed(2)} zł]</span>`;
+        content += ` <span style="color: #4dabf7; font-weight: 600;">[${item.price.toFixed(2)} zł]</span>`;
       }
       
       li.innerHTML = content;
