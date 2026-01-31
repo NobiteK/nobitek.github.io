@@ -8,7 +8,7 @@
     },
     {
       "category": "GPU",
-      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +150, Mem +500)",
       "price": 2000.00
     },
     {
@@ -18,7 +18,7 @@
     },
     {
       "category": "RAM",
-      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16",
+      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16 (OC: 3600MHz, 16-19-19-42, 1.37V)",
       "price": 0.00
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "category": "Fans",
-      "name": "ARCTIC P12 Max White x3 (w/ ARCTIC Case Fan Hub)",
+      "name": "ARCTIC P12 Max White x3, ARCTIC P12 Pro White x4 (w/ ARCTIC Case Fan Hub)",
       "price": 180.00
     },
     {
