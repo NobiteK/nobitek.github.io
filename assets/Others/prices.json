@@ -8,7 +8,7 @@
     },
     {
       "category": "GPU",
-      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +150, Mem +500)",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +150MHz, Mem +500MHz)",
       "price": 2000.00
     },
     {
@@ -45,7 +45,7 @@
     {
       "category": "Fans",
       "name": "ARCTIC P12 Max White x3, ARCTIC P12 Pro White x4 (w/ ARCTIC Case Fan Hub)",
-      "price": 180.00
+      "price": 310.00
     },
     {
       "category": "Case",
