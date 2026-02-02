@@ -923,7 +923,7 @@ async function loadPCSpecs() {
           let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
           
           subContent = subContent.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
-          subContent = subcontent.replace(/\((?!w\/ )(?!\d)([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
+          subContent = subContent.replace(/\((?!w\/ )(?!\d)([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
           
           if (subItem.price === null || subItem.price === 0) {
             subContent += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
