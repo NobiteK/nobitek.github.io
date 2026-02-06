@@ -862,7 +862,7 @@ async function loadPCSpecs() {
         const li = document.createElement('li');
         li.innerHTML = '&nbsp;';
         li.style.borderTop = '1px solid #242433';
-        li.style.margin = '12px 0 8px 0';
+        li.style.margin = '8px 0 4px 0';
         pcWindow.appendChild(li);
         return;
       }
@@ -875,7 +875,7 @@ async function loadPCSpecs() {
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
           if (subItem.price > 0) totalPrice += subItem.price;
-          appendFormattedItem(subItem, ul, true);
+          appendFormattedItem(subItem, ul, true, item.category === 'Keyboard');
         });
         pcWindow.appendChild(ul);
         return;
@@ -897,8 +897,7 @@ async function loadPCSpecs() {
     const spacer = document.createElement('li');
     spacer.innerHTML = '&nbsp;';
     spacer.style.borderTop = '1px solid #242433';
-    spacer.style.marginTop = '12px';
-    spacer.style.paddingTop = '8px';
+    spacer.style.margin = '10px 0 6px 0';
     pcWindow.appendChild(spacer);
 
     const totalLi = document.createElement('li');
@@ -915,9 +914,9 @@ async function loadPCSpecs() {
   }
 }
 
-function appendFormattedItem(item, parentUl, isSub = false) {
+function appendFormattedItem(item, parentUl, isSub = false, isKeyboardSub = false) {
   const li = document.createElement('li');
-  let text = isSub ? `⠀⠀⠀⠀${item.name}` : `${item.category} - ${item.name}`;
+  let text = isSub ? item.name : `${item.category} - ${item.name}`;
 
   text = text.replace(/ or /g, ' <span style="color:#888888">or</span> ');
   text = text.replace(/\(w\/ ([^)]+)\)/g, '<span style="color:#5a5a5a">(w/ $1)</span>');
@@ -930,6 +929,14 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   }
 
   li.innerHTML = text;
+
+  if (isSub && isKeyboardSub) {
+    li.style.marginLeft = '0';
+    li.style.paddingLeft = '0';
+  } else if (isSub) {
+    li.style.marginLeft = '20px';
+  }
+
   parentUl.appendChild(li);
 }
 
