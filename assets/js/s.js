@@ -862,8 +862,9 @@ async function loadPCSpecs() {
         const li = document.createElement('li');
         li.innerHTML = '&nbsp;';
         li.style.borderTop = '1px solid #242433';
-        li.style.margin = '3px 0';
+        li.style.margin = '2px 0';
         li.style.padding = '0';
+        li.style.lineHeight = '1';
         pcWindow.appendChild(li);
         return;
       }
@@ -871,11 +872,12 @@ async function loadPCSpecs() {
       if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
         const li = document.createElement('li');
         li.textContent = item.category + ':';
-        li.style.marginBottom = '2px';
+        li.style.marginBottom = '1px';
+        li.style.lineHeight = '1.35';
         pcWindow.appendChild(li);
 
         const ul = document.createElement('ul');
-        ul.style.margin = '0 0 4px 24px';
+        ul.style.margin = '0 0 2px 24px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
@@ -892,7 +894,7 @@ async function loadPCSpecs() {
 
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
-        ul.style.margin = '2px 0 4px 24px';
+        ul.style.margin = '1px 0 2px 24px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
@@ -907,19 +909,22 @@ async function loadPCSpecs() {
     const spacer = document.createElement('li');
     spacer.innerHTML = '&nbsp;';
     spacer.style.borderTop = '1px solid #242433';
-    spacer.style.margin = '3px 0';
+    spacer.style.margin = '2px 0';
     spacer.style.padding = '0';
+    spacer.style.lineHeight = '1';
     pcWindow.appendChild(spacer);
 
     const totalLi = document.createElement('li');
     totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
-    totalLi.style.marginTop = '2px';
+    totalLi.style.marginTop = '1px';
+    totalLi.style.lineHeight = '1.35';
     pcWindow.appendChild(totalLi);
 
     const updateLi = document.createElement('li');
     updateLi.innerHTML = `<span style="color: #888; font-size: 0.85em; font-style: italic;">Last price update: ${data.lastUpdate}</span>`;
-    updateLi.style.marginTop = '1px';
+    updateLi.style.marginTop = '0px';
+    updateLi.style.lineHeight = '1.35';
     pcWindow.appendChild(updateLi);
 
   } catch (error) {
@@ -941,7 +946,7 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   }
 
   li.innerHTML = text;
-  li.style.margin = '2px 0';
+  li.style.margin = '1px 0';
   li.style.paddingLeft = '0';
   li.style.lineHeight = '1.35';
 
