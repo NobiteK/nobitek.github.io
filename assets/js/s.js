@@ -873,12 +873,12 @@ async function loadPCSpecs() {
       if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
         const li = document.createElement('li');
         li.textContent = item.category + ':';
-        li.style.margin = '6px 0 2px 0';
+        li.style.margin = '8px 0 2px 0';
         li.style.padding = '0';
         pcWindow.appendChild(li);
 
         const ul = document.createElement('ul');
-        ul.style.margin = '0 0 4px 24px';
+        ul.style.margin = '0 0 3px 24px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
@@ -895,7 +895,7 @@ async function loadPCSpecs() {
 
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
-        ul.style.margin = '2px 0 4px 24px';
+        ul.style.margin = '1px 0 3px 24px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
@@ -907,10 +907,16 @@ async function loadPCSpecs() {
       }
     });
 
+    const preTotalSpacer = document.createElement('li');
+    preTotalSpacer.innerHTML = '&nbsp;';
+    preTotalSpacer.style.margin = '8px 0 0 0';
+    preTotalSpacer.style.padding = '0';
+    pcWindow.appendChild(preTotalSpacer);
+
     const spacer = document.createElement('li');
     spacer.innerHTML = '&nbsp;';
     spacer.style.borderTop = '1px solid #242433';
-    spacer.style.margin = '6px 0 3px 0';
+    spacer.style.margin = '4px 0 2px 0';
     spacer.style.padding = '0';
     spacer.style.height = '1px';
     spacer.style.lineHeight = '1px';
@@ -919,7 +925,7 @@ async function loadPCSpecs() {
     const totalLi = document.createElement('li');
     totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
-    totalLi.style.margin = '2px 0 1px 0';
+    totalLi.style.margin = '4px 0 2px 0';
     pcWindow.appendChild(totalLi);
 
     const updateLi = document.createElement('li');
@@ -946,9 +952,9 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   }
 
   li.innerHTML = text;
-  li.style.margin = '1px 0'; 
+  li.style.margin = '1px 0';
   li.style.padding = '0';
-  li.style.lineHeight = '1.3';
+  li.style.lineHeight = '1.35';
 
   parentUl.appendChild(li);
 }
