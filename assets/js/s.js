@@ -855,111 +855,82 @@ async function loadPCSpecs() {
     if (!pcWindow) return;
     
     pcWindow.innerHTML = '';
-    
     let totalPrice = 0;
-    
+
     data.specs.forEach(item => {
       if (item.spacer) {
-        const br = document.createElement('br');
-        pcWindow.appendChild(br);
+        const li = document.createElement('li');
+        li.innerHTML = '&nbsp;';
+        li.style.borderTop = '1px solid #242433';
+        li.style.margin = '12px 0 8px 0';
+        pcWindow.appendChild(li);
         return;
       }
-      
+
       if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
         const li = document.createElement('li');
         li.textContent = item.category + ':';
         pcWindow.appendChild(li);
-        
+
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
-          if (subItem.price && subItem.price > 0) {
-            totalPrice += subItem.price;
-          }
-          
-          const subLi = document.createElement('li');
-          let content = subItem.name;
-          
-          content = content.replace(/ or /g, ' <span style="color: #888888;">or</span> ');
-          content = content.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
-          content = content.replace(/\((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
-          
-          if (subItem.price === null || subItem.price === 0) {
-            content += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
-          } else if (subItem.price > 0) {
-            content += ` <span style="color: #4dabf7; font-weight: 600;">[${subItem.price.toFixed(2)} zł]</span>`;
-          }
-          
-          subLi.innerHTML = content;
-          ul.appendChild(subLi);
+          if (subItem.price > 0) totalPrice += subItem.price;
+          appendFormattedItem(subItem, ul, true);
         });
         pcWindow.appendChild(ul);
         return;
       }
-      
-      const li = document.createElement('li');
-      let content = `${item.category} - ${item.name}`;
-      
-      content = content.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
-      content = content.replace(/\((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
-      
-      if (item.price === null || item.price === 0) {
-        content += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
-      } else if (item.price > 0) {
-        totalPrice += item.price;
-        content += ` <span style="color: #4dabf7; font-weight: 600;">[${item.price.toFixed(2)} zł]</span>`;
-      }
-      
-      li.innerHTML = content;
-      pcWindow.appendChild(li);
-      
+
+      if (item.price > 0) totalPrice += item.price;
+      appendFormattedItem(item, pcWindow, false);
+
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
         item.subItems.forEach(subItem => {
-          if (subItem.price && subItem.price > 0) {
-            totalPrice += subItem.price;
-          }
-          
-          const subLi = document.createElement('li');
-          let subContent = `⠀⠀⠀⠀ ${subItem.name}`;
-          
-          subContent = subContent.replace(/\(w\/ ([^)]+)\)/g, '<span style="color: #5a5a5a;">(w/ $1)</span>');
-          subContent = subcontent.replace(/\((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, '<span style="color: #4ade80;">($1)</span>');
-          
-          if (subItem.price === null || subItem.price === 0) {
-            subContent += ` <span style="color: #f74d4d; font-weight: 600; cursor: help;" title="The price is unknown at this time">[?]</span>`;
-          } else if (subItem.price > 0) {
-            subContent += ` <span style="color: #4dabf7; font-weight: 600;">[${subItem.price.toFixed(2)} zł]</span>`;
-          }
-          
-          subLi.innerHTML = subContent;
-          ul.appendChild(subLi);
+          if (subItem.price > 0) totalPrice += subItem.price;
+          appendFormattedItem(subItem, ul, true);
         });
         pcWindow.appendChild(ul);
       }
     });
-    
-    const spacerLi = document.createElement('li');
-    spacerLi.innerHTML = '&nbsp;';
-    spacerLi.style.borderTop = '1px solid #242433';
-    spacerLi.style.marginTop = '10px';
-    spacerLi.style.paddingTop = '5px';
-    spacerLi.style.marginBottom = '0';
-    pcWindow.appendChild(spacerLi);
-    
+
+    const spacer = document.createElement('li');
+    spacer.innerHTML = '&nbsp;';
+    spacer.style.borderTop = '1px solid #242433';
+    spacer.style.marginTop = '12px';
+    spacer.style.paddingTop = '8px';
+    pcWindow.appendChild(spacer);
+
     const totalLi = document.createElement('li');
     totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
-    totalLi.style.marginTop = '5px';
     pcWindow.appendChild(totalLi);
-    
+
     const updateLi = document.createElement('li');
     updateLi.innerHTML = `<span style="color: #888; font-size: 0.85em; font-style: italic;">Last price update: ${data.lastUpdate}</span>`;
-    updateLi.style.marginTop = '3px';
     pcWindow.appendChild(updateLi);
-    
+
   } catch (error) {
     console.error('Failed to load PC specs:', error);
   }
+}
+
+function appendFormattedItem(item, parentUl, isSub = false) {
+  const li = document.createElement('li');
+  let text = isSub ? `⠀⠀⠀⠀${item.name}` : `${item.category} - ${item.name}`;
+
+  text = text.replace(/ or /g, ' <span style="color:#888888">or</span> ');
+  text = text.replace(/\(w\/ ([^)]+)\)/g, '<span style="color:#5a5a5a">(w/ $1)</span>');
+  text = text.replace(/ \((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
+
+  if (item.price === 0 || item.price == null) {
+    text += ` <span style="color:#f74d4d; font-weight:600; cursor:help" title="Cena nieznana">[?]</span>`;
+  } else {
+    text += ` <span style="color:#4dabf7; font-weight:600">[${item.price.toFixed(2)} zł]</span>`;
+  }
+
+  li.innerHTML = text;
+  parentUl.appendChild(li);
 }
 
 if (document.readyState === 'loading') {
