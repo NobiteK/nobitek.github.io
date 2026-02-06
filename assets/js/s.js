@@ -862,7 +862,8 @@ async function loadPCSpecs() {
         const li = document.createElement('li');
         li.innerHTML = '&nbsp;';
         li.style.borderTop = '1px solid #242433';
-        li.style.margin = '8px 0 4px 0';
+        li.style.margin = '6px 0';
+        li.style.padding = '0';
         pcWindow.appendChild(li);
         return;
       }
@@ -870,12 +871,17 @@ async function loadPCSpecs() {
       if (item.subItems && (item.category === 'Keyboard' || item.category === 'Monitors')) {
         const li = document.createElement('li');
         li.textContent = item.category + ':';
+        li.style.marginBottom = '4px';
         pcWindow.appendChild(li);
 
         const ul = document.createElement('ul');
+        ul.style.margin = '0 0 8px 24px';
+        ul.style.padding = '0';
+        ul.style.listStyle = 'none';
+
         item.subItems.forEach(subItem => {
           if (subItem.price > 0) totalPrice += subItem.price;
-          appendFormattedItem(subItem, ul, true, item.category === 'Keyboard');
+          appendFormattedItem(subItem, ul, true);
         });
         pcWindow.appendChild(ul);
         return;
@@ -886,6 +892,10 @@ async function loadPCSpecs() {
 
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
+        ul.style.margin = '4px 0 8px 24px';
+        ul.style.padding = '0';
+        ul.style.listStyle = 'none';
+
         item.subItems.forEach(subItem => {
           if (subItem.price > 0) totalPrice += subItem.price;
           appendFormattedItem(subItem, ul, true);
@@ -897,16 +907,19 @@ async function loadPCSpecs() {
     const spacer = document.createElement('li');
     spacer.innerHTML = '&nbsp;';
     spacer.style.borderTop = '1px solid #242433';
-    spacer.style.margin = '10px 0 6px 0';
+    spacer.style.margin = '6px 0';
+    spacer.style.padding = '0';
     pcWindow.appendChild(spacer);
 
     const totalLi = document.createElement('li');
     totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
+    totalLi.style.marginTop = '4px';
     pcWindow.appendChild(totalLi);
 
     const updateLi = document.createElement('li');
     updateLi.innerHTML = `<span style="color: #888; font-size: 0.85em; font-style: italic;">Last price update: ${data.lastUpdate}</span>`;
+    updateLi.style.marginTop = '2px';
     pcWindow.appendChild(updateLi);
 
   } catch (error) {
@@ -914,7 +927,7 @@ async function loadPCSpecs() {
   }
 }
 
-function appendFormattedItem(item, parentUl, isSub = false, isKeyboardSub = false) {
+function appendFormattedItem(item, parentUl, isSub = false) {
   const li = document.createElement('li');
   let text = isSub ? item.name : `${item.category} - ${item.name}`;
 
@@ -929,13 +942,8 @@ function appendFormattedItem(item, parentUl, isSub = false, isKeyboardSub = fals
   }
 
   li.innerHTML = text;
-
-  if (isSub && isKeyboardSub) {
-    li.style.marginLeft = '0';
-    li.style.paddingLeft = '0';
-  } else if (isSub) {
-    li.style.marginLeft = '20px';
-  }
+  li.style.margin = '3px 0';
+  li.style.paddingLeft = '0';
 
   parentUl.appendChild(li);
 }
