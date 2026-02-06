@@ -894,7 +894,7 @@ async function loadPCSpecs() {
 
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
-        ul.style.margin = '0 0 4px 24px';
+        ul.style.margin = '0 0 4px 48px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
