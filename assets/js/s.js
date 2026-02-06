@@ -894,7 +894,7 @@ async function loadPCSpecs() {
 
       if (item.subItems && item.category === 'SSD') {
         const ul = document.createElement('ul');
-        ul.style.margin = '1px 0 2px 24px';
+        ul.style.margin = '0 0 4px 24px';
         ul.style.padding = '0';
         ul.style.listStyle = 'none';
 
@@ -915,7 +915,7 @@ async function loadPCSpecs() {
     pcWindow.appendChild(spacer);
 
     const totalLi = document.createElement('li');
-    totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
+    totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7; margin-top: 20px; display: block;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
     totalLi.style.marginTop = '1px';
     totalLi.style.lineHeight = '1.35';
