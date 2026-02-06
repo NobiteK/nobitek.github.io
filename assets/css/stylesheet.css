@@ -1161,6 +1161,23 @@ a:hover {
     padding: 10px;
 }
 
+#pc-window .window-content ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#pc-window .window-content li {
+    margin: 0;
+    padding: 0;
+    line-height: 1.35;
+}
+
+#pc-window .window-content li[style*="border-top"] {
+    line-height: 1;
+    min-height: 0;
+}
+
 #pc-window ul {
     list-style: none;
     padding: 0;
@@ -1306,6 +1323,8 @@ a:hover {
     height: calc(100% - 40px);
     box-sizing: border-box;
 }
+
+
 
 @media (min-width: 768px) {
     .window-content {
