@@ -1168,14 +1168,14 @@ a:hover {
 }
 
 #pc-window .window-content li {
-    margin: 0;
-    padding: 0;
-    line-height: 1.35;
+    line-height: 1.35 !important;
 }
 
 #pc-window .window-content li[style*="border-top"] {
-    line-height: 1;
-    min-height: 0;
+    line-height: 1 !important;
+    min-height: 0 !important;
+    height: 1px !important;
+    margin: 4px 0 !important;
 }
 
 #pc-window ul {
