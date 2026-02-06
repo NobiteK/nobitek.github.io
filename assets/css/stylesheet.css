@@ -1178,10 +1178,6 @@ a:hover {
     margin: 4px 0 !important;
 }
 
-#pc-window .window-content li:last-child {
-    margin-top: 16px;
-}
-
 #pc-window ul {
     list-style: none;
     padding: 0;
