@@ -909,23 +909,29 @@ async function loadPCSpecs() {
 
     const preTotalSpacer = document.createElement('li');
     preTotalSpacer.innerHTML = '&nbsp;';
-    preTotalSpacer.style.margin = '8px 0 0 0';
+    preTotalSpacer.style.margin = '3px 0 0 0';
     preTotalSpacer.style.padding = '0';
     pcWindow.appendChild(preTotalSpacer);
 
     const spacer = document.createElement('li');
     spacer.innerHTML = '&nbsp;';
     spacer.style.borderTop = '1px solid #242433';
-    spacer.style.margin = '4px 0 2px 0';
+    spacer.style.margin = '3px 0';
     spacer.style.padding = '0';
     spacer.style.height = '1px';
     spacer.style.lineHeight = '1px';
     pcWindow.appendChild(spacer);
 
+    const postLineSpacer = document.createElement('li');
+    postLineSpacer.innerHTML = '&nbsp;';
+    postLineSpacer.style.margin = '10px 0 0 0';
+    postLineSpacer.style.padding = '0';
+    pcWindow.appendChild(postLineSpacer);
+
     const totalLi = document.createElement('li');
     totalLi.innerHTML = `<strong style="font-size: 1.1em; color: #4dabf7;">TOTAL SETUP COST: ${totalPrice.toFixed(2)} zł</strong>`;
     totalLi.style.fontWeight = '900';
-    totalLi.style.margin = '4px 0 2px 0';
+    totalLi.style.margin = '0 0 2px 0';
     pcWindow.appendChild(totalLi);
 
     const updateLi = document.createElement('li');
