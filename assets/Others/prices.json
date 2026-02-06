@@ -99,11 +99,11 @@
           "price": 500.00
         },
         {
-          "name": "Acer Nitro VG240Ybmiix 23,8\" 75Hz (B:100 C:50 BB:5 Gamma:2.2 RGB:50/45/40)",
+          "name": "Acer Nitro VG240Ybmiix 23,8\" 75Hz (B:100 C:50 BB:0 Gamma:1.8 RGB:50/45/41)",
           "price": 500.00
         },
         {
-          "name": "LG 24MP60G-B 23,8\" 75Hz (B:100 C:70 BC:45 Gamma:Mode3 RGB:50/40/55)",
+          "name": "LG 24MP60G-B 23,8\" 75Hz (B:100 C:70 BC:50 Gamma:Mode3 RGB:50/40/55)",
           "price": 500.00
         }
       ]
@@ -112,7 +112,7 @@
     {
       "category": "Headphones",
       "name": "HyperX Cloud Alpha Wireless (w/ <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006738651540.html\">Ali earpads all-plush</a>)",
-      "price": 500.00
+      "price": 450.00
     },
     {
       "category": "Microphone",
