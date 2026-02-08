@@ -95,7 +95,7 @@
       "category": "Monitors",
       "subItems": [
         {
-          "name": "AOC 24G4HRE 23,8\" 200Hz (B:100 C:50 Gamma:2.4 RGB:49/44/55 OD:Fast)",
+          "name": "AOC 24G4HRE 23,8\" 200Hz (B:100 C:50 Gamma:2.4 RGB:49/44/55 OD:Fast GC:7)",
           "price": 500.00
         },
         {
@@ -135,5 +135,5 @@
       "price": 650.00
     }
   ],
-  "lastUpdate": "2026-02-06"
+  "lastUpdate": "2026-02-08"
 }
