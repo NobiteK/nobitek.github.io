@@ -597,6 +597,7 @@ a:hover {
     background: var(--bg-tertiary);
     color: var(--text-white);
     text-align: center;
+    cursor: var(--cursor-help);
 }
 
 .camera-password:focus {
