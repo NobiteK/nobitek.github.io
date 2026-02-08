@@ -8,6 +8,7 @@
     --cursor-default: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor.png') 5 3, default;
     --cursor-pointer: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-pointer.png') 5 3, pointer;
     --cursor-grabbing: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-grabbing.png') 5 3, grabbing;
+    --cursor-help: url('https://raw.githubusercontent.com/NobiteK/Website/main/assets/Images/cursor-help.png') 5 3, help;
 
     --bg-primary: #111118;
     --bg-secondary: #0c0c11;
