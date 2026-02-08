@@ -940,7 +940,7 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   text = text.replace(/ \((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
 
   if (item.price === 0 || item.price == null) {
-    text += ` <span style="color:#f74d4d; font-weight:600; cursor:help" title="Unknown price">[?]</span>`;
+    text += ` <span style="color:#f74d4d; font-weight:600; cursor:var(--cursor-help)" title="Unknown price">[?]</span>`;
   } else {
     text += ` <span style="color:#4dabf7; font-weight:600">[${item.price.toFixed(2)} zł]</span>`;
   }
