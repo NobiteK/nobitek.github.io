@@ -2,7 +2,7 @@
   "specs": [
     {
       "category": "CPU",
-      "name": "AMD Ryzen 7 5800XT (UV: -0.085V PBO: 1X, +200MHz, PPT-230 TDC-160 EDC-220, Fmax Enhancer: OFF)",
+      "name": "AMD Ryzen 7 5800XT (UV: -0.075V PBO: 3X, +200MHz, PPT-230 TDC-160 EDC-220, Fmax Enhancer: OFF)",
       "price": 900.00,
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "category": "RAM",
-      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16 (OC: 3600MHz, FCLK-Auto, 16-19-19-40, 1.35V, SOC +0.030V)",
+      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 CL16-20-20-20-39",
       "price": 0.00
     },
     {
