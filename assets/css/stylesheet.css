@@ -1202,7 +1202,7 @@ a:hover {
 
 @media (min-width: 768px) {
     #pc-window { 
-        width: 910px; 
+        width: 920px; 
         max-height: 80vh; 
         height: auto;
         overflow-y: hidden;
