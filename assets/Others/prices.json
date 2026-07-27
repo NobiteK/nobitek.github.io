@@ -2,7 +2,7 @@
   "specs": [
     {
       "category": "CPU",
-      "name": "AMD Ryzen 7 5800XT (CO: -20 PBO: 1X, +200MHz, PPT-142 TDC-95 EDC-140, Fmax Enhancer: OFF)",
+      "name": "AMD Ryzen 7 5800XT (CO: -25 PBO: 1X, +200MHz, PPT-142 TDC-95 EDC-160, Fmax Enhancer: OFF)",
       "price": 900.00
     },
     {
