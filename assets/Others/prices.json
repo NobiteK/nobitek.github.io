@@ -2,12 +2,12 @@
   "specs": [
     {
       "category": "CPU",
-      "name": "AMD Ryzen 7 5800XT (CO: -25 PBO: 1X, +200MHz, PPT-142 TDC-95 EDC-160, Fmax Enhancer: OFF)",
+      "name": "AMD Ryzen 7 5800XT (CO: -25 PBO: 1X, +200MHz, PPT-145 TDC-105 EDC-160, Fmax Enhancer: OFF)",
       "price": 900.00
     },
     {
       "category": "GPU",
-      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +150MHz, Mem +500MHz)",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +170MHz, Mem +1400MHz)",
       "price": 1500.00
     },
     {
