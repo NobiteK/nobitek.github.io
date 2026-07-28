@@ -1,23 +1,37 @@
 {
   "specs": [
-    {
+{
       "category": "CPU",
-      "name": "AMD Ryzen 7 5800XT (CO: -25 PBO: 1X, +200MHz, PPT-145 TDC-105 EDC-160, Fmax Enhancer: OFF)",
+      "name": "AMD Ryzen 7 5800XT",
+      "tags": [
+        { "label": "CO", "tooltip": "CO: -25 (all cores)" },
+        { "label": "PBO", "tooltip": "PBO: 1x\n+200MHz\nPPT: 145W\nTDC: 105A\nEDC: 160A\nFmax Enhancer: OFF\n\nAMD CBS:\nCPPC & CPPC Preferred Cores: ON\nGlobal C-State Control: ON" },
+        { "label": "Curve", "tooltip": "CPU FAN\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)" }
+      ],
       "price": 900.00
     },
     {
       "category": "GPU",
-      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB (OC: Core +170MHz, Mem +1400MHz)",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
+      "tags": [
+        { "label": "OC", "tooltip": "Core: +170MHz\nMem: +1400MHz" }
+      ],
       "price": 1500.00
     },
     {
       "category": "MOBO",
       "name": "ASUS Prime B450-PLUS",
+      "tags": [
+        { "label": "Settings", "tooltip": "LED Lighting: OFF\nPower Delivery on S5: ON\nResize BAR: ON\nSecure Boot: UEFI" }
+      ],
       "price": 400.00
     },
     {
       "category": "RAM",
-      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4 (OC: 3600, 1800, 16-19-19-19-38, 1.38V)",
+      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4",
+      "tags": [
+        { "label": "OC", "tooltip": "3600MHz / FCLK 1800MHz\n16-19-19-19-38\n1.38V" }
+      ],
       "price": 1200.00
     },
     {
@@ -41,9 +55,12 @@
       "name": "Deepcool AK400 WH + Arctic MX-7",
       "price": 200.00
     },
-    {
+{
       "category": "Fans",
       "name": "ARCTIC P12 Max White x3, ARCTIC P12 Pro White x4 (w/ ARCTIC Case Fan Hub)",
+      "tags": [
+        { "label": "Curve", "tooltip": "CHA2 FAN\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)" }
+      ],
       "price": 310.00
     },
     {
