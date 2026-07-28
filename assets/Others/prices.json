@@ -1,6 +1,6 @@
 {
   "specs": [
-{
+    {
       "category": "CPU",
       "name": "AMD Ryzen 7 5800XT",
       "tags": [
@@ -55,7 +55,7 @@
       "name": "Deepcool AK400 WH + Arctic MX-7",
       "price": 200.00
     },
-{
+    {
       "category": "Fans",
       "name": "ARCTIC P12 Max White x3, ARCTIC P12 Pro White x4 (w/ ARCTIC Case Fan Hub)",
       "tags": [
