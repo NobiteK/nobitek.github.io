@@ -69,6 +69,7 @@ html, body {
 }
 
 a {
+    cursor: var(--cursor-pointer);
     text-decoration: none;
     color: var(--text-accent);
 }
@@ -1388,6 +1389,104 @@ a:hover {
             transform: translateY(-40px);
         }
     }
+}
+
+/*  ============================================= 
+                  TOOLTIP STYLES
+    ============================================= */
+
+.pc-spec-tooltip {
+    display: inline-block;
+    position: relative;
+    color: #4ade80;
+    cursor: var(--cursor-help);
+    border-bottom: 1px dotted rgba(74, 222, 128, 0.65);
+    margin-left: 2px;
+    font-weight: 600;
+}
+
+.pc-spec-tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    width: min(280px, calc(100vw - 40px));
+    background: #10131d;
+    color: #f5f7fb;
+    text-align: left;
+    border: 1px solid #2f3a4f;
+    border-radius: 8px;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: 999;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    white-space: pre-line;
+    line-height: 1.35;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+.pc-spec-tooltip:hover .tooltiptext,
+.pc-spec-tooltip:focus .tooltiptext,
+.pc-spec-tooltip:focus-within .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.with-tooltip {
+    display: inline-block;
+    position: relative;
+    color: #5a5a5a;
+    cursor: var(--cursor-help);
+    margin: 0;
+    font-weight: 400;
+}
+
+.with-tooltip .tooltip-bracket {
+    color: #5a5a5a;
+}
+
+.with-tooltip[onclick] {
+    cursor: var(--cursor-pointer);
+}
+
+.with-tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    width: min(280px, calc(100vw - 40px));
+    background: #10131d;
+    color: #f5f7fb;
+    text-align: left;
+    border: 1px solid #2f3a4f;
+    border-radius: 8px;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: 999;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    white-space: pre-line;
+    line-height: 1.35;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+.with-tooltip:hover .tooltiptext,
+.with-tooltip:focus .tooltiptext,
+.with-tooltip:focus-within .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.pc-spec-tooltip .tooltiptext a {
+    color: var(--text-accent);
+    text-decoration: none;
+}
+.with-tooltip .tooltiptext a {
+    color: var(--text-accent);
+    text-decoration: none;
 }
 
 /*  ============================================= 

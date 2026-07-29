@@ -437,7 +437,7 @@ function showCameraContent() {
 }
 
 // =============================================
-//       ELEMENT INSPECT BLOCKER (useless)
+// ELEMENT INSPECT BLOCKER (useless but for fun)
 // =============================================
 
 window.onload = function () {
@@ -936,8 +936,30 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   const li = document.createElement('li');
   let text = isSub ? item.name : `${item.category} - ${item.name}`;
 
-  text = text.replace(/\(w\/ ([^)]+)\)/g, '<span style="color:#5a5a5a">(w/ $1)</span>');
-  text = text.replace(/ \((?!w\/ )(?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
+  if (item.extra) {
+    const extraLabel = item.extraLabel || '( + )';
+    const extraContent = String(item.extra);
+    const linkMatch = extraContent.match(/<a[^>]*href=["']([^"']*?)["'][^>]*>([^<]+)<\/a>/);
+    const href = linkMatch ? linkMatch[1] : null;
+    const tooltipText = linkMatch
+      ? `<span style="color:var(--text-accent)">${linkMatch[2]}</span>`
+      : extraContent;
+    const clickAttr = href ? `onclick="event.stopPropagation(); window.open('${href}', '_blank'); return false;"` : '';
+
+    text += ` <span class="with-tooltip" tabindex="0" ${clickAttr}><span class="tooltip-bracket">${extraLabel}</span><span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
+  }
+
+  if (item.tooltip) {
+    const tooltipLabel = item.tooltipLabel || '(OC)';
+    const tooltipText = String(item.tooltip)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\n/g, '<br>');
+    text += ` <span class="pc-spec-tooltip" tabindex="0">${tooltipLabel}<span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
+  } else {
+    text = text.replace(/ \((?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
+  }
 
   if (item.price === 0 || item.price == null) {
     text += ` <span style="color:#f74d4d; font-weight:600; cursor:var(--cursor-help)" title="Unknown price">[?]</span>`;
@@ -946,6 +968,7 @@ function appendFormattedItem(item, parentUl, isSub = false) {
   }
 
   li.innerHTML = text;
+
   li.style.margin = '1px 0';
   li.style.paddingLeft = '0';
   li.style.lineHeight = '1.35';
