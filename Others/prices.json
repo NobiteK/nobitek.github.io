@@ -1,0 +1,163 @@
+{
+  "specs": [
+    {
+      "category": "CPU",
+      "name": "AMD Ryzen 7 5800XT",
+      "price": 900.00,
+      "tooltipLabel": "(OC)",
+      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-145 TDC-105 EDC-160\nFmax Enhancer: OFF\n\nCO:\n -20 (all cores)\n\nCinebench 2024 Score: 842pts"
+    },
+    {
+      "category": "GPU",
+      "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
+      "price": 1500.00,
+      "tooltipLabel": "(OC)",
+      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1200MHz\n\n3DMark Time Spy Score: Soon"
+    },
+    {
+      "category": "RAM",
+      "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4",
+      "price": 1200.00,
+      "tooltipLabel": "(OC)",
+      "tooltip": "Frequency: 3600MHz\nFCLK: 1800MHz\nTimings: 16-19-19-19-38\nVoltage: 1.38V"
+    },
+    {
+      "category": "MOBO",
+      "name": "ASUS Prime B450-PLUS",
+      "price": 400.00,
+      "tooltipLabel": "(BIOS Settings)",
+      "tooltip": "LED Lighting: OFF\nPower Delivery on S5: ON\nResize BAR: ON\nSecure Boot: UEFI\n\nAMD CBS:\nCPPC & CPPC Preferred Cores: ON\nGlobal C-State Control: ON"
+    },
+    {
+      "category": "PSU",
+      "name": "Corsair SF850 80+ Platinum (850W SFX)",
+      "price": 800.00
+    },
+    {
+      "category": "SSD",
+      "name": "Kingston NV2 M.2 NVMe 1TB",
+      "extra": "be quiet! MC1",
+      "price": 400.00,
+      "subItems": [
+        {
+          "name": "Samsung 870 QVO 1TB",
+          "price": 700.00
+        }
+      ]
+    },
+    {
+      "category": "Cooler",
+      "name": "Deepcool AK400 WH + Arctic MX-7",
+      "price": 200.00
+    },
+    {
+      "category": "Fans",
+      "name": "ARCTIC P12 Max White x3, ARCTIC P12 Pro White x4",
+      "extra": "ARCTIC Case Fan Hub",
+      "price": 310.00,
+      "tooltipLabel": "(Curve)",
+      "tooltip": "CPU FAN\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)\n\nCHA2 FAN\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)"
+    },
+    {
+      "category": "Case",
+      "name": "Lian Li O11 Dynamic Mini Snow Edition",
+      "price": 500.00
+    },
+    {
+      "category": "Custom Cables",
+      "name": "EZDIY-FAB White Sleeved Cables",
+      "price": 120.00
+    },
+    { "spacer": true },
+    {
+      "category": "Mouse",
+      "name": "Logitech G Pro X Superlight White",
+      "extra": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005005617841428.html\">Ultraglide Silence Skates</a>",
+      "price": 500.00,
+      "tooltipLabel": "(Settings)",
+      "tooltip": "Weight: 58g\nDPI: 800\nPolling Rate: 1000Hz"
+    },
+    {
+      "category": "Mousepad",
+      "name": "X-Raypad Aqua Control Plus Wave Series Storm 900x400x4mm",
+      "price": 120.00
+    },
+    { "spacer": true },
+    {
+      "category": "Keyboard",
+      "subItems": [
+        {
+          "name": "Base - Zuoya GMK67 White Wireless",
+          "extra": "3 Layer Tape Mod",
+          "price": 180.00
+        },
+        {
+          "name": "Switches - KTT Kang White V3",
+          "extra": "Krytox 205g0",
+          "price": 80.00
+        },
+        {
+          "name": "Stabilizers - DUROCK Plate Mounted V3 CS 4x2u 1x6.25u",
+          "extra": "Krytox 205g0 & Band-aid Mod",
+          "price": 30.00
+        },
+        {
+          "name": "Keycaps - <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006086600608.html\">XVX Jelly White</a>",
+          "price": 80.00
+        }
+      ]
+    },
+    { "spacer": true },
+    {
+      "category": "Monitors",
+      "subItems": [
+        {
+          "name": "AOC 24G4HRE 23,8\" 200Hz",
+          "price": 500.00,
+          "tooltipLabel": "(Settings)",
+          "tooltip": "Brightness: 100\nContrast: 50\nGamma: 2.4\nRGB: 45/44/55\nGame Color: 8\nOverdrive: Fast"
+        },
+        {
+          "name": "Acer Nitro VG240Ybmiix 23,8\" 75Hz",
+          "price": 500.00,
+          "tooltipLabel": "(Settings)",
+          "tooltip": "Brightness: 100\nContrast: 50\nBlack Boost: 0\nGamma: 1.8\nRGB: 50/45/40"
+        },
+        {
+          "name": "LG 24MP60G-B 23,8\" 75Hz", 
+          "price": 500.00,
+          "tooltipLabel": "(Settings)",
+          "tooltip": "Brightness: 100\nContrast: 70\nBlack Control: 50\nGamma: Mode3\nRGB: 50/40/56"
+        }
+      ]
+    },
+    { "spacer": true },
+    {
+      "category": "Headphones",
+      "name": "HyperX Cloud Alpha Wireless",
+      "extra": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006738651540.html\">Ali earpads all-plush</a>",
+      "price": 450.00
+    },
+    {
+      "category": "Microphone",
+      "name": "Fifine K688 Black",
+      "price": 450.00
+    },
+    {
+      "category": "Boom Arm",
+      "name": "Mozos SB38 White",
+      "price": 120.00
+    },
+    {
+      "category": "Desk",
+      "name": "Custom White 167x60x3cm",
+      "price": 250.00
+    },
+    {
+      "category": "Chair",
+      "name": "IMBA Warlock Fabric Black",
+      "price": 650.00
+    }
+  ],
+  "lastUpdate": "29.07.2026"
+}
