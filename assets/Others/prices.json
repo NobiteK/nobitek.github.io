@@ -12,7 +12,7 @@
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1200MHz\n\n3DMark Time Spy Score: Soon"
+      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1300MHz\n\n3DMark Time Spy Score: Soon"
     },
     {
       "category": "RAM",
@@ -136,12 +136,12 @@
       "category": "Headphones",
       "name": "HyperX Cloud Alpha Wireless",
       "extra": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005006738651540.html\">Ali earpads all-plush</a>",
-      "price": 450.00
+      "price": 500.00
     },
     {
       "category": "Microphone",
       "name": "Fifine K688 Black",
-      "price": 450.00
+      "price": 300.00
     },
     {
       "category": "Boom Arm",
