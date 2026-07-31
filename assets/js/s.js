@@ -932,6 +932,10 @@ async function loadPCSpecs() {
   }
 }
 
+function applyColorMarkup(str) {
+  return String(str).replace(/\[#([0-9a-fA-F]{3,8})\]([\s\S]*?)\[\/\]/g, '<span style="color:#$1">$2</span>');
+}
+
 function appendFormattedItem(item, parentUl, isSub = false) {
   const li = document.createElement('li');
   let text = isSub ? item.name : `${item.category} - ${item.name}`;
@@ -943,7 +947,7 @@ function appendFormattedItem(item, parentUl, isSub = false) {
     const href = linkMatch ? linkMatch[1] : null;
     const tooltipText = linkMatch
       ? `<span style="color:var(--text-accent)">${linkMatch[2]}</span>`
-      : extraContent;
+      : applyColorMarkup(extraContent);
     const clickAttr = href ? `onclick="event.stopPropagation(); window.open('${href}', '_blank'); return false;"` : '';
 
     text += ` <span class="with-tooltip" tabindex="0" ${clickAttr}><span class="tooltip-bracket">${extraLabel}</span><span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
@@ -951,11 +955,13 @@ function appendFormattedItem(item, parentUl, isSub = false) {
 
   if (item.tooltip) {
     const tooltipLabel = item.tooltipLabel || '(OC)';
-    const tooltipText = String(item.tooltip)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\n/g, '<br>');
+    const tooltipText = applyColorMarkup(
+      String(item.tooltip)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>')
+    );
     text += ` <span class="pc-spec-tooltip" tabindex="0">${tooltipLabel}<span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
   } else {
     text = text.replace(/ \((?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
@@ -981,6 +987,36 @@ if (document.readyState === 'loading') {
 } else {
   loadPCSpecs();
 }
+
+function clampTooltipToViewport(trigger) {
+  const tooltip = trigger.querySelector(':scope > .tooltiptext');
+  if (!tooltip) return;
+
+  tooltip.style.transform = 'translateX(-50%)';
+
+  requestAnimationFrame(() => {
+    const margin = 8;
+    const rect = tooltip.getBoundingClientRect();
+    let shift = 0;
+
+    if (rect.left < margin) {
+      shift = margin - rect.left;
+    } else if (rect.right > window.innerWidth - margin) {
+      shift = (window.innerWidth - margin) - rect.right;
+    }
+
+    if (shift !== 0) {
+      tooltip.style.transform = `translateX(calc(-50% + ${shift}px))`;
+    }
+  });
+}
+
+['focusin', 'mouseover', 'touchstart'].forEach(evt => {
+  document.addEventListener(evt, function (e) {
+    const trigger = e.target.closest('.pc-spec-tooltip, .with-tooltip');
+    if (trigger) clampTooltipToViewport(trigger);
+  }, { passive: true });
+});
 
 // =============================================
 //                  TTS LOGIC
