@@ -127,6 +127,7 @@ a:hover {
     .window-content {
         height: calc(100% - 40px) !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         box-sizing: border-box !important;
         padding: 10px !important;
         -webkit-overflow-scrolling: touch;
@@ -134,6 +135,7 @@ a:hover {
     
     #pc-window .window-content {
         height: 100% !important;
+        overflow-x: hidden !important;
         padding: 10px 10px 50px 10px !important;
     }
 
@@ -1160,6 +1162,7 @@ a:hover {
 #pc-window .window-content {
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: border-box;
     padding: 10px;
 }
@@ -1323,6 +1326,7 @@ a:hover {
     padding: 10px;
     pointer-events: auto !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
     height: calc(100% - 40px);
     box-sizing: border-box;
 }
