@@ -5,14 +5,14 @@
       "name": "AMD Ryzen 7 5800XT",
       "price": 1000.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\nCO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score: [#4ade80]840pts[/]"
+      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\nCO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score: [#4ade80]840pts[/]\n\n3DMark Time Spy Score:\n[#4ade80]10,082 Legendary\nCPU: 11,415[/]"
     },
     {
       "category": "GPU",
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1150MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,082 Legendary\nGraphics: 9,879\nCPU: 11,415[/]"
+      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1100MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,082 Legendary\nGraphics: 9,879[/]"
     },
     {
       "category": "RAM",
