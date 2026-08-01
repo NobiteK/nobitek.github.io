@@ -5,7 +5,7 @@
       "name": "AMD Ryzen 7 5800XT",
       "price": 1000.00,
       "tooltipLabel": "(OC)",
-      "tooltip": " • BIOS:\n • PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\n • CO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score: [#4ade80]840pts[/]\n\n • 3DMark Time Spy Score:\n[#4ade80]10,082 Legendary\nCPU: 11,415[/]"
+      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\nCO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score:\n[#4ade80]840pts[/]\n\n3DMark Time Spy Score:\n[#4ade80]10,082 Legendary\nCPU: 11,415[/]"
     },
     {
       "category": "GPU",
