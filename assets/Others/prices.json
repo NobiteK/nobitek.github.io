@@ -3,16 +3,16 @@
     {
       "category": "CPU",
       "name": "AMD Ryzen 7 5800XT",
-      "price": 900.00,
+      "price": 1000.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\nCO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score: 840pts"
+      "tooltip": "PBO:\nScalar: 1X\nBoost Override: +200MHz\nPPT-140 TDC-100 EDC-160\nFmax Enhancer: OFF\n\nCO (per-core):\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench 2024 Score: [#4ade80]840pts[/]"
     },
     {
       "category": "GPU",
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1100MHz\n\n3DMark Time Spy Score: 10,082 Legendary (Graphics 9,879 CPU 11,415)"
+      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1150MHz\n\n3DMark Time Spy Score: [#4ade80]10,082 Legendary (Graphics 9,879 CPU 11,415[/])"
     },
     {
       "category": "RAM",
@@ -56,7 +56,7 @@
       "extra": "ARCTIC Case Fan Hub",
       "price": 310.00,
       "tooltipLabel": "(Curve)",
-      "tooltip": "CPU FAN:\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)\n\nCHA2 FANS:\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)\n\nGPU FAN (Afterburner Firmware Mode):\nUpper: 85°C (80%)\nMid: 50°C (33%)\nLower: 49°C (0%)"
+      "tooltip": "CPU FAN: (BIOS)\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)\n\nCHA2 FANS: (BIOS)\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)\n\nGPU FAN (Afterburner Firmware Mode):\nUpper: 85°C (80%)\nMid: 50°C (33%)\nLower: 49°C (0%)"
     },
     {
       "category": "Case",
@@ -146,11 +146,11 @@
     {
       "category": "Boom Arm",
       "name": "Mozos SB38 White",
-      "price": 120.00
+      "price": 200.00
     },
     {
       "category": "Desk",
-      "name": "Custom White 167x60x3cm",
+      "name": "Custom White Glossy 074W R13 167x60x3cm",
       "price": 250.00
     },
     {
