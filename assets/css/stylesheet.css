@@ -1412,7 +1412,7 @@ a:hover {
 .pc-spec-tooltip .tooltiptext {
     visibility: hidden;
     opacity: 0;
-    width: min(280px, calc(100vw - 40px));
+    width: min(300px, calc(100vw - 40px));
     background: #10131d;
     color: #f5f7fb;
     text-align: left;
@@ -1458,7 +1458,7 @@ a:hover {
 .with-tooltip .tooltiptext {
     visibility: hidden;
     opacity: 0;
-    width: min(280px, calc(100vw - 40px));
+    width: min(300px, calc(100vw - 40px));
     background: #10131d;
     color: #f5f7fb;
     text-align: left;
