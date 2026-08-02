@@ -120,11 +120,19 @@
         {
           "name": "Acer Nitro VG240Ybmiix 23,8\" 75Hz",
           "price": 500.00,
-          "tooltipLabel": "(Settings)",
-          "tooltip": "Brightness: 100\nContrast: 50\nBlack Boost: 0\nGamma: 1.8\nRGB: 50/45/40"
+          "tooltips": [
+            {
+              "label": "(OC)",
+              "text": "80Hz"
+            },
+            {
+              "label": "(Settings)",
+              "text": "Brightness: 100\nContrast: 50\nBlack Boost: 0\nGamma: 1.8\nRGB: 50/45/40"
+            }
+          ]
         },
         {
-          "name": "LG 24MP60G-B 23,8\" 75Hz", 
+          "name": "LG 24MP60G-B 23,8\" 75Hz",
           "price": 500.00,
           "tooltipLabel": "(Settings)",
           "tooltip": "Brightness: 100\nContrast: 70\nBlack Control: 50\nGamma: Mode3\nRGB: 50/40/56"
