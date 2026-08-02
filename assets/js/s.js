@@ -953,16 +953,37 @@ function appendFormattedItem(item, parentUl, isSub = false) {
     text += ` <span class="with-tooltip" tabindex="0" ${clickAttr}><span class="tooltip-bracket">${extraLabel}</span><span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
   }
 
+  const tooltips = [];
+
   if (item.tooltip) {
-    const tooltipLabel = item.tooltipLabel || '(OC)';
-    const tooltipText = applyColorMarkup(
-      String(item.tooltip)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\n/g, '<br>')
-    );
-    text += ` <span class="pc-spec-tooltip" tabindex="0">${tooltipLabel}<span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
+    tooltips.push({
+      label: item.tooltipLabel || '(OC)',
+      text: item.tooltip
+    });
+  }
+
+  if (Array.isArray(item.tooltips)) {
+    item.tooltips.forEach(t => {
+      if (t && t.text) {
+        tooltips.push({
+          label: t.label || '(OC)',
+          text: t.text
+        });
+      }
+    });
+  }
+
+  if (tooltips.length > 0) {
+    tooltips.forEach(t => {
+      const tooltipText = applyColorMarkup(
+        String(t.text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\n/g, '<br>')
+      );
+      text += ` <span class="pc-spec-tooltip" tabindex="0">${t.label}<span class="tooltiptext" role="tooltip">${tooltipText}</span></span>`;
+    });
   } else {
     text = text.replace(/ \((?!\d+x\d+GB)(?!\d+W\s)([^)]+)\)/g, ' <span style="color:#4ade80">($1)</span>');
   }
