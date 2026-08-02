@@ -5,28 +5,28 @@
       "name": "AMD Ryzen 7 5800XT",
       "price": 1000.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "[#7dd3fc]PBO[/]\n[#c4b5fd]Scalar:[/] 1X\n[#c4b5fd]Boost Override:[/] +200MHz\n[#c4b5fd]Fmax Enhancer:[/] OFF\n[#c4b5fd]Limits:[/] PPT 140 · TDC 100 · EDC 160\n\n[#7dd3fc]Curve Optimizer (per-core)[/]\n[#c4b5fd]Core 0:[/] -24\n[#c4b5fd]Core 1:[/] -22\n[#c4b5fd]Core 2:[/] -24\n[#c4b5fd]Core 3:[/] -20\n[#c4b5fd]Core 4:[/] -24\n[#c4b5fd]Core 5:[/] -24\n[#c4b5fd]Core 6:[/] -24\n[#c4b5fd]Core 7:[/] -24\n\n[#7dd3fc]Cinebench R23[/]  [#4ade80]15,331 pts[/]\n[#7dd3fc]Cinebench 2024[/]  [#4ade80]851 pts[/]\n[#7dd3fc]Cinebench 2026[/]  [#4ade80]3,453 pts[/]\n\n[#7dd3fc]3DMark Time Spy[/]\n[#4ade80]10,103 Legendary[/]\nCPU: 11,477\nGPU: 9,894"
+      "tooltip": "[#fbbf24]PBO[/]\n[#fdba74]Scalar:[/] 1X\n[#fdba74]Boost Override:[/] +200MHz\n[#fdba74]Fmax Enhancer:[/] OFF\n[#fdba74]Limits:[/] PPT 140 · TDC 100 · EDC 160\n\n[#fbbf24]Curve Optimizer (per-core)[/]\n[#fdba74]Core 0:[/] -24\n[#fdba74]Core 1:[/] -22\n[#fdba74]Core 2:[/] -24\n[#fdba74]Core 3:[/] -20\n[#fdba74]Core 4:[/] -24\n[#fdba74]Core 5:[/] -24\n[#fdba74]Core 6:[/] -24\n[#fdba74]Core 7:[/] -24\n\n[#fbbf24]Cinebench R23[/]  [#4ade80]15,331 pts[/]\n[#fbbf24]Cinebench 2024[/]  [#4ade80]851 pts[/]\n[#fbbf24]Cinebench 2026[/]  [#4ade80]3,453 pts[/]\n\n[#fbbf24]3DMark Time Spy[/]\n[#4ade80]10,103 Legendary[/]\n[#4ade80]CPU: 11,477[/]\n[#4ade80]GPU: 9,894[/]"
     },
     {
       "category": "GPU",
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "[#7dd3fc]MSI Afterburner[/]\n[#c4b5fd]Core:[/] +170MHz\n[#c4b5fd]Memory:[/] +1100MHz\n\n[#7dd3fc]3DMark Time Spy[/]\n[#4ade80]10,103 Legendary[/]\nCPU: 11,477\nGPU: 9,894"
+      "tooltip": "[#fbbf24]MSI Afterburner[/]\n[#fdba74]Core:[/] +170MHz\n[#fdba74]Memory:[/] +1100MHz\n\n[#fbbf24]3DMark Time Spy[/]\n[#4ade80]10,103 Legendary[/]\n[#4ade80]CPU: 11,477[/]\n[#4ade80]GPU: 9,894[/]"
     },
     {
       "category": "RAM",
       "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4",
       "price": 1200.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "[#c4b5fd]Frequency:[/] 3600MHz\n[#c4b5fd]FCLK:[/] 1800MHz\n[#c4b5fd]Timings:[/] 16-19-19-19-38-57\n[#c4b5fd]Voltage:[/] 1.38V"
+      "tooltip": "[#fdba74]Frequency:[/] 3600MHz\n[#fdba74]FCLK:[/] 1800MHz\n[#fdba74]Timings:[/] 16-19-19-19-38-57\n[#fdba74]Voltage:[/] 1.38V"
     },
     {
       "category": "MOBO",
       "name": "ASUS Prime B450-PLUS",
       "price": 400.00,
       "tooltipLabel": "(BIOS Settings)",
-      "tooltip": "[#c4b5fd]LED Lighting:[/] OFF\n[#c4b5fd]Power Delivery on S5:[/] ON\n[#c4b5fd]Resize BAR:[/] ON\n[#c4b5fd]Secure Boot:[/] UEFI\n\n[#7dd3fc]AMD CBS[/]\n[#c4b5fd]CPPC & Preferred Cores:[/] ON\n[#c4b5fd]Global C-State Control:[/] ON"
+      "tooltip": "[#fdba74]LED Lighting:[/] OFF\n[#fdba74]Power Delivery on S5:[/] ON\n[#fdba74]Resize BAR:[/] ON\n[#fdba74]Secure Boot:[/] UEFI\n\n[#fbbf24]AMD CBS[/]\n[#fdba74]CPPC & Preferred Cores:[/] ON\n[#fdba74]Global C-State Control:[/] ON"
     },
     {
       "category": "PSU",
@@ -56,7 +56,7 @@
       "extra": "ARCTIC Case Fan Hub",
       "price": 310.00,
       "tooltipLabel": "(Curve)",
-      "tooltip": "[#7dd3fc]CPU FAN (BIOS)[/]\n[#c4b5fd]Upper:[/] 85°C → 80%\n[#c4b5fd]Mid:[/] 70°C → 55%\n[#c4b5fd]Lower:[/] 45°C → 25%\n\n[#7dd3fc]CHA2 FANS (BIOS)[/]\n[#c4b5fd]Upper:[/] 80°C → 20%\n[#c4b5fd]Mid:[/] 70°C → 20%\n[#c4b5fd]Lower:[/] 40°C → 20%\n\n[#7dd3fc]CHA2 FANS (Fan Control)[/]\n[#c4b5fd]1st:[/] 79.9°C → 11%\n[#c4b5fd]2nd:[/] 80°C → 22%\n[#c4b5fd]3rd:[/] 89.9°C → 22%\n[#c4b5fd]4th:[/] 90°C → 33%\n\n[#7dd3fc]GPU FAN (Afterburner)[/]\n[#c4b5fd]Upper:[/] 85°C → 80%\n[#c4b5fd]Mid:[/] 50°C → 33%\n[#c4b5fd]Lower:[/] 49°C → 0%"
+      "tooltip": "[#fbbf24]CPU FAN (BIOS)[/]\n[#fdba74]Upper:[/] 85°C → 80%\n[#fdba74]Mid:[/] 70°C → 55%\n[#fdba74]Lower:[/] 45°C → 25%\n\n[#fbbf24]CHA2 FANS (BIOS)[/]\n[#fdba74]Upper:[/] 80°C → 20%\n[#fdba74]Mid:[/] 70°C → 20%\n[#fdba74]Lower:[/] 40°C → 20%\n\n[#fbbf24]CHA2 FANS (Fan Control)[/]\n[#fdba74]1st:[/] 79.9°C → 11%\n[#fdba74]2nd:[/] 80°C → 22%\n[#fdba74]3rd:[/] 89.9°C → 22%\n[#fdba74]4th:[/] 90°C → 33%\n\n[#fbbf24]GPU FAN (Afterburner)[/]\n[#fdba74]Upper:[/] 85°C → 80%\n[#fdba74]Mid:[/] 50°C → 33%\n[#fdba74]Lower:[/] 49°C → 0%"
     },
     {
       "category": "Case",
@@ -75,7 +75,7 @@
       "extra": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://aliexpress.com/item/1005005617841428.html\">Ultraglide Silence Skates</a>",
       "price": 500.00,
       "tooltipLabel": "(Settings)",
-      "tooltip": "[#c4b5fd]Weight:[/] 58g\n[#c4b5fd]DPI:[/] 800\n[#c4b5fd]Polling Rate:[/] 1000Hz"
+      "tooltip": "[#fdba74]Weight:[/] 58g\n[#fdba74]DPI:[/] 800\n[#fdba74]Polling Rate:[/] 1000Hz"
     },
     {
       "category": "Mousepad",
@@ -115,7 +115,7 @@
           "name": "AOC 24G4HRE 23,8\" 200Hz",
           "price": 500.00,
           "tooltipLabel": "(Settings)",
-          "tooltip": "[#c4b5fd]Brightness:[/] 100\n[#c4b5fd]Contrast:[/] 50\n[#c4b5fd]Gamma:[/] 2.4\n[#c4b5fd]RGB:[/] 45 / 44 / 55\n[#c4b5fd]Game Color:[/] 8\n[#c4b5fd]Overdrive:[/] Fast"
+          "tooltip": "[#fdba74]Brightness:[/] 100\n[#fdba74]Contrast:[/] 50\n[#fdba74]Gamma:[/] 2.4\n[#fdba74]RGB:[/] 45 / 44 / 55\n[#fdba74]Game Color:[/] 8\n[#fdba74]Overdrive:[/] Fast"
         },
         {
           "name": "Acer Nitro VG240Ybmiix 23,8\" 75Hz",
@@ -123,11 +123,11 @@
           "tooltips": [
             {
               "label": "(OC)",
-              "text": "[#c4b5fd]Refresh Rate:[/] [#4ade80]80Hz[/]"
+              "text": "[#fdba74]Refresh Rate:[/] [#4ade80]80Hz[/]"
             },
             {
               "label": "(Settings)",
-              "text": "[#c4b5fd]Brightness:[/] 100\n[#c4b5fd]Contrast:[/] 50\n[#c4b5fd]Black Boost:[/] 0\n[#c4b5fd]Gamma:[/] 1.8\n[#c4b5fd]RGB:[/] 50 / 45 / 40"
+              "text": "[#fdba74]Brightness:[/] 100\n[#fdba74]Contrast:[/] 50\n[#fdba74]Black Boost:[/] 0\n[#fdba74]Gamma:[/] 1.8\n[#fdba74]RGB:[/] 50 / 45 / 40"
             }
           ]
         },
@@ -135,7 +135,7 @@
           "name": "LG 24MP60G-B 23,8\" 75Hz",
           "price": 500.00,
           "tooltipLabel": "(Settings)",
-          "tooltip": "[#c4b5fd]Brightness:[/] 100\n[#c4b5fd]Contrast:[/] 70\n[#c4b5fd]Black Control:[/] 50\n[#c4b5fd]Gamma:[/] Mode 3\n[#c4b5fd]RGB:[/] 50 / 40 / 56"
+          "tooltip": "[#fdba74]Brightness:[/] 100\n[#fdba74]Contrast:[/] 70\n[#fdba74]Black Control:[/] 50\n[#fdba74]Gamma:[/] Mode 3\n[#fdba74]RGB:[/] 50 / 40 / 56"
         }
       ]
     },
