@@ -5,14 +5,14 @@
       "name": "AMD Ryzen 7 5800XT",
       "price": 1000.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "[#8c64dc]PBO:[/]\n[#ac76ff]Scalar:[/] 1X\n[#ac76ff]Boost Override:[/] +200MHz\n[#ac76ff]Fmax Enhancer:[/] OFF\nPPT-140 TDC-100 EDC-160\n\n[#8c64dc]CO (per-core):[/]\nCore 0: -24\nCore 1: -22\nCore 2: -24\nCore 3: -20\nCore 4: -24\nCore 5: -24\nCore 6: -24\nCore 7: -24\n\nCinebench R23:[#4ade80]15,331pts[/]\n\nCinebench 2024:[#4ade80]851pts[/]\n\nCinebench 2026:[#4ade80]3,453pts[/]\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGraphics: 9,894[/]"
+      "tooltip": "[#2773ff]PBO:[/]\n[#ac76ff]Scalar:[/] 1X\n[#ac76ff]Boost Override:[/] +200MHz\n[#ac76ff]Fmax Enhancer:[/] OFF\n[#ac76ff]PPT-[/]140 [#ac76ff]TDC-[/]100 [#ac76ff]EDC-[/]160\n\n[#2773ff]CO (per-core):[/]\n[#ac76ff]Core 0:[/] -24\n[#ac76ff]Core 1:[/] -22\n[#ac76ff]Core 2:[/] -24\n[#ac76ff]Core 3:[/] -20\n[#ac76ff]Core 4:[/] -24\n[#ac76ff]Core 5:[/] -24\n[#ac76ff]Core 6:[/] -24\n[#ac76ff]Core 7:[/] -24\n\nCinebench R23: [#4ade80]15,331pts[/]\n\nCinebench 2024: [#4ade80]851pts[/]\n\nCinebench 2026: [#4ade80]3,453pts[/]\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGPU: 9,894[/]"
     },
     {
       "category": "GPU",
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1100MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGraphics: 9,894[/]"
+      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1100MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGPU: 9,894[/]"
     },
     {
       "category": "RAM",
