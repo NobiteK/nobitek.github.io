@@ -19,7 +19,7 @@
       "name": "Kingston FURY Beast RGB 32GB (2x16GB) 3200MHz DDR4",
       "price": 1200.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "Frequency: 3600MHz\nFCLK: 1800MHz\nTimings: 16-19-19-19-38\nVoltage: 1.38V"
+      "tooltip": "Frequency: 3600MHz\nFCLK: 1800MHz\nTimings: 16-19-19-19-38-57\nVoltage: 1.38V"
     },
     {
       "category": "MOBO",
@@ -56,7 +56,7 @@
       "extra": "ARCTIC Case Fan Hub",
       "price": 310.00,
       "tooltipLabel": "(Curve)",
-      "tooltip": "CPU FAN: (BIOS)\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)\n\nCHA2 FANS: (BIOS)\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)\n\nGPU FAN (Afterburner Firmware Mode):\nUpper: 85°C (80%)\nMid: 50°C (33%)\nLower: 49°C (0%)"
+      "tooltip": "CPU FAN: (BIOS)\nUpper: 85°C (80%)\nMid: 70°C (55%)\nLower: 45°C (25%)\n\nCHA2 FANS: (BIOS)\nUpper: 80°C (20%)\nMid: 70°C (20%)\nLower: 40°C (20%)\n\nCHA2 FANS: (Fan Control)\nFirst Point: 79,9°C (11%)\nSecond Point: 80°C (22%)\nThird Point: 89,9°C (22%)\nFourth Point: 90°C (33%)\n\nGPU FAN (Afterburner Firmware Mode):\nUpper: 85°C (80%)\nMid: 50°C (33%)\nLower: 49°C (0%)"
     },
     {
       "category": "Case",
@@ -123,7 +123,7 @@
           "tooltips": [
             {
               "label": "(OC)",
-              "text": "80Hz"
+              "text": "Refresh Rate: [#4ade80]80Hz[/]"
             },
             {
               "label": "(Settings)",
@@ -167,5 +167,5 @@
       "price": 650.00
     }
   ],
-  "lastUpdate": "31.07.2026"
+  "lastUpdate": "02.08.2026"
 }
