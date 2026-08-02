@@ -12,7 +12,7 @@
       "name": "Gigabyte GeForce RTX 3060 Vision OC 12GB",
       "price": 1500.00,
       "tooltipLabel": "(OC)",
-      "tooltip": "MSI Afterburner:\nCore +170MHz\nMemory +1100MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGPU: 9,894[/]"
+      "tooltip": "[#2773ff]MSI Afterburner:[/]\n[#ac76ff]Core[/] +170MHz\n[#ac76ff]Memory[/] +1100MHz\n\n3DMark Time Spy Score:\n[#4ade80]10,103 Legendary\nCPU: 11,477\nGPU: 9,894[/]"
     },
     {
       "category": "RAM",
