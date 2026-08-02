@@ -56,7 +56,7 @@
       "extra": "ARCTIC Case Fan Hub",
       "price": 310.00,
       "tooltipLabel": "(Curve)",
-      "tooltip": "[#c084fc]CPU FAN (BIOS)[/]\n[#d8b4fe]Upper:[/] 85°C → 80%\n[#d8b4fe]Mid:[/] 70°C → 55%\n[#d8b4fe]Lower:[/] 45°C → 25%\n\n[#c084fc]CHA2 FANS (BIOS)[/]\n[#d8b4fe]Upper:[/] 80°C → 20%\n[#d8b4fe]Mid:[/] 70°C → 20%\n[#d8b4fe]Lower:[/] 40°C → 20%\n\n[#c084fc]CHA2 FANS (Fan Control)[/]\n[#d8b4fe]1st:[/] 79.9°C → 11%\n[#d8b4fe]2nd:[/] 80°C → 22%\n[#d8b4fe]3rd:[/] 89.9°C → 22%\n[#d8b4fe]4th:[/] 90°C → 33%\n\n[#c084fc]GPU FAN (Afterburner [FwMode])[/]\n[#d8b4fe]Upper:[/] 85°C → 80%\n[#d8b4fe]Mid:[/] 50°C → 33%\n[#d8b4fe]Lower:[/] 49°C → 0%"
+      "tooltip": "[#c084fc]CPU FAN (BIOS)[/]\n[#d8b4fe]Upper:[/] 85°C → 80%\n[#d8b4fe]Mid:[/] 70°C → 55%\n[#d8b4fe]Lower:[/] 45°C → 25%\n\n[#c084fc]CHA2 FANS (BIOS)[/]\n[#d8b4fe]Upper:[/] 80°C → 20%\n[#d8b4fe]Mid:[/] 70°C → 20%\n[#d8b4fe]Lower:[/] 40°C → 20%\n\n[#c084fc]CHA2 FANS (Fan Control)[/]\n[#d8b4fe]1st:[/] 79.9°C → 11%\n[#d8b4fe]2nd:[/] 80°C → 22%\n[#d8b4fe]3rd:[/] 89.9°C → 22%\n[#d8b4fe]4th:[/] 90°C → 33%\n\n[#c084fc]GPU FAN (Afterburner)[/]\n[#d8b4fe]Upper:[/] 85°C → 80%\n[#d8b4fe]Mid:[/] 50°C → 33%\n[#d8b4fe]Lower:[/] 49°C → 0%"
     },
     {
       "category": "Case",
