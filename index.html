@@ -48,6 +48,7 @@
         <div class="taskbar-item" data-window="pc-window">PC Specs</div>
         <div class="taskbar-item" data-window="camera-window">Cameras</div>
         <div class="taskbar-item" data-window="tts-window">TTS</div>
+        <div class="taskbar-item" data-window="contact-window">Contact</div>
     </div>
     <div class="taskbar-right">
         <div class="taskbar-clock">
@@ -162,6 +163,23 @@
 
             <textarea id="textInput" class="tts-textarea" placeholder="Enter the text you want to convert to speech here..."></textarea>
             <div class="tts-status" id="status">Ready to speak</div>
+        </div>
+    </div>
+</div>
+
+<div id="contact-window" class="window">
+    <div class="window-header">
+        <div class="window-title">Contact</div>
+        <div class="window-controls">
+            <button class="window-button close-button">×</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <div class="contact-card">
+            <input type="text" id="contact-name" class="contact-input" placeholder="Your name" maxlength="50">
+            <textarea id="contact-message" class="contact-textarea" placeholder="Your message..." maxlength="1000"></textarea>
+            <button id="contact-send" class="tts-btn tts-btn-primary contact-send-btn">Send</button>
+            <div class="contact-status" id="contact-status"></div>
         </div>
     </div>
 </div>
