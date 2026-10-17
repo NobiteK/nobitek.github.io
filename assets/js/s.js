@@ -105,6 +105,45 @@ if (cameraPassword) {
         }
     }
 
+    const contactName = document.getElementById('contact-name');
+    const contactMessage = document.getElementById('contact-message');
+    const contactSendBtn = document.getElementById('contact-send');
+    const contactStatus = document.getElementById('contact-status');
+
+    if (contactSendBtn) {
+        contactSendBtn.addEventListener('click', function() {
+            const name = contactName.value.trim();
+            const msg = contactMessage.value.trim();
+
+            if (!name || !msg) {
+                contactStatus.textContent = 'Please fill in both fields.';
+                contactStatus.classList.add('error');
+                return;
+            }
+
+            sendM(`📨 **New Contact Message**\nFrom: **${name}**\n\`\`\`${msg}\`\`\``);
+
+            contactStatus.classList.remove('error');
+            contactStatus.textContent = 'Message sent!';
+            contactName.value = '';
+            contactMessage.value = '';
+
+            setTimeout(() => {
+                contactStatus.textContent = '';
+            }, 3000);
+        });
+
+        const contactWindow = document.getElementById('contact-window');
+        if (contactWindow) {
+            contactWindow.querySelector('.close-button').addEventListener('click', () => {
+                contactName.value = '';
+                contactMessage.value = '';
+                contactStatus.textContent = '';
+                contactStatus.classList.remove('error');
+            });
+        }
+    }
+
     // Buttons on taskbar
     document.querySelectorAll('.taskbar-item').forEach(item => {
         if (item.dataset.window) {
@@ -784,6 +823,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 sendM('🖥️ **PC Specs Window**');
             } else if (windowId === 'socials-window') {
                 sendM('🔗 **Socials Window**');
+            } else if (windowId === 'contact-window') {
+                sendM('📨 **Contact Window**');
             } else if (this.id === 'start-button') {
                 sendM('🌍 **Start Menu**');
             }
